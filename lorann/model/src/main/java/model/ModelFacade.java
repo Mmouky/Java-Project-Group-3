@@ -34,6 +34,15 @@ public final class ModelFacade extends Observable implements IModel,KeyListener 
 
     /*
      * (non-Javadoc)
+     * @see model.IModel#getEntryById(int)
+     */
+
+    public String getEntryById(final int id) throws SQLException {
+        return ExampleDAO.getEntryById(id);
+    }
+
+    /*
+     * (non-Javadoc)
      * @see model.IModel#getExampleByName(java.lang.String)
      */
     @Override

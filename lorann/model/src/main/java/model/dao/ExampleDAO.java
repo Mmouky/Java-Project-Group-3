@@ -25,11 +25,40 @@ public abstract class ExampleDAO extends AbstractDAO {
     /** The sql all examples. */
     private static String sqlAllExamples   = "{call findAllExamples()}";
 
+    /** The sql all examples. */
+    private static String sqlAddLevel   = "{call newEntry(?)}";
+
+    /** The sql all examples. */
+    private static String sqlEntryById   = "{call findEntryById(?)}";
+
     /** The id column index. */
-    private static int    idColumnIndex    = 1;
+    private static int    idColumnIndex    = 0;
 
     /** The name column index. */
-    private static int    nameColumnIndex  = 2;
+    private static int    nameColumnIndex  = 1;
+
+    /**
+     * Gets the example by id.
+     *
+     * @param id
+     *            the id
+     * @return the example by id
+     * @throws SQLException
+     *             the SQL exception
+     */
+    public static String getEntryById(final int id) throws SQLException {
+        final CallableStatement callStatement = prepareCall(sqlEntryById);
+        String string = null;
+        callStatement.setInt(1, id);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            if (result.first()) {
+                string = result.getString(nameColumnIndex);
+            }
+            result.close();
+        }
+        return string;
+    }
 
     /**
      * Gets the example by id.

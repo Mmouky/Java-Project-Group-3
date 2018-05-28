@@ -42,6 +42,8 @@ public class ControllerFacade implements IController {
      *             the SQL exception
      */
     public void start() throws SQLException {
+
+        System.out.print(model.getEntryById(1));
         
     }
 

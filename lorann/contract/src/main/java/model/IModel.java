@@ -12,6 +12,17 @@ import java.util.List;
 public interface IModel {
 
     /**
+     * Gets the entry by id.
+     *
+     * @param id
+     *            the id
+     * @return the example by id
+     * @throws SQLException
+     *             the SQL exception
+     */
+    String getEntryById(int id) throws SQLException;
+
+    /**
      * Gets the example by id.
      *
      * @param id
