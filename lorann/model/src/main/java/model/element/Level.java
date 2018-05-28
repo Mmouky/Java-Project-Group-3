@@ -9,4 +9,12 @@ public class Level {
     public Level(Element[][] elements) {
         this.elements = elements;
     }
+
+    public Element[][] getElements() {
+        return elements;
+    }
+
+    public void setElements(Element[][] elements) {
+        this.elements = elements;
+    }
 }
