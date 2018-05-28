@@ -3,9 +3,9 @@ package model.element;
 import java.awt.*;
 
 public class Monster extends Character {
-    Monster(int x, int y, Image sprite) {
-        super(x, y, sprite);
-    }
 
+	public Monster(int x, int y, Image sprite) {
+		super(x, y, sprite);
+	}
 
 }

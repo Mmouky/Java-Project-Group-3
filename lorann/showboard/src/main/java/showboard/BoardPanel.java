@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -104,7 +105,6 @@ class BoardPanel extends JPanel implements Observer {
     @Override
     public final void paintComponent(final Graphics graphics) {
 
-    	
     }
 
     /*

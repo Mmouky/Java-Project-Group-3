@@ -8,30 +8,37 @@ public abstract class Character extends Element {
 
     private boolean isAlive;
 
-    Character(int x, int y, Image sprite) {
+    public Character(int x, int y, Image sprite) {
         super(x, y, sprite);
         this.isAlive = true;
     }
 
-    private boolean moveUP(){
+    public boolean moveUP(){
         this.x -= 1;
         return true;
     }
 
-    private boolean moveDown(){
+    public boolean moveDown(){
         this.x += 1;
         return true;
     }
 
-    private boolean moveLeft(){
+    public boolean moveLeft(){
         this.y -= 1;
         return true;
     }
 
-    private boolean moveRight(){
+    public boolean moveRight(){
         this.y += 1;
         return true;
     }
 
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
 
 }
