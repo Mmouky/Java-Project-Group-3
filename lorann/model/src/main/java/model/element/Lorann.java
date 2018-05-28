@@ -7,7 +7,7 @@ public class Lorann extends Character {
 		super(x, y, sprite);
 	}
 
-	private void attack() {
+	public void attack() {
 
 	}
 
