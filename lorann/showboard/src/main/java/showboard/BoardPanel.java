@@ -104,14 +104,7 @@ class BoardPanel extends JPanel implements Observer {
     @Override
     public final void paintComponent(final Graphics graphics) {
 
-        final Map<String, ArrayList<IPawn>> mapPawn = this.createMapPawn();
-
-        for (int x = this.getCornerMinX(); x <= this.getCornerMaxX(); x++) {
-            for (int y = this.getCornerMinY(); y <= this.getCornerMaxY(); y++) {
-                this.drawSquareXY(graphics, x, y);
-                this.drawPawnsXY(graphics, mapPawn, x, y);
-            }
-        }
+    	
     }
 
     /*

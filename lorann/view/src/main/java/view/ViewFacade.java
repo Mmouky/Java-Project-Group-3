@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.JOptionPane;
 
+import showboard.BoardFrame;
+
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
  *
@@ -10,20 +12,33 @@ import javax.swing.JOptionPane;
  */
 public class ViewFacade implements IView {
 
-    /**
-     * Instantiates a new view facade.
-     */
-    public ViewFacade() {
-        super();
-    }
+	private BoardFrame frame;
 
-    /*
-     * (non-Javadoc)
-     * @see view.IView#displayMessage(java.lang.String)
-     */
-    @Override
-    public final void displayMessage(final String message) {
-        JOptionPane.showMessageDialog(null, message);
-    }
+	/**
+	 * Instantiates a new view facade.
+	 */
+	public ViewFacade() {
+		frame = new BoardFrame("Lorann");
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see view.IView#displayMessage(java.lang.String)
+	 */
+	@Override
+	public final void displayMessage(final String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
+
+	public BoardFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(BoardFrame frame) {
+		this.frame = frame;
+	}
+	
+	
 
 }

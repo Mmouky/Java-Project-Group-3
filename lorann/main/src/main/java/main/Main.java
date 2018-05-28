@@ -14,20 +14,23 @@ import view.ViewFacade;
  */
 public abstract class Main {
 
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-    public static void main(final String[] args) {
-        final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(final String[] args) {
+		ViewFacade view = new ViewFacade();
+		ModelFacade model = new ModelFacade();
+		model.addObserver(view.getFrame().getObserver());
+		final ControllerFacade controller = new ControllerFacade(view, model);
 
-        try {
-            controller.start();
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
-    }
+		try {
+			controller.start();
+		} catch (final SQLException exception) {
+			exception.printStackTrace();
+		}
+	}
 
 }
