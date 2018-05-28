@@ -8,7 +8,7 @@ public abstract class Character extends Element {
 
     private boolean isAlive;
 
-    Character(int x, int y, Image sprite) {
+    public Character(int x, int y, Image sprite) {
         super(x, y, sprite);
         this.isAlive = true;
     }
