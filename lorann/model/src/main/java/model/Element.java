@@ -2,7 +2,7 @@ package model;
 
 import java.awt.*;
 
-public class Element {
+public abstract class Element {
 
     protected Image sprite;
     protected int x;
