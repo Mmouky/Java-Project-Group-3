@@ -9,7 +9,9 @@ public abstract class Element {
     protected int y;
 
     public Element(int x, int y, Image sprite){
-
+        this.y = y;
+        this.x = x;
+        this.sprite = sprite;
     }
 
     public int getX() {
