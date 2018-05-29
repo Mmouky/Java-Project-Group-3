@@ -16,4 +16,9 @@ public class Wall extends Element {
     public EWall geteWall() {
         return eWall;
     }
+
+    @Override
+    public String toString() {
+        return "Wall";
+    }
 }

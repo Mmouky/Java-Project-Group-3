@@ -10,4 +10,8 @@ public class Monster3 extends Monster {
 		super(x, y, sprite);
 	}
 
+	@Override
+	public String toString() {
+		return "Monstre 3";
+	}
 }

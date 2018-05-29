@@ -11,5 +11,8 @@ public class Money extends Element {
         super(x, y, sprite);
     }
 
-
+    @Override
+    public String toString() {
+        return "Money";
+    }
 }
