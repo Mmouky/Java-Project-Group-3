@@ -1,5 +1,7 @@
 package model;
 
+import java.io.File;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Observable;
@@ -37,8 +39,8 @@ public final class ModelFacade extends Observable implements IModel {
 	 * @see model.IModel#getEntryById(int)
 	 */
 
-	public String getEntryById(final int id) throws SQLException {
-		return ExampleDAO.getEntryById(id);
+	public InputStream getEntryById(final int id) throws SQLException {
+		return ExampleDAO.getEntryById(id).getBinaryStream();
 	}
 
 	/*

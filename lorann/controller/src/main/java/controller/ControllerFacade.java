@@ -4,9 +4,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.*;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 import model.IModel;
 import view.IView;
+import model.*;
 
 /**
  * <h1>The Class ControllerFacade provides a facade of the Controller
@@ -23,6 +25,7 @@ public class ControllerFacade implements IController, KeyListener {
 	/** The model. */
 	private final IModel model;
 
+
 	/**
 	 * Instantiates a new controller facade.
 	 *
@@ -38,8 +41,10 @@ public class ControllerFacade implements IController, KeyListener {
 	}
 
 	public String readFile(int id) {
+
+
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(model.getEntryById(id)));
+			BufferedReader br = new BufferedReader(new InputStreamReader(model.getEntryById(id)));
 			try {
 				String line = br.readLine();
 				String msg = "";
@@ -54,8 +59,6 @@ public class ControllerFacade implements IController, KeyListener {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,12 +68,47 @@ public class ControllerFacade implements IController, KeyListener {
 
 	public void getElement(String txt) {
 
+
+
 		for (int i = 0; i < txt.length(); i++) {
 			char c = txt.charAt(i);
 
-			if (c == 'X') {
+			if (c == 'x') {
 				System.out.println("Empty");
 			}
+            else if (c == '-') {
+                System.out.println("Wall");
+            }
+            else if (c == 'O') {
+                System.out.println("Corner");
+            }
+            else if (c == 'B') {
+                System.out.println("Energy Ball");
+            }
+            else if (c == 'M') {
+                System.out.println("Money");
+            }
+            else if (c == '2') {
+                System.out.println("Monster");
+            }
+            else if (c == '1') {
+                System.out.println("Monster");
+            }
+            else if (c == '3') {
+                System.out.println("Monster");
+            }
+            else if (c == '4') {
+                System.out.println("Monster");
+            }
+            else if (c == 'D') {
+                System.out.println("Door");
+            }
+            else if (c == '|') {
+                System.out.println("Wall");
+            }
+            else if (c == 'L') {
+                System.out.println("Lorann");
+            }
 		}
 
 	}
