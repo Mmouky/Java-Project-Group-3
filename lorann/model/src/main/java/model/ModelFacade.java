@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Observable;
 
 import model.dao.ExampleDAO;
+import model.element.*;
+import model.element.monsters.Monster1;
+import model.element.monsters.Monster2;
+import model.element.monsters.Monster3;
+import model.element.monsters.Monster4;
+import model.element.wall.EWall;
+import model.element.wall.Wall;
 
 
 /**
@@ -78,7 +85,57 @@ public final class ModelFacade extends Observable implements IModel {
 
 	public void getElement(String txt) {
 
+		for (int i = 0; i < 12; i++){
+			for (int j = 0; j < 20; j++){
+				char c = txt.charAt(j+(20*i));
 
+					if (c == 'x') {
+						level.addElements(null);
+					}
+					else if (c == '-') {
+						level.addElements(new Wall(i, j, null, EWall.HORIZONTAL));
+					}
+					else if (c == 'O') {
+						level.addElements(new Wall(i, j, null, EWall.CORNER));
+					}
+					else if (c == 'B') {
+						level.addElements(new EnergyBall(i, j, null));
+					}
+					else if (c == 'M') {
+						level.addElements(new Money(i, j, null));
+					}
+					else if (c == '2') {
+						level.addElements(new Monster2(i, j, null));
+					}
+					else if (c == '1') {
+						level.addElements(new Monster1(i, j, null));
+					}
+					else if (c == '3') {
+						level.addElements(new Monster3(i, j, null));
+					}
+					else if (c == '4') {
+						level.addElements(new Monster4(i, j, null));
+					}
+					else if (c == 'D') {
+						level.addElements(new Door(i, j, null));
+					}
+					else if (c == '|') {
+						level.addElements(new Wall(i, j, null, EWall.VERTICAL));
+					}
+					else if (c == 'L') {
+						level.addElements(new Lorann(i, j, null));
+					}
+
+				}
+
+
+			}
+			System.out.println("ca compile");
+
+		}
+
+
+/*
 		for (int i = 0; i < txt.length(); i++) {
 			char c = txt.charAt(i);
 
@@ -119,8 +176,8 @@ public final class ModelFacade extends Observable implements IModel {
 				System.out.println("Lorann");
 			}
 		}
+*/
 
-	}
 
 	public String readFile(int id) {
 

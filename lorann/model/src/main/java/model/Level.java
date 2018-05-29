@@ -17,7 +17,7 @@ public class Level {
         this.elements = elements;
     }
 
-    public void addElements(int x, int y, Element element){ elements[x][y] = element; }
+    public void addElements(Element element){}
 
     public void Loader(){
 
@@ -26,5 +26,7 @@ public class Level {
     public void Generator(){
 
     }
+
+
 
 }
