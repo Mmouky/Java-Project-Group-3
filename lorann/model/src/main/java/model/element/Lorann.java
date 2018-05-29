@@ -11,4 +11,8 @@ public class Lorann extends Character {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Lorann";
+	}
 }
