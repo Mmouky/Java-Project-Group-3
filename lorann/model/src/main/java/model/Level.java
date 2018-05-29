@@ -16,4 +16,13 @@ public class Level {
     public void setElements(Element[][] elements) {
         this.elements = elements;
     }
+
+    public void Loader(){
+
+    }
+
+    public void Generator(){
+
+    }
+
 }
