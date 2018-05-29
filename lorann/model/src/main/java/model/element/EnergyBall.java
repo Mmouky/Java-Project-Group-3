@@ -9,4 +9,9 @@ public class EnergyBall extends Element {
     public EnergyBall(int x, int y, Image sprite) {
         super(x, y, sprite);
     }
+
+    @Override
+    public String toString() {
+        return "EnergyBall";
+    }
 }

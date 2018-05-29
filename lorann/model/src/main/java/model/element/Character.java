@@ -41,4 +41,8 @@ public abstract class Character extends Element {
 		this.isAlive = isAlive;
 	}
 
+    @Override
+    public String toString() {
+        return "Character";
+    }
 }

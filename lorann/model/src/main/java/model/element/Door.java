@@ -9,4 +9,9 @@ public class Door extends Element {
     public Door(int x, int y, Image sprite) {
         super(x, y, sprite);
     }
+
+    @Override
+    public String toString() {
+        return "Door";
+    }
 }

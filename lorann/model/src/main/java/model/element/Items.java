@@ -20,4 +20,9 @@ public class Items extends Element {
     public void setItems(Items items) {
         this.items = items;
     }
+
+    @Override
+    public String toString() {
+        return "Items";
+    }
 }
