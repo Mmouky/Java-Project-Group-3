@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.io.File;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,18 +48,18 @@ public abstract class ExampleDAO extends AbstractDAO {
      * @throws SQLException
      *             the SQL exception
      */
-    public static String getEntryById(final int id) throws SQLException {
+    public static Blob getEntryById(final int id) throws SQLException {
         final CallableStatement callStatement = prepareCall(sqlEntryById);
-        String string = null;
+        Blob file = null;
         callStatement.setInt(1, id);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
             if (result.first()) {
-                string = result.getString(nameColumnIndex);
+                file = result.getBlob(nameColumnIndex);
             }
             result.close();
         }
-        return string;
+        return file;
     }
 
     /**

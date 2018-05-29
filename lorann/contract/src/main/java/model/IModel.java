@@ -1,5 +1,6 @@
 package model;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    String getEntryById(int id) throws SQLException;
+    InputStream getEntryById(int id) throws SQLException;
 
     /**
      * Gets the example by id.
