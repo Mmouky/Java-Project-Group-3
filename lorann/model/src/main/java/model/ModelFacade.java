@@ -89,10 +89,8 @@ public final class ModelFacade extends Observable implements IModel {
 			for (int j = 0; j < 20; j++){
 				char c = txt.charAt(j+(20*i));
 
-					if (c == 'x') {
-						level.addElements(null);
-					}
-					else if (c == '-') {
+
+					if (c == '-') {
 						level.addElements(new Wall(i, j, null, EWall.HORIZONTAL));
 					}
 					else if (c == 'O') {
@@ -125,7 +123,7 @@ public final class ModelFacade extends Observable implements IModel {
 					else if (c == 'L') {
 						level.addElements(new Lorann(i, j, null));
 					}
-
+					System.out.println(level.getElements()[i][j]);
 				}
 
 
