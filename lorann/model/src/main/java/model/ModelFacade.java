@@ -6,6 +6,7 @@ import java.util.Observable;
 
 import model.dao.ExampleDAO;
 
+
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
  *
