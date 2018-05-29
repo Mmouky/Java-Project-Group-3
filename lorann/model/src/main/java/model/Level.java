@@ -17,6 +17,8 @@ public class Level {
         this.elements = elements;
     }
 
+    public void addElements(int x, int y, Element element){ elements[x][y] = element; }
+
     public void Loader(){
 
     }

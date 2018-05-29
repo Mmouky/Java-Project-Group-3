@@ -40,78 +40,8 @@ public class ControllerFacade implements IController, KeyListener {
 
 	}
 
-	public String readFile(int id) {
 
 
-		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(model.getEntryById(id)));
-			try {
-				String line = br.readLine();
-				String msg = "";
-
-				while (line != null) {
-					msg += line;
-					line = br.readLine();
-				}
-				br.close();
-				return msg;
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return "ERROR";
-
-	}
-
-	public void getElement(String txt) {
-
-
-
-		for (int i = 0; i < txt.length(); i++) {
-			char c = txt.charAt(i);
-
-			if (c == 'x') {
-				System.out.println("Empty");
-			}
-            else if (c == '-') {
-                System.out.println("Wall");
-            }
-            else if (c == 'O') {
-                System.out.println("Corner");
-            }
-            else if (c == 'B') {
-                System.out.println("Energy Ball");
-            }
-            else if (c == 'M') {
-                System.out.println("Money");
-            }
-            else if (c == '2') {
-                System.out.println("Monster");
-            }
-            else if (c == '1') {
-                System.out.println("Monster");
-            }
-            else if (c == '3') {
-                System.out.println("Monster");
-            }
-            else if (c == '4') {
-                System.out.println("Monster");
-            }
-            else if (c == 'D') {
-                System.out.println("Door");
-            }
-            else if (c == '|') {
-                System.out.println("Wall");
-            }
-            else if (c == 'L') {
-                System.out.println("Lorann");
-            }
-		}
-
-	}
 
 	/**
 	 * Start.
@@ -120,7 +50,8 @@ public class ControllerFacade implements IController, KeyListener {
 	 *             the SQL exception
 	 */
 	public void start() throws SQLException {
-		getElement(readFile(1));
+
+		model.getElement(model.readFile(1));
 		
 	}
 

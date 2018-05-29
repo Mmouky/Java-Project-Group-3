@@ -3,6 +3,7 @@ package model;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
 
 /**
  * <h1>The Interface IModel.</h1>
@@ -11,6 +12,10 @@ import java.util.List;
  * @version 1.0
  */
 public interface IModel {
+
+
+
+
 
     /**
      * Gets the entry by id.
@@ -53,4 +58,8 @@ public interface IModel {
      *             the SQL exception
      */
     List<Example> getAllExamples() throws SQLException;
+
+    String readFile(int i);
+
+    void getElement(String o);
 }

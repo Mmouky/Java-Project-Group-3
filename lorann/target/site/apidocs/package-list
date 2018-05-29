@@ -2,5 +2,8 @@ controller
 main
 model
 model.dao
+model.element
+model.element.monsters
+model.element.wall
 showboard
 view

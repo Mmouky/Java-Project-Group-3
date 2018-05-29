@@ -1,7 +1,6 @@
 package model;
 
-import java.io.File;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Observable;
@@ -19,13 +18,26 @@ public final class ModelFacade extends Observable implements IModel {
 	/**
 	 * Instantiates a new model facade.
 	 */
+
+	private Level level;
+
+	public Level getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+
+
 	public ModelFacade() {
-		super();
+		level = new Level();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see model.IModel#getExampleById(int)
 	 */
 	@Override
@@ -62,5 +74,81 @@ public final class ModelFacade extends Observable implements IModel {
 	public List<Example> getAllExamples() throws SQLException {
 		return ExampleDAO.getAllExamples();
 	}
+
+
+	public void getElement(String txt) {
+
+
+		for (int i = 0; i < txt.length(); i++) {
+			char c = txt.charAt(i);
+
+			if (c == 'x') {
+				System.out.println("Empty");
+			}
+			else if (c == '-') {
+				System.out.println("Wall");
+			}
+			else if (c == 'O') {
+				System.out.println("Corner");
+			}
+			else if (c == 'B') {
+				System.out.println("Energy Ball");
+			}
+			else if (c == 'M') {
+				System.out.println("Money");
+			}
+			else if (c == '2') {
+				System.out.println("Monster");
+			}
+			else if (c == '1') {
+				System.out.println("Monster");
+			}
+			else if (c == '3') {
+				System.out.println("Monster");
+			}
+			else if (c == '4') {
+				System.out.println("Monster");
+			}
+			else if (c == 'D') {
+				System.out.println("Door");
+			}
+			else if (c == '|') {
+				System.out.println("Wall");
+			}
+			else if (c == 'L') {
+				System.out.println("Lorann");
+			}
+		}
+
+	}
+
+	public String readFile(int id) {
+
+
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(getEntryById(id)));
+			try {
+				String line = br.readLine();
+				String msg = "";
+
+				while (line != null) {
+					msg += line;
+					line = br.readLine();
+				}
+				br.close();
+				return msg;
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "ERROR";
+
+	}
+
+
+
 
 }
