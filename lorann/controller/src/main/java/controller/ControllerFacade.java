@@ -83,6 +83,7 @@ public class ControllerFacade implements IController, KeyListener {
 	 */
 	public void start() throws SQLException {
 		getElement(readFile(1));
+		
 	}
 
 	/**

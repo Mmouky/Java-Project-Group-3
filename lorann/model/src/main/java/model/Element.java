@@ -12,6 +12,7 @@ public abstract class Element {
 		this.y = y;
 		this.x = x;
 		this.sprite = sprite;
+		
 	}
 
 	public int getX() {
