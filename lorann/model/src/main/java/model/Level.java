@@ -1,4 +1,4 @@
-package model.element;
+package model;
 
 import model.Element;
 
