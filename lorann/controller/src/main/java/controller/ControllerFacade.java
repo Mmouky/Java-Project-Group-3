@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.*;
 import java.sql.SQLException;
 
 import model.IModel;
@@ -35,6 +36,32 @@ public class ControllerFacade implements IController,KeyListener {
         
     }
 
+    public String readFile(int id){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(model.getEntryById(id)));
+            try {
+                String line = br.readLine();
+                String msg = "";
+
+                while (line != null) {
+                    msg += line;
+                    line = br.readLine();
+                }
+                br.close();
+                return msg;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "ERROR";
+
+    }
+
     /**
      * Start.
      *
@@ -42,9 +69,7 @@ public class ControllerFacade implements IController,KeyListener {
      *             the SQL exception
      */
     public void start() throws SQLException {
-
-        System.out.print(model.getEntryById(1));
-        
+        System.out.println(readFile(1));
     }
 
     /**
