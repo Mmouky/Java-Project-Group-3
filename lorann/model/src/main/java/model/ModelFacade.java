@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Observable;
@@ -14,67 +12,52 @@ import model.dao.ExampleDAO;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public final class ModelFacade extends Observable implements IModel,KeyListener {
-
-    /**
-     * Instantiates a new model facade.
-     */
-    public ModelFacade() {
-        super();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getExampleById(int)
-     */
-    @Override
-    public Example getExampleById(final int id) throws SQLException {
-        return ExampleDAO.getExampleById(id);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getEntryById(int)
-     */
-
-    public String getEntryById(final int id) throws SQLException {
-        return ExampleDAO.getEntryById(id);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getExampleByName(java.lang.String)
-     */
-    @Override
-    public Example getExampleByName(final String name) throws SQLException {
-        return ExampleDAO.getExampleByName(name);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getAllExamples()
-     */
-    @Override
-    public List<Example> getAllExamples() throws SQLException {
-        return ExampleDAO.getAllExamples();
-    }
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+public final class ModelFacade extends Observable implements IModel {
+	/**
+	 * Instantiates a new model facade.
+	 */
+	public ModelFacade() {
+		super();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#getExampleById(int)
+	 */
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public Example getExampleById(final int id) throws SQLException {
+		return ExampleDAO.getExampleById(id);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#getEntryById(int)
+	 */
+
+	public String getEntryById(final int id) throws SQLException {
+		return ExampleDAO.getEntryById(id);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#getExampleByName(java.lang.String)
+	 */
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public Example getExampleByName(final String name) throws SQLException {
+		return ExampleDAO.getExampleByName(name);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#getAllExamples()
+	 */
+	@Override
+	public List<Example> getAllExamples() throws SQLException {
+		return ExampleDAO.getAllExamples();
 	}
 
 }
