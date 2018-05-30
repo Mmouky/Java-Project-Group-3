@@ -3,6 +3,7 @@ package main;
 import java.sql.SQLException;
 
 import controller.ControllerFacade;
+import model.Level;
 import model.ModelFacade;
 import view.ViewFacade;
 
@@ -21,8 +22,11 @@ public abstract class Main {
 	 *            the arguments
 	 */
 	public static void main(final String[] args) {
-		ViewFacade view = new ViewFacade();
-		ModelFacade model = new ModelFacade();
+
+		Level level = new Level();
+
+		ViewFacade view = new ViewFacade(level);
+		ModelFacade model = new ModelFacade(level);
 		model.addObserver(view.getFrame().getObserver());
 		final ControllerFacade controller = new ControllerFacade(view, model);
 

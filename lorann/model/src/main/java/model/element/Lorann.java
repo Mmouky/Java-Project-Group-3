@@ -15,4 +15,5 @@ public class Lorann extends Character {
 	public String toString() {
 		return "Lorann";
 	}
+
 }

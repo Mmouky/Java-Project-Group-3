@@ -1,35 +1,28 @@
 package model;
 
-public class Level {
+public class Level implements ILevel {
 
-    private Element[][]elements = new Element[12][20];
+	private IElement[][] elements = new IElement[12][20];
 
-    public Level(){
-    }
+	public Level() {
+	}
 
-    public Element[][] getElements() {
-        return elements;
-    }
+	public IElement[][] getElements() {
+		return elements;
+	}
 
-    public void setElements(Element[][] elements) {
-        this.elements = elements;
-    }
+	@Override
+	public void setElements(IElement[][] elements) {
+		this.elements = elements;
+	}
 
-    public void addElements(Element element){
-        int x = element.getX();
-        int y = element.getY();
-        elements[x][y] = element;
-        
-    }
-
-    public void Loader(){
-
-    }
-
-    public void Generator(){
-
-    }
-
-
+	@Override
+	public void addElements(IElement element) {
+		int x = element.getX();
+		int y = element.getY();
+		elements[x][y] = element;
+	}
+	
+	
 
 }

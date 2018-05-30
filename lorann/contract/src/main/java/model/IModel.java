@@ -13,53 +13,54 @@ import java.util.logging.Level;
  */
 public interface IModel {
 
+	/**
+	 * Gets the entry by id.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the example by id
+	 * @throws SQLException
+	 *             the SQL exception
+	 */
+	InputStream getEntryById(int id) throws SQLException;
 
+	/**
+	 * Gets the example by id.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the example by id
+	 * @throws SQLException
+	 *             the SQL exception
+	 */
+	Example getExampleById(int id) throws SQLException;
 
+	/**
+	 * Gets the example by name.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the example by name
+	 * @throws SQLException
+	 *             the SQL exception
+	 */
+	Example getExampleByName(String name) throws SQLException;
 
+	/**
+	 * Gets the all examples.
+	 *
+	 * @return the all examples
+	 * @throws SQLException
+	 *             the SQL exception
+	 */
+	List<Example> getAllExamples() throws SQLException;
 
-    /**
-     * Gets the entry by id.
-     *
-     * @param id
-     *            the id
-     * @return the example by id
-     * @throws SQLException
-     *             the SQL exception
-     */
-    InputStream getEntryById(int id) throws SQLException;
+	String readFile(int i);
 
-    /**
-     * Gets the example by id.
-     *
-     * @param id
-     *            the id
-     * @return the example by id
-     * @throws SQLException
-     *             the SQL exception
-     */
-    Example getExampleById(int id) throws SQLException;
+	void getElement(String o);
 
-    /**
-     * Gets the example by name.
-     *
-     * @param name
-     *            the name
-     * @return the example by name
-     * @throws SQLException
-     *             the SQL exception
-     */
-    Example getExampleByName(String name) throws SQLException;
+	ILevel getLevel();
 
-    /**
-     * Gets the all examples.
-     *
-     * @return the all examples
-     * @throws SQLException
-     *             the SQL exception
-     */
-    List<Example> getAllExamples() throws SQLException;
+	void setLevel(ILevel level);
 
-    String readFile(int i);
-
-    void getElement(String o);
 }

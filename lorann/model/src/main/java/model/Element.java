@@ -2,7 +2,9 @@ package model;
 
 import java.awt.*;
 
-public abstract class Element {
+import showboard.ISquare;
+
+public abstract class Element implements IElement {
 
 	protected Image sprite;
 	protected int x;
@@ -12,36 +14,42 @@ public abstract class Element {
 		this.y = y;
 		this.x = x;
 		this.sprite = sprite;
-		
+
 	}
 
+	@Override
 	public int getX() {
 		return x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
+	@Override
 	public int getY() {
 		return y;
 	}
 
+	@Override
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	@Override
 	public void setY(int y) {
 		this.y = y;
-	}
-
-	public Image getSprite() {
-		return sprite;
-	}
-
-	public void setSprite(Image sprite) {
-		this.sprite = sprite;
 	}
 
 	@Override
 	public String toString() {
 		return "Element";
+	}
+
+	@Override
+	public Image getImage() {
+		return sprite;
+	}
+
+	@Override
+	public void setImage(Image image) {
+		this.sprite = image;
 	}
 
 }

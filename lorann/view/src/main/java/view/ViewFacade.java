@@ -1,7 +1,6 @@
 package view;
 
-import javax.swing.JOptionPane;
-
+import model.ILevel;
 import showboard.BoardFrame;
 
 /**
@@ -13,12 +12,14 @@ import showboard.BoardFrame;
 public class ViewFacade implements IView {
 
 	private BoardFrame frame;
+	private ILevel level;
 
 	/**
 	 * Instantiates a new view facade.
 	 */
-	public ViewFacade() {
+	public ViewFacade(ILevel level) {
 		frame = new BoardFrame("Lorann");
+		this.level = level;
 	}
 
 	/*
@@ -26,10 +27,6 @@ public class ViewFacade implements IView {
 	 * 
 	 * @see view.IView#displayMessage(java.lang.String)
 	 */
-	@Override
-	public final void displayMessage(final String message) {
-		JOptionPane.showMessageDialog(null, message);
-	}
 
 	public BoardFrame getFrame() {
 		return frame;
@@ -38,7 +35,10 @@ public class ViewFacade implements IView {
 	public void setFrame(BoardFrame frame) {
 		this.frame = frame;
 	}
-	
-	
+
+	@Override
+	public void displayMessage(String message) {
+		//frame.addSquare(level.getElements()[0][0], 0, 0);
+	}
 
 }

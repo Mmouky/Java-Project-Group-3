@@ -37,7 +37,6 @@ public class ControllerFacade implements IController, KeyListener {
 	public ControllerFacade(final IView view, final IModel model) {
 		this.view = view;
 		this.model = model;
-
 	}
 
 
@@ -50,8 +49,10 @@ public class ControllerFacade implements IController, KeyListener {
 	 *             the SQL exception
 	 */
 	public void start() throws SQLException {
-
+		
 		model.getElement(model.readFile(1));
+		
+		view.displayMessage("");
 		
 	}
 
