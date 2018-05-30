@@ -115,6 +115,7 @@ class BoardPanel extends JPanel implements Observer {
 			}
 		}
 	}
+	
 
 	/*
 	 * (non-Javadoc)

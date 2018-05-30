@@ -25,7 +25,6 @@ public class ViewFacade implements IView {
 		frame.setDimension(new Dimension(24, 40));
 		frame.setDisplayFrame(new Rectangle(12, 20, 12, 20));
 		this.level = level;
-		
 	}
 
 	/*
