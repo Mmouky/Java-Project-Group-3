@@ -25,7 +25,6 @@ public class ControllerFacade implements IController, KeyListener {
 	/** The model. */
 	private final IModel model;
 
-
 	/**
 	 * Instantiates a new controller facade.
 	 *
@@ -39,9 +38,6 @@ public class ControllerFacade implements IController, KeyListener {
 		this.model = model;
 	}
 
-
-
-
 	/**
 	 * Start.
 	 *
@@ -49,11 +45,15 @@ public class ControllerFacade implements IController, KeyListener {
 	 *             the SQL exception
 	 */
 	public void start() throws SQLException {
-		
+
 		model.getElement(model.readFile(1));
-		
-		view.displayMessage("");
-		
+
+		for (int i = 0; i < model.getLevel().getElements().length; i++) {
+			for (int j = 0; j < model.getLevel().getElements()[i].length; j++) {
+				view.addElement(model.getLevel().getElements()[i][j]);
+			}
+		}
+
 	}
 
 	/**

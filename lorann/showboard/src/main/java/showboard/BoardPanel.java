@@ -170,12 +170,9 @@ class BoardPanel extends JPanel implements Observer {
 		final int realY = this.calculateRealY(y);
 		if ((realX < 0) || (realY < 0) || (realX >= widthLimit) || (realY >= heightLimit)) {
 			image = this.noImage;
-			//System.out.println(widthLimit + " " + heightLimit);
-			//System.out.println(realX + "         " + realY);
 		} else {
-			image = this.squares[0][0].getImage();
+			image = this.squares[realX][realY].getImage();
 			if (image == null) {
-				System.out.println("yo1");
 				image = this.noImage;
 			}
 		}
