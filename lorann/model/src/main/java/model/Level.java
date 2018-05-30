@@ -1,7 +1,5 @@
 package model;
 
-import model.Element;
-
 public class Level {
 
     private Element[][]elements = new Element[12][20];
@@ -21,6 +19,7 @@ public class Level {
         int x = element.getX();
         int y = element.getY();
         elements[x][y] = element;
+        
     }
 
     public void Loader(){
