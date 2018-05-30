@@ -38,7 +38,7 @@ public class ViewFacade implements IView {
 
 	@Override
 	public void displayMessage(String message) {
-		//frame.addSquare(level.getElements()[0][0], 0, 0);
+		frame.addSquare(level.getElements()[0][0], 1, 0);
 	}
 
 }
