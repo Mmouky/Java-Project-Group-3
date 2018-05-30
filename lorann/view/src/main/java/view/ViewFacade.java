@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.Rectangle;
+
 import model.ILevel;
 import showboard.BoardFrame;
 
@@ -17,9 +20,12 @@ public class ViewFacade implements IView {
 	/**
 	 * Instantiates a new view facade.
 	 */
-	public ViewFacade(ILevel level) {
+	public ViewFacade(final ILevel level) {
 		frame = new BoardFrame("Lorann");
+		frame.setDimension(new Dimension(24, 40));
+		frame.setDisplayFrame(new Rectangle(12, 20, 12, 20));
 		this.level = level;
+		
 	}
 
 	/*
@@ -38,7 +44,7 @@ public class ViewFacade implements IView {
 
 	@Override
 	public void displayMessage(String message) {
-		frame.addSquare(level.getElements()[0][0], 1, 0);
+		frame.addSquare(level.getElements()[0][0], 0, 0);
 	}
 
 }
