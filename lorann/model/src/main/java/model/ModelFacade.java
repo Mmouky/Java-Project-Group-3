@@ -84,7 +84,7 @@ public final class ModelFacade extends Observable implements IModel {
 							EWall.HORIZONTAL));
 				} else if (c == 'O') {
 					level.addElements(
-							new Wall(i, j, new ImageIcon("lorann\\sprite\\bone.png").getImage(), EWall.CORNER));
+							new Wall(i, j, new ImageIcon("..\\..\\lorann\\sprite\\bone.png").getImage(), EWall.CORNER));
 				} else if (c == 'B') {
 					level.addElements(
 							new EnergyBall(i, j, new ImageIcon("lorann\\sprite\\crystal_ball.png").getImage()));
