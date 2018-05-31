@@ -47,7 +47,7 @@ public class ControllerFacade implements IController {
 	public void start() throws SQLException {
 
 		model.getElement(model.readFile(1));
-
+		
 		for (int i = 0; i < model.getLevel().getElements().length; i++) {
 			for (int j = 0; j < model.getLevel().getElements()[i].length; j++) {
 				view.addElement(model.getLevel().getElements()[i][j]);

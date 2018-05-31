@@ -15,8 +15,5 @@ public class Monster2 extends Monster {
 		return "Monstre 2";
 	}
 
-	@Override
-	public Point getPosition() {
-		return null;
-	}
+	
 }

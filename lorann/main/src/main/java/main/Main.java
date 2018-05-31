@@ -26,7 +26,6 @@ public abstract class Main {
 		Level level = new Level();
 		ModelFacade model = new ModelFacade(level);
 		ViewFacade view = new ViewFacade(level);
-
 		model.addObserver(view.getFrame().getObserver());
 		final ControllerFacade controller = new ControllerFacade(view, model);
 

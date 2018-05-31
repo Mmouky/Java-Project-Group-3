@@ -1,11 +1,12 @@
 package model.element;
 
 import java.awt.Image;
+import java.awt.Point;
 
 import model.Element;
-import showboard.IPawn;
+import model.IMobile;
 
-public abstract class Character extends Element implements IPawn {
+public abstract class Character extends Element implements IMobile {
 
 	private boolean isAlive;
 
@@ -14,7 +15,7 @@ public abstract class Character extends Element implements IPawn {
 		this.isAlive = true;
 	}
 
-	public boolean moveUP() {
+	public boolean moveUp() {
 		this.x -= 1;
 		return true;
 	}
@@ -43,8 +44,26 @@ public abstract class Character extends Element implements IPawn {
 	}
 
 	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return super.getX();
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return super.getY();
+	}
+
+	@Override
+	public Point getPosition() {
+		// TODO Auto-generated method stub
+		return new Point(getX(), getY());
+	}
+
+	@Override
 	public String toString() {
 		return "Character";
 	}
-	
+
 }
