@@ -9,22 +9,22 @@ public interface IMobile extends IPawn, IElement {
 	/**
 	 * Move up.
 	 */
-	boolean moveUp();
+	void moveUp();
 
 	/**
 	 * Move left.
 	 */
-	boolean moveLeft();
+	void moveLeft();
 
 	/**
 	 * Move down.
 	 */
-	boolean moveDown();
+	void moveDown();
 
 	/**
 	 * Move right.
 	 */
-	boolean moveRight();
+	void moveRight();
 
 	/**
 	 * Gets the x.

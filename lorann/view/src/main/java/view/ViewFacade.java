@@ -49,18 +49,36 @@ public class ViewFacade implements IView, KeyListener {
 
 	@Override
 	public void addElement() {
-        for (int i = 0; i < level.getElements().length; i++) {
-            for (int j = 0; j < level.getElements()[i].length; j++) {
-                System.out.println(level);
-                frame.addSquare(level.getElements()[i][j], level.getElements()[i][j].getX(), level.getElements()[i][j].getY());
-            }
-        }
+		for (int i = 0; i < level.getElements().length; i++) {
+			for (int j = 0; j < level.getElements()[i].length; j++) {
+				frame.addSquare(level.getElements()[i][j], level.getElements()[i][j].getX(),
+						level.getElements()[i][j].getY());
+			}
+		}
+
+		frame.addPawn(level.getLorann());
+		frame.addPawn(level.getMonster1());
+		frame.addPawn(level.getMonster2());
+		frame.addPawn(level.getMonster3());
+		frame.addPawn(level.getMonster4());
 
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
-        System.out.println("keyPressed");
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			level.getLorann().moveRight();
+			frame.repaint();
+		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
+			level.getLorann().moveUp();
+			frame.repaint();
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			level.getLorann().moveDown();
+			frame.repaint();
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			level.getLorann().moveLeft();
+			frame.repaint();
+		}
 	}
 
 	@Override

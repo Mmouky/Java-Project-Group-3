@@ -1,10 +1,12 @@
 package model.element;
 
-import java.awt.*;
+import java.awt.Image;
+
+import model.ILevel;
 
 public class Lorann extends Character {
-	public Lorann(int x, int y, Image sprite) {
-		super(x, y, sprite);
+	public Lorann(int x, int y, Image sprite, ILevel level) {
+		super(x, y, sprite, level);
 	}
 
 	public void attack() {
@@ -12,9 +14,13 @@ public class Lorann extends Character {
 	}
 
 	@Override
+	protected void die() {
+		super.die();
+	}
+
+	@Override
 	public String toString() {
 		return "Lorann";
 	}
 
-	
 }

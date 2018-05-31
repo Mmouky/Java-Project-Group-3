@@ -31,8 +31,6 @@ public final class ModelFacade extends Observable implements IModel {
 
 	private ILevel level;
 
-
-
 	public ModelFacade(ILevel level) {
 		this.level = level;
 	}
@@ -56,8 +54,6 @@ public final class ModelFacade extends Observable implements IModel {
 	public InputStream getEntryById(final int id) throws SQLException {
 		return ExampleDAO.getEntryById(id).getBinaryStream();
 	}
-
-
 
 	/*
 	 * (non-Javadoc)
@@ -106,8 +102,6 @@ public final class ModelFacade extends Observable implements IModel {
 		Image purse = getSprite("purse");
 		Image vertical_bone = getSprite("vertical_bone");
 
-
-
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 20; j++) {
 				char c = txt.charAt(j + (20 * i));
@@ -117,37 +111,27 @@ public final class ModelFacade extends Observable implements IModel {
 				} else if (c == '-') {
 					level.addElements(new Wall(j, i, horizontal_bone, EWall.HORIZONTAL));
 				} else if (c == 'O') {
-					level.addElements(
-							new Wall(j, i, bone, EWall.CORNER));
+					level.addElements(new Wall(j, i, bone, EWall.CORNER));
 				} else if (c == 'B') {
-					level.addElements(
-							new EnergyBall(j, i, crystal_ball));
+					level.addElements(new EnergyBall(j, i, crystal_ball));
 				} else if (c == 'M') {
 					level.addElements(new Money(j, i, purse));
-				} else if (c == '2') {
-					level.addElements(
-							new Monster2(j, i, monster_2));
-				} else if (c == '1') {
-					level.addElements(
-							new Monster1(j, i, monster_1));
-				} else if (c == '3') {
-					level.addElements(
-							new Monster3(j, i, monster_3));
-				} else if (c == '4') {
-					level.addElements(
-							new Monster4(j, i, monster_4));
 				} else if (c == 'D') {
-					level.addElements(
-							new Door(j, i, gate_closed));
+					level.addElements(new Door(j, i, gate_closed));
 				} else if (c == '|') {
 					level.addElements(new Wall(j, i, vertical_bone, EWall.VERTICAL));
-				} else if (c == 'L') {
-					level.addElements(new Lorann(j, i, lorann_b));
 				}
 				System.out.println(level.getElements()[j][i]);
 			}
 
 		}
+
+		level.setLorann(new Lorann(6, 3, lorann_b, level));
+		level.setMonster1(new Monster1(12, 7, monster_1, level));
+		level.setMonster2(new Monster2(2, 5, monster_2, level));
+		level.setMonster3(new Monster3(10, 7, monster_3, level));
+		level.setMonster4(new Monster4(4, 10, monster_4, level));
+
 		System.out.println("ca compile");
 
 		setChanged();

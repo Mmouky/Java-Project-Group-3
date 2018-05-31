@@ -1,13 +1,14 @@
 package model.element.monsters;
 
-import java.awt.*;
+import java.awt.Image;
 
+import model.ILevel;
 import model.element.Monster;
 
 public class Monster4 extends Monster {
 
-	public Monster4(int x, int y, Image sprite) {
-		super(x, y, sprite);
+	public Monster4(int x, int y, Image sprite, ILevel level) {
+		super(x, y, sprite, level);
 	}
 
 	@Override
@@ -15,5 +16,4 @@ public class Monster4 extends Monster {
 		return "Monstre 4";
 	}
 
-	
 }

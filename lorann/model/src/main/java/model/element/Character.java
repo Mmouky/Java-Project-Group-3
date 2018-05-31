@@ -4,36 +4,64 @@ import java.awt.Image;
 import java.awt.Point;
 
 import model.Element;
+import model.ILevel;
 import model.IMobile;
+import model.element.wall.Wall;
 
 public abstract class Character extends Element implements IMobile {
 
 	private boolean isAlive;
+	private ILevel level;
 
-	public Character(int x, int y, Image sprite) {
+	public Character(int x, int y, Image sprite, ILevel level) {
 		super(x, y, sprite);
+		this.level = level;
 		this.isAlive = true;
 	}
 
-	public boolean moveUp() {
-		this.x -= 1;
-		return true;
+	public void moveUp() {
+
+		int yEl = this.getY() - 1;
+		int xEl = this.getX();
+
+		if (hasWall(xEl, yEl) == false) {
+			this.setY(yEl);
+		}
+
 	}
 
-	public boolean moveDown() {
-		this.x += 1;
-		return true;
+	public void moveDown() {
+		int yEl = this.getY() + 1;
+		int xEl = this.getX();
 
+		if (hasWall(xEl, yEl) == false) {
+			this.setY(yEl);
+		}
 	}
 
-	public boolean moveLeft() {
-		this.y -= 1;
-		return true;
+	public void moveLeft() {
+		int yEl = this.getY();
+		int xEl = this.getX() - 1;
+
+		if (hasWall(xEl, yEl) == false) {
+			this.setX(xEl);
+		}
 	}
 
-	public boolean moveRight() {
-		this.y += 1;
-		return true;
+	public void moveRight() {
+		int yEl = this.getY();
+		int xEl = this.getX() + 1;
+
+		if (hasWall(xEl, yEl) == false) {
+			this.setX(xEl);
+		}
+	}
+
+	public boolean hasWall(int x, int y) {
+		if (level.getElements()[x][y] instanceof Wall) {
+			return true;
+		}
+		return false;
 	}
 
 	public boolean isAlive() {
@@ -42,6 +70,10 @@ public abstract class Character extends Element implements IMobile {
 
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
+	}
+
+	protected void die() {
+		this.isAlive = false;
 	}
 
 	@Override
