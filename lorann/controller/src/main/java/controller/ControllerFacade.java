@@ -17,7 +17,7 @@ import model.*;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ControllerFacade implements IController, KeyListener {
+public class ControllerFacade implements IController {
 
 	/** The view. */
 	private final IView view;
@@ -74,21 +74,5 @@ public class ControllerFacade implements IController, KeyListener {
 		return this.model;
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
 }

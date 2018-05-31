@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import model.IElement;
 import model.ILevel;
@@ -13,7 +15,7 @@ import showboard.BoardFrame;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ViewFacade implements IView {
+public class ViewFacade implements IView, KeyListener {
 
 	private BoardFrame frame;
 	private ILevel level;
@@ -47,6 +49,24 @@ public class ViewFacade implements IView {
 	public void addElement(IElement element) {
 		System.out.println(element);
 		frame.addSquare(element, element.getX(), element.getY());
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

@@ -83,36 +83,36 @@ public final class ModelFacade extends Observable implements IModel {
 					level.addElements(new Empty(j, i, null));
 				} else if (c == '-') {
 					level.addElements(new Wall(j, i,
-							new ImageIcon("..\\..\\lorann\\sprite\\horizontal_bone.png").getImage(), EWall.HORIZONTAL));
+							new ImageIcon("lorann\\sprite\\horizontal_bone.png").getImage(), EWall.HORIZONTAL));
 				} else if (c == 'O') {
 					level.addElements(
-							new Wall(j, i, new ImageIcon("..\\..\\lorann\\sprite\\bone.png").getImage(), EWall.CORNER));
+							new Wall(j, i, new ImageIcon("lorann\\sprite\\bone.png").getImage(), EWall.CORNER));
 				} else if (c == 'B') {
 					level.addElements(
-							new EnergyBall(j, i, new ImageIcon("..\\..\\lorann\\sprite\\crystal_ball.png").getImage()));
+							new EnergyBall(j, i, new ImageIcon("lorann\\sprite\\crystal_ball.png").getImage()));
 				} else if (c == 'M') {
-					level.addElements(new Money(j, i, new ImageIcon("..\\..\\lorann\\sprite\\purse.png").getImage()));
+					level.addElements(new Money(j, i, new ImageIcon("lorann\\sprite\\purse.png").getImage()));
 				} else if (c == '2') {
 					level.addElements(
-							new Monster2(j, i, new ImageIcon("..\\..\\lorann\\sprite\\monster_2.png").getImage()));
+							new Monster2(j, i, new ImageIcon("lorann\\sprite\\monster_2.png").getImage()));
 				} else if (c == '1') {
 					level.addElements(
-							new Monster1(j, i, new ImageIcon("..\\..\\lorann\\sprite\\monster_1.png").getImage()));
+							new Monster1(j, i, new ImageIcon("lorann\\sprite\\monster_1.png").getImage()));
 				} else if (c == '3') {
 					level.addElements(
-							new Monster3(j, i, new ImageIcon("..\\..\\lorann\\sprite\\monster_3.png").getImage()));
+							new Monster3(j, i, new ImageIcon("lorann\\sprite\\monster_3.png").getImage()));
 				} else if (c == '4') {
 					level.addElements(
-							new Monster4(j, i, new ImageIcon("..\\..\\lorann\\sprite\\monster_4.png").getImage()));
+							new Monster4(j, i, new ImageIcon("lorann\\sprite\\monster_4.png").getImage()));
 				} else if (c == 'D') {
 					level.addElements(
-							new Door(j, i, new ImageIcon("..\\..\\lorann\\sprite\\gate_closed.png").getImage()));
+							new Door(j, i, new ImageIcon("lorann\\sprite\\gate_closed.png").getImage()));
 				} else if (c == '|') {
 					level.addElements(new Wall(j, i,
-							new ImageIcon("..\\..\\lorann\\sprite\\vertical_bone.png").getImage(), EWall.VERTICAL));
+							new ImageIcon("lorann\\sprite\\vertical_bone.png").getImage(), EWall.VERTICAL));
 				} else if (c == 'L') {
 					level.addElements(
-							new Lorann(j, i, new ImageIcon("..\\..\\lorann\\sprite\\lorann_b.png").getImage()));
+							new Lorann(j, i, new ImageIcon("lorann\\sprite\\lorann_b.png").getImage()));
 				}
 				System.out.println(level.getElements()[j][i]);
 			}
