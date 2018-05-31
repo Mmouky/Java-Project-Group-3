@@ -29,13 +29,7 @@ public class Monster1 extends Monster {
 	};
 
 	private void pattern1() {
-		for( int i=0; i<3; i++){
-			int yEl = this.getY() + 1;
-			for(int j=0; i<2; j++){
-				int xEl = this.getX() + 1;
-				checkCase(xEl, yEl);
-			}
-		}
+		
 	}
 
 	@Override
