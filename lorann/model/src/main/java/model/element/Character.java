@@ -29,6 +29,7 @@ public abstract class Character extends Element implements IMobile {
 
 		if (hasWall(xEl, yEl) == false) {
 			this.setY(yEl);
+			checkEnergyBall(xEl, yEl);
 		}
 
 	}
@@ -39,6 +40,7 @@ public abstract class Character extends Element implements IMobile {
 
 		if (hasWall(xEl, yEl) == false) {
 			this.setY(yEl);
+			checkEnergyBall(xEl, yEl);
 		}
 	}
 
@@ -48,6 +50,7 @@ public abstract class Character extends Element implements IMobile {
 
 		if (hasWall(xEl, yEl) == false) {
 			this.setX(xEl);
+			checkEnergyBall(xEl, yEl);
 		}
 	}
 
@@ -57,18 +60,22 @@ public abstract class Character extends Element implements IMobile {
 
 		if (hasWall(xEl, yEl) == false) {
 			this.setX(xEl);
-			if (level.getElements()[xEl][yEl] instanceof EnergyBall) {
-				for (int i = 0; i < level.getElements().length; i++) {
-					for (int j = 0; j < level.getElements()[i].length; j++) {
-						IElement element = level.getElements()[i][j];
-						if (element instanceof Door) {
-							((Door) element).seteDoor(EDoor.OPEN);
-						}
-					}
-				} 
-			}
+			checkEnergyBall(xEl, yEl);
 		}
 
+	}
+	
+	public void checkEnergyBall(int x, int y){
+		if (level.getElements()[x][y] instanceof EnergyBall) {
+			for (int i = 0; i < level.getElements().length; i++) {
+				for (int j = 0; j < level.getElements()[i].length; j++) {
+					IElement element = level.getElements()[i][j];
+					if (element instanceof Door) {
+						((Door) element).seteDoor(EDoor.OPEN);
+					}
+				}
+			} 
+		}
 	}
 
 	public boolean hasWall(int x, int y) {
