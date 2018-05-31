@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/lorann/main/main.iml" filepath="$PROJECT_DIR$/lorann/main/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/lorann/model/model.iml" filepath="$PROJECT_DIR$/lorann/model/model.iml" />
       <module fileurl="file://$PROJECT_DIR$/lorann/showboard/showboard.iml" filepath="$PROJECT_DIR$/lorann/showboard/showboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lorann/showboard/showboard.iml" filepath="$PROJECT_DIR$/lorann/showboard/showboard.iml" />
       <module fileurl="file://$PROJECT_DIR$/lorann/view/view.iml" filepath="$PROJECT_DIR$/lorann/view/view.iml" />
     </modules>
   </component>

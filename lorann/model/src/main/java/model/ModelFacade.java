@@ -150,6 +150,9 @@ public final class ModelFacade extends Observable implements IModel {
 		}
 		System.out.println("ca compile");
 
+		setChanged();
+		notifyObservers();
+
 	}
 
 	public String readFile(int id) {

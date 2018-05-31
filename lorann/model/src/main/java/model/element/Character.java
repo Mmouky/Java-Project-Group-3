@@ -23,6 +23,7 @@ public abstract class Character extends Element implements IMobile {
 	public boolean moveDown() {
 		this.x += 1;
 		return true;
+
 	}
 
 	public boolean moveLeft() {
