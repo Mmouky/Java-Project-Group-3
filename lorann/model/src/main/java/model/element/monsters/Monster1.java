@@ -9,6 +9,7 @@ public class Monster1 extends Monster {
 
 	public Monster1(int x, int y, Image sprite, ILevel level) {
 		super(x, y, sprite, level);
+		this.pattern1();
 	}
 
 	private boolean isDetected() {
@@ -27,8 +28,14 @@ public class Monster1 extends Monster {
 
 	};
 
-	private void Pattern() {
-
+	private void pattern1() {
+		for( int i=0; i<3; i++){
+			int yEl = this.getY() + 1;
+			for(int j=0; i<2; j++){
+				int xEl = this.getX() + 1;
+				checkCase(xEl, yEl);
+			}
+		}
 	}
 
 	@Override
