@@ -90,9 +90,6 @@ class BoardPanel extends JPanel implements Observer {
 		final Graphics2D graphics = this.noImage.createGraphics();
 		graphics.setColor(Color.darkGray);
 		graphics.fillRect(0, 0, 2, 2);
-		this.dimension = new Dimension(32, 32);
-		this.displayFrame = new Rectangle(32, 32, 700, 700);
-		this.squares = new ISquare[12][20];
 	}
 
 	/**
@@ -118,6 +115,7 @@ class BoardPanel extends JPanel implements Observer {
 			}
 		}
 	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -172,7 +170,6 @@ class BoardPanel extends JPanel implements Observer {
 		final int realY = this.calculateRealY(y);
 		if ((realX < 0) || (realY < 0) || (realX >= widthLimit) || (realY >= heightLimit)) {
 			image = this.noImage;
-			System.out.println(realX + "         " + realY);
 		} else {
 			image = this.squares[realX][realY].getImage();
 			if (image == null) {

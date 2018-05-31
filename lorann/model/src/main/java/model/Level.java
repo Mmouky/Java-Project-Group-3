@@ -2,7 +2,7 @@ package model;
 
 public class Level implements ILevel {
 
-	private IElement[][] elements = new IElement[12][20];
+	private IElement[][] elements = new IElement[20][12];
 
 	public Level() {
 	}
