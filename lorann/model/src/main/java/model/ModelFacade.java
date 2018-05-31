@@ -80,7 +80,7 @@ public final class ModelFacade extends Observable implements IModel {
 				char c = txt.charAt(j + (20 * i));
 
 				if (c == 'x') {
-					level.addElements(new Empty(j, i, null));
+					level.addElements(new Empty(j, i, new ImageIcon("lorann\\sprite\\background.png").getImage()));
 				} else if (c == '-') {
 					level.addElements(new Wall(j, i,
 							new ImageIcon("lorann\\sprite\\horizontal_bone.png").getImage(), EWall.HORIZONTAL));

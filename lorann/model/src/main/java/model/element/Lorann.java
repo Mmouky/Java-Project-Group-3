@@ -16,4 +16,8 @@ public class Lorann extends Character {
 		return "Lorann";
 	}
 
+	@Override
+	public Point getPosition() {
+		return null;
+	}
 }

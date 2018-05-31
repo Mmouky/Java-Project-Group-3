@@ -1,6 +1,6 @@
 package model.element.monsters;
 
-import java.awt.Image;
+import java.awt.*;
 
 import model.element.Monster;
 
@@ -13,5 +13,10 @@ public class Monster2 extends Monster {
 	@Override
 	public String toString() {
 		return "Monstre 2";
+	}
+
+	@Override
+	public Point getPosition() {
+		return null;
 	}
 }
