@@ -3,6 +3,7 @@ main
 model
 model.dao
 model.element
+model.element.door
 model.element.monsters
 model.element.wall
 showboard

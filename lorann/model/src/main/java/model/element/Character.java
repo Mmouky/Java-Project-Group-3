@@ -27,48 +27,54 @@ public abstract class Character extends Element implements IMobile {
 		int yEl = this.getY() - 1;
 		int xEl = this.getX();
 
-		if (hasWall(xEl, yEl) == false) {
-			this.setY(yEl);
-		}
+		checkCase(xEl, yEl);
 
 	}
 
 	public void moveDown() {
 		int yEl = this.getY() + 1;
 		int xEl = this.getX();
-
-		if (hasWall(xEl, yEl) == false) {
-			this.setY(yEl);
-		}
+		checkCase(xEl, yEl);
 	}
 
 	public void moveLeft() {
 		int yEl = this.getY();
 		int xEl = this.getX() - 1;
-
-		if (hasWall(xEl, yEl) == false) {
-			this.setX(xEl);
-		}
+		checkCase(xEl, yEl);
 	}
 
 	public void moveRight() {
 		int yEl = this.getY();
 		int xEl = this.getX() + 1;
+		checkCase(xEl, yEl);
+	}
 
-		if (hasWall(xEl, yEl) == false) {
-			this.setX(xEl);
-			if (level.getElements()[xEl][yEl] instanceof EnergyBall) {
-				for (int i = 0; i < level.getElements().length; i++) {
-					for (int j = 0; j < level.getElements()[i].length; j++) {
-						IElement element = level.getElements()[i][j];
-						if (element instanceof Door) {
-							((Door) element).seteDoor(EDoor.OPEN);
-						}
+	public void checkCase(int x, int y) {
+		if (hasWall(x, y) == false) {
+			this.setY(y);
+			this.setX(x);
+			checkEnergyBall(x, y);
+			checkMoney(x, y);
+		}
+	}
+
+	public void checkEnergyBall(int x, int y) {
+		if (level.getElements()[x][y] instanceof EnergyBall) {
+			for (int i = 0; i < level.getElements().length; i++) {
+				for (int j = 0; j < level.getElements()[i].length; j++) {
+					IElement element = level.getElements()[i][j];
+					if (element instanceof Door) {
+						((Door) element).seteDoor(EDoor.OPEN);
 					}
-				} 
+				}
 			}
 		}
+	}
 
+	public void checkMoney(int x, int y) {
+		if (level.getElements()[x][y] instanceof Money) {
+			level.addScore(100);
+		}
 	}
 
 	public boolean hasWall(int x, int y) {
