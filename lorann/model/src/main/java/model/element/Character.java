@@ -65,6 +65,7 @@ public abstract class Character extends Element implements IMobile {
 					IElement element = level.getElements()[i][j];
 					if (element instanceof Door) {
 						((Door) element).seteDoor(EDoor.OPEN);
+						((EnergyBall) level.getElements()[x][y]).seteBonus(EBonus.DISABLE);
 					}
 				}
 			}
@@ -73,7 +74,11 @@ public abstract class Character extends Element implements IMobile {
 
 	public void checkMoney(int x, int y) {
 		if (level.getElements()[x][y] instanceof Money) {
-			level.addScore(100);
+			Money money = (Money) level.getElements()[x][y];
+			if (money.geteBonus() == EBonus.ENABLE) {
+				level.addScore(100);
+				money.seteBonus(EBonus.DISABLE);
+			}
 		}
 	}
 

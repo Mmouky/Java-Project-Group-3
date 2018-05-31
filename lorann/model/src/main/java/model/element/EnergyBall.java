@@ -1,17 +1,36 @@
 package model.element;
 
-import model.Element;
+import java.awt.Image;
 
-import java.awt.*;
+import model.Element;
+import model.ModelFacade;
 
 public class EnergyBall extends Element {
 
-    public EnergyBall(int x, int y, Image sprite) {
-        super(x, y, sprite);
-    }
+	private EBonus eBonus;
+	private ModelFacade model;
 
-    @Override
-    public String toString() {
-        return "EnergyBall";
-    }
+	public EnergyBall(int x, int y, Image sprite, EBonus eBonus, ModelFacade model) {
+		super(x, y, sprite);
+		this.model = model;
+		this.seteBonus(eBonus);
+	}
+
+	@Override
+	public String toString() {
+		return "EnergyBall";
+	}
+
+	public EBonus geteBonus() {
+		return eBonus;
+	}
+
+	public void seteBonus(EBonus eBonus) {
+		this.eBonus = eBonus;
+		if (eBonus == EBonus.ENABLE) {
+			this.setImage(model.getCrystal_ball());
+		} else if (eBonus == EBonus.DISABLE) {
+			this.setImage(model.getBackground());
+		}
+	}
 }

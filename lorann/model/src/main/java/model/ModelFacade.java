@@ -61,7 +61,7 @@ public final class ModelFacade extends Observable implements IModel {
 
 	public ModelFacade(ILevel level) {
 		this.level = level;
-		try { 
+		try {
 			background = getSprite("background");
 			bone = getSprite("bone");
 			crystal_ball = getSprite("crystal_ball");
@@ -149,9 +149,9 @@ public final class ModelFacade extends Observable implements IModel {
 				} else if (c == 'O') {
 					level.addElements(new Wall(j, i, bone, EWall.CORNER));
 				} else if (c == 'B') {
-					level.addElements(new EnergyBall(j, i, crystal_ball));
+					level.addElements(new EnergyBall(j, i, crystal_ball, EBonus.ENABLE, this));
 				} else if (c == 'M') {
-					level.addElements(new Money(j, i, purse));
+					level.addElements(new Money(j, i, purse, EBonus.ENABLE, this));
 				} else if (c == 'D') {
 					level.addElements(new Door(j, i, gate_closed, EDoor.CLOSE, this));
 				} else if (c == '|') {
@@ -415,6 +415,4 @@ public final class ModelFacade extends Observable implements IModel {
 		this.vertical_bone = vertical_bone;
 	}
 
-	
-	
 }
