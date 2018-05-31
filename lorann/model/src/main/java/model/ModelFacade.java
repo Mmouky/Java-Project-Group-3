@@ -40,6 +40,7 @@ public final class ModelFacade extends Observable implements IModel {
 	public Image gate_open;
 	public Image horizontal_bone;
 	public Image lorann_b;
+	public Image lorann_r;
 	public Image lorann_bl;
 	public Image lorann_br;
 	public Image lorann_l;
@@ -74,6 +75,7 @@ public final class ModelFacade extends Observable implements IModel {
 			gate_open = getSprite("gate_open");
 			horizontal_bone = getSprite("horizontal_bone");
 			lorann_b = getSprite("lorann_b");
+			lorann_r = getSprite("lorann_r");
 			lorann_bl = getSprite("lorann_bl");
 			lorann_br = getSprite("lorann_br");
 			lorann_l = getSprite("lorann_l");
@@ -101,6 +103,7 @@ public final class ModelFacade extends Observable implements IModel {
 	 *
 	 * @see model.IModel#getExampleById(int)
 	 */
+
 	@Override
 	public Example getExampleById(final int id) throws SQLException {
 		return ExampleDAO.getExampleById(id);
@@ -108,34 +111,33 @@ public final class ModelFacade extends Observable implements IModel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see model.IModel#getEntryById(int)
 	 */
-
 	public InputStream getEntryById(final int id) throws SQLException {
 		return ExampleDAO.getEntryById(id).getBinaryStream();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see model.IModel#getExampleByName(java.lang.String)
 	 */
+
 	@Override
 	public Example getExampleByName(final String name) throws SQLException {
 		return ExampleDAO.getExampleByName(name);
 	}
-
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see model.IModel#getAllExamples()
 	 */
+
 	@Override
 	public List<Example> getAllExamples() throws SQLException {
 		return ExampleDAO.getAllExamples();
 	}
-
 	public void getElement(String txt) throws SQLException, IOException {
 
 		for (int i = 0; i < 12; i++) {
@@ -197,12 +199,12 @@ public final class ModelFacade extends Observable implements IModel {
 
 	}
 
+
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see model.IModel#getSpriteByName(char)
 	 */
-
 	public InputStream getSpriteByName(final String def) throws SQLException {
 		return ExampleDAO.getSpriteByName(def).getBinaryStream();
 	}
@@ -317,6 +319,14 @@ public final class ModelFacade extends Observable implements IModel {
 
 	public void setLorann_b(Image lorann_b) {
 		this.lorann_b = lorann_b;
+	}
+
+	public Image getLorann_r() {
+		return lorann_r;
+	}
+
+	public void setLorann_r(Image lorann_r) {
+		this.lorann_r = lorann_r;
 	}
 
 	public Image getLorann_bl() {

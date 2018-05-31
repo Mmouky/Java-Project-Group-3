@@ -55,6 +55,7 @@ public abstract class Character extends Element implements IMobile {
 			this.setX(x);
 			checkEnergyBall(x, y);
 			checkMoney(x, y);
+
 		}
 	}
 
