@@ -1,14 +1,14 @@
 package model.element.monsters;
 
-import java.awt.*;
+import java.awt.Image;
 
-import model.Element;
+import model.ILevel;
 import model.element.Monster;
 
 public class Monster1 extends Monster {
 
-	public Monster1(int x, int y, Image sprite) {
-		super(x, y, sprite);
+	public Monster1(int x, int y, Image sprite, ILevel level) {
+		super(x, y, sprite, level);
 	}
 
 	private boolean isDetected() {
@@ -27,10 +27,9 @@ public class Monster1 extends Monster {
 
 	};
 
-	private void Pattern(){
+	private void Pattern() {
 
 	}
-
 
 	@Override
 	public String toString() {

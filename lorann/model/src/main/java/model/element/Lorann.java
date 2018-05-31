@@ -1,34 +1,16 @@
 package model.element;
 
-import java.awt.*;
+import java.awt.Image;
+
+import model.ILevel;
 
 public class Lorann extends Character {
-	public Lorann(int x, int y, Image sprite) {
-		super(x, y, sprite);
+	public Lorann(int x, int y, Image sprite, ILevel level) {
+		super(x, y, sprite, level);
 	}
 
 	public void attack() {
 
-	}
-
-	@Override
-	public boolean moveDown() {
-		return super.moveDown();
-	}
-
-	@Override
-	public boolean moveRight() {
-		return super.moveRight();
-	}
-
-	@Override
-	public boolean moveLeft() {
-		return super.moveLeft();
-	}
-
-	@Override
-	public boolean moveUp() {
-		return super.moveUp();
 	}
 
 	@Override
@@ -41,5 +23,4 @@ public class Lorann extends Character {
 		return "Lorann";
 	}
 
-	
 }
