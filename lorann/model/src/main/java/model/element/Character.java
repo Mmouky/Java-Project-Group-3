@@ -3,8 +3,9 @@ package model.element;
 import java.awt.Image;
 
 import model.Element;
+import showboard.IPawn;
 
-public abstract class Character extends Element {
+public abstract class Character extends Element implements IPawn {
 
 	private boolean isAlive;
 

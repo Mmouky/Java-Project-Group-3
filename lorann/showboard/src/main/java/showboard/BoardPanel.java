@@ -176,6 +176,7 @@ class BoardPanel extends JPanel implements Observer {
 				image = this.noImage;
 			}
 		}
+		System.out.println("on est sortit");
 		return image;
 	}
 

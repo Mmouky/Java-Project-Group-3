@@ -10,6 +10,22 @@ public class Monster1 extends Monster {
 		super(x, y, sprite);
 	}
 
+	private boolean isDetected(){
+		return true;
+	};
+
+	private void PathFinding(){
+
+	};
+
+	private void Attack(){
+
+	};
+
+	private void Sleep(){
+
+	};
+
 	@Override
 	public String toString() {
 		return "Monstre 1";
