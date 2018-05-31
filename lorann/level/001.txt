@@ -1,4 +1,4 @@
-O-0----------------O
+O-O----------------O
 |x|xxxxxxxxxxxxxxxx|
 O-Oxxxxxxxxxxxxxxxx|
 |xxxxxxxBxxxxxxxxxx|
