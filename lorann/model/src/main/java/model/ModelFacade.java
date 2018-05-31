@@ -167,10 +167,10 @@ public final class ModelFacade extends Observable implements IModel {
 		}
 
 		level.setLorann(new Lorann(6, 3, lorann_b, level,ELorann.NONE,this));
-		level.setMonster1(new Monster1(12, 7, monster_1, level));
-		level.setMonster2(new Monster2(2, 5, monster_2, level));
-		level.setMonster3(new Monster3(10, 7, monster_3, level));
-		level.setMonster4(new Monster4(4, 10, monster_4, level));
+		level.getMonsters().add(new Monster1(12, 7, monster_1, level));
+		level.getMonsters().add(new Monster2(2, 5, monster_2, level));
+		level.getMonsters().add(new Monster3(10, 7, monster_3, level));
+		level.getMonsters().add(new Monster4(4, 10, monster_4, level));
 
 		System.out.println("ca compile");
 

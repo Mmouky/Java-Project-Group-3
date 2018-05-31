@@ -58,15 +58,14 @@ public class ViewFacade implements IView, KeyListener {
 			}
 		}
 
-		frame.addPawn(level.getMonster1());
-		frame.addPawn(level.getMonster2());
-		frame.addPawn(level.getMonster3());
-		frame.addPawn(level.getMonster4());
-		
+		for (IMobile monster : level.getMonsters()) {
+			frame.addPawn(monster);
+		}
+
 		frame.addPawn(level.getLorann());
-		
+
 		frame.repaint();
-  
+
 	}
 
 	@Override

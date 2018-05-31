@@ -1,6 +1,6 @@
 package model;
 
-import model.element.Empty;
+import java.util.ArrayList;
 
 public class Level implements ILevel {
 
@@ -10,10 +10,7 @@ public class Level implements ILevel {
 
 	private IMobile lorann;
 
-	private IMobile monster1;
-	private IMobile monster2;
-	private IMobile monster3;
-	private IMobile monster4;
+	private ArrayList<IMobile> monsters = new ArrayList<IMobile>();
 
 	public int getScore() {
 		return score;
@@ -54,44 +51,12 @@ public class Level implements ILevel {
 		this.lorann = lorann;
 	}
 
-	@Override
-	public IMobile getMonster1() {
-		return monster1;
+	public ArrayList<IMobile> getMonsters() {
+		return monsters;
 	}
 
-	@Override
-	public void setMonster1(IMobile monster) {
-		this.monster1 = monster;
-	}
-
-	@Override
-	public IMobile getMonster2() {
-		return monster2;
-	}
-
-	@Override
-	public void setMonster2(IMobile monster) {
-		this.monster2 = monster;
-	}
-
-	@Override
-	public IMobile getMonster3() {
-		return monster3;
-	}
-
-	@Override
-	public void setMonster3(IMobile monster) {
-		this.monster3 = monster;
-	}
-
-	@Override
-	public IMobile getMonster4() {
-		return monster4;
-	}
-
-	@Override
-	public void setMonster4(IMobile monster) {
-		this.monster4 = monster;
+	public void setMonsters(ArrayList<IMobile> monsters) {
+		this.monsters = monsters;
 	}
 
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public interface ILevel {
 
 	void addScore(int score);
@@ -14,20 +16,7 @@ public interface ILevel {
 
 	void setLorann(IMobile lorann);
 
-	IMobile getMonster1();
+	ArrayList<IMobile> getMonsters();
 
-	void setMonster1(IMobile monster);
-
-	IMobile getMonster2();
-
-	void setMonster2(IMobile monster);
-
-	IMobile getMonster3();
-
-	void setMonster3(IMobile monster);
-
-	IMobile getMonster4();
-
-	void setMonster4(IMobile monster);
-
+	void setMonsters(ArrayList<IMobile> monsters);
 }
