@@ -27,11 +27,14 @@ public abstract class ExampleDAO extends AbstractDAO {
     /** The sql all examples. */
     private static String sqlAllExamples   = "{call findAllExamples()}";
 
-    /** The sql all examples. */
+    /** The sql add level. */
     private static String sqlAddLevel   = "{call newEntry(?)}";
 
-    /** The sql all examples. */
+    /** The sql entry by id. */
     private static String sqlEntryById   = "{call findEntryById(?)}";
+
+    /** The sql entry by id. */
+    private static String sqlSpriteByName   = "{call findSpriteByName(?)}";
 
     /** The id column index. */
     private static int    idColumnIndex    = 0;
@@ -40,11 +43,11 @@ public abstract class ExampleDAO extends AbstractDAO {
     private static int    nameColumnIndex  = 1;
 
     /**
-     * Gets the example by id.
+     * Gets the entry by id.
      *
      * @param id
      *            the id
-     * @return the example by id
+     * @return the entry by id
      * @throws SQLException
      *             the SQL exception
      */
@@ -52,6 +55,29 @@ public abstract class ExampleDAO extends AbstractDAO {
         final CallableStatement callStatement = prepareCall(sqlEntryById);
         Blob file = null;
         callStatement.setInt(1, id);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            if (result.first()) {
+                file = result.getBlob(nameColumnIndex);
+            }
+            result.close();
+        }
+        return file;
+    }
+
+    /**
+     * Gets the sprite by name.
+     *
+     * @param def
+     *            the name
+     * @return the sprite by name
+     * @throws SQLException
+     *             the SQL exception
+     */
+    public static Blob getSpriteByName(final String def) throws SQLException {
+        final CallableStatement callStatement = prepareCall(sqlSpriteByName);
+        Blob file = null;
+        callStatement.setNString(1, String.valueOf(def));
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
             if (result.first()) {

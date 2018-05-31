@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
@@ -57,7 +58,7 @@ public interface IModel {
 
 	String readFile(int i);
 
-	void getElement(String o);
+	void getElement(String o) throws SQLException, IOException;
 
 	ILevel getLevel();
 

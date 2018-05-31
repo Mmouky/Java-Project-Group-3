@@ -1,5 +1,6 @@
 package main;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import controller.ControllerFacade;
@@ -21,7 +22,7 @@ public abstract class Main {
 	 * @param args
 	 *            the arguments
 	 */
-	public static void main(final String[] args) {
+	public static void main(final String[] args) throws IOException {
 
 		Level level = new Level();
 		ModelFacade model = new ModelFacade(level);
