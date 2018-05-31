@@ -3,11 +3,10 @@ O---O----------O---O
 |xO-OxxxxxxxxxxO-Ox|
 |x|xxxDxxxxxxxxxx|x|
 O-OxxxxxxxxxxxxxxO-O
-|xxx1xxxxxxxxxxxxxx|
 |xxxxxxxxxxxxxxxxBx|
 |xMxxxxxxxxxxxxxxxx|
 O-OxxxxxxxxxxxxxxO-O
-|x|xxxxxxxxxx2xxx|x|
+|x|xxxxxxxxxxxxxx|x|
 |xO-OxxxxxxxxxxO-Ox|
-|xxx|xLxxxxxxxx|xxx|
-O---O--------------O
+|xxx|xxxxxxxxxx|xxx|
+O---O----------O--O

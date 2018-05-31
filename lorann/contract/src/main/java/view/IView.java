@@ -16,6 +16,6 @@ public interface IView {
      * @param message
      *            the message
      */
-    void addElement(IElement element);
+    void addElement();
     
 }

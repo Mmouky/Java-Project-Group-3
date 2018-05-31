@@ -27,6 +27,7 @@ public class ViewFacade implements IView, KeyListener {
 	public ViewFacade(final ILevel level) {
 		frame = new BoardFrame("Lorann");
 		frame.setDimension(new Dimension(20, 12));
+		frame.addKeyListener(this);
 		frame.setDisplayFrame(
 				new Rectangle(0, 0, (int) frame.getDimension().getWidth(), (int) frame.getDimension().getHeight()));
 		this.level = level;
@@ -47,16 +48,19 @@ public class ViewFacade implements IView, KeyListener {
 	}
 
 	@Override
-	public void addElement(IElement element) {
-		System.out.println(element);
-		frame.addSquare(element, element.getX(), element.getY());
+	public void addElement() {
+        for (int i = 0; i < level.getElements().length; i++) {
+            for (int j = 0; j < level.getElements()[i].length; j++) {
+                System.out.println(level);
+                frame.addSquare(level.getElements()[i][j], level.getElements()[i][j].getX(), level.getElements()[i][j].getY());
+            }
+        }
 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
+        System.out.println("BITE");
 	}
 
 	@Override
