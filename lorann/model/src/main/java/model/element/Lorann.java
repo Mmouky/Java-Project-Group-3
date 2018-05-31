@@ -12,6 +12,31 @@ public class Lorann extends Character {
 	}
 
 	@Override
+	public boolean moveDown() {
+		return super.moveDown();
+	}
+
+	@Override
+	public boolean moveRight() {
+		return super.moveRight();
+	}
+
+	@Override
+	public boolean moveLeft() {
+		return super.moveLeft();
+	}
+
+	@Override
+	public boolean moveUp() {
+		return super.moveUp();
+	}
+
+	@Override
+	protected void die() {
+		super.die();
+	}
+
+	@Override
 	public String toString() {
 		return "Lorann";
 	}

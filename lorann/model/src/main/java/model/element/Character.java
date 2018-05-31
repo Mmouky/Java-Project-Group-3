@@ -16,22 +16,22 @@ public abstract class Character extends Element implements IMobile {
 	}
 
 	public boolean moveUp() {
-		this.x -= 1;
+        this.setY(this.getY() + 1);
 		return true;
 	}
 
 	public boolean moveDown() {
-		this.x += 1;
+        this.setY(this.getY() -1);
 		return true;
 	}
 
 	public boolean moveLeft() {
-		this.y -= 1;
+        this.setX(this.getX() - 1);
 		return true;
 	}
 
 	public boolean moveRight() {
-		this.y += 1;
+        this.setX(this.getX() + 1);
 		return true;
 	}
 
@@ -42,6 +42,10 @@ public abstract class Character extends Element implements IMobile {
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}
+
+	protected void die(){
+	    this.isAlive = false;
+    }
 
 	@Override
 	public int getX() {

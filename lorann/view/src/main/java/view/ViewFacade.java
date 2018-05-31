@@ -60,7 +60,7 @@ public class ViewFacade implements IView, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-        System.out.println("BITE");
+
 	}
 
 	@Override

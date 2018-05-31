@@ -2,6 +2,7 @@ package model.element.monsters;
 
 import java.awt.*;
 
+import model.Element;
 import model.element.Monster;
 
 public class Monster1 extends Monster {
@@ -25,6 +26,11 @@ public class Monster1 extends Monster {
 	private void Sleep() {
 
 	};
+
+	private void Pattern(){
+
+	}
+
 
 	@Override
 	public String toString() {
