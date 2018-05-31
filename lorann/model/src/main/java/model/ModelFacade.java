@@ -1,13 +1,21 @@
 package model;
 
-import java.awt.*;
-import java.io.*;
+import java.awt.Image;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Observable;
 
-import model.dao.ExampleDAO;
-import model.element.*;
+import javax.imageio.ImageIO;
+
+import model.dao.LorannDAO;
+import model.element.EBonus;
+import model.element.Empty;
+import model.element.EnergyBall;
+import model.element.Money;
 import model.element.characters.ELorann;
 import model.element.characters.Lorann;
 import model.element.door.Door;
@@ -18,9 +26,6 @@ import model.element.monsters.Monster3;
 import model.element.monsters.Monster4;
 import model.element.wall.EWall;
 import model.element.wall.Wall;
-
-import javax.swing.*;
-import javax.imageio.ImageIO;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
@@ -100,16 +105,6 @@ public final class ModelFacade extends Observable implements IModel {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.IModel#getExampleById(int)
-	 */
-
-	@Override
-	public Example getExampleById(final int id) throws SQLException {
-		return ExampleDAO.getExampleById(id);
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -117,29 +112,9 @@ public final class ModelFacade extends Observable implements IModel {
 	 * @see model.IModel#getEntryById(int)
 	 */
 	public InputStream getEntryById(final int id) throws SQLException {
-		return ExampleDAO.getEntryById(id).getBinaryStream();
+		return LorannDAO.getEntryById(id).getBinaryStream();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.IModel#getExampleByName(java.lang.String)
-	 */
-
-	@Override
-	public Example getExampleByName(final String name) throws SQLException {
-		return ExampleDAO.getExampleByName(name);
-	}
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.IModel#getAllExamples()
-	 */
-
-	@Override
-	public List<Example> getAllExamples() throws SQLException {
-		return ExampleDAO.getAllExamples();
-	}
 	public void getElement(String txt) throws SQLException, IOException {
 
 		for (int i = 0; i < 12; i++) {
@@ -208,7 +183,7 @@ public final class ModelFacade extends Observable implements IModel {
 	 * @see model.IModel#getSpriteByName(char)
 	 */
 	public InputStream getSpriteByName(final String def) throws SQLException {
-		return ExampleDAO.getSpriteByName(def).getBinaryStream();
+		return LorannDAO.getSpriteByName(def).getBinaryStream();
 	}
 
 	public Image getSprite(String def) throws IOException, SQLException {
