@@ -8,6 +8,8 @@ import java.util.Observable;
 
 import model.dao.ExampleDAO;
 import model.element.*;
+import model.element.door.Door;
+import model.element.door.EDoor;
 import model.element.monsters.Monster1;
 import model.element.monsters.Monster2;
 import model.element.monsters.Monster3;
@@ -25,6 +27,32 @@ import javax.imageio.ImageIO;
  * @version 1.0
  */
 public final class ModelFacade extends Observable implements IModel {
+
+	public Image background;
+	public Image bone;
+	public Image crystal_ball;
+	public Image fireball_1;
+	public Image fireball_2;
+	public Image fireball_3;
+	public Image fireball_4;
+	public Image fireball_5;
+	public Image gate_closed;
+	public Image gate_open;
+	public Image horizontal_bone;
+	public Image lorann_b;
+	public Image lorann_bl;
+	public Image lorann_br;
+	public Image lorann_l;
+	public Image lorann_u;
+	public Image lorann_ul;
+	public Image lorann_ur;
+	public Image monster_1;
+	public Image monster_2;
+	public Image monster_3;
+	public Image monster_4;
+	public Image purse;
+	public Image vertical_bone;
+
 	/**
 	 * Instantiates a new model facade.
 	 */
@@ -33,6 +61,39 @@ public final class ModelFacade extends Observable implements IModel {
 
 	public ModelFacade(ILevel level) {
 		this.level = level;
+		try {
+			background = getSprite("background");
+			bone = getSprite("bone");
+			crystal_ball = getSprite("crystal_ball");
+			fireball_1 = getSprite("fireball_1");
+			fireball_2 = getSprite("fireball_2");
+			fireball_3 = getSprite("fireball_3");
+			fireball_4 = getSprite("fireball_4");
+			fireball_5 = getSprite("fireball_5");
+			gate_closed = getSprite("gate_closed");
+			gate_open = getSprite("gate_open");
+			horizontal_bone = getSprite("horizontal_bone");
+			lorann_b = getSprite("lorann_b");
+			lorann_bl = getSprite("lorann_bl");
+			lorann_br = getSprite("lorann_br");
+			lorann_l = getSprite("lorann_l");
+			lorann_u = getSprite("lorann_u");
+			lorann_ul = getSprite("lorann_ul");
+			lorann_ur = getSprite("lorann_ur");
+			monster_1 = getSprite("monster_1");
+			monster_2 = getSprite("monster_2");
+			monster_3 = getSprite("monster_3");
+			monster_4 = getSprite("monster_4");
+			purse = getSprite("purse");
+			vertical_bone = getSprite("vertical_bone");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/*
@@ -77,31 +138,6 @@ public final class ModelFacade extends Observable implements IModel {
 
 	public void getElement(String txt) throws SQLException, IOException {
 
-		Image background = getSprite("background");
-		Image bone = getSprite("bone");
-		Image crystal_ball = getSprite("crystal_ball");
-		Image fireball_1 = getSprite("fireball_1");
-		Image fireball_2 = getSprite("fireball_2");
-		Image fireball_3 = getSprite("fireball_3");
-		Image fireball_4 = getSprite("fireball_4");
-		Image fireball_5 = getSprite("fireball_5");
-		Image gate_closed = getSprite("gate_closed");
-		Image gate_open = getSprite("gate_open");
-		Image horizontal_bone = getSprite("horizontal_bone");
-		Image lorann_b = getSprite("lorann_b");
-		Image lorann_bl = getSprite("lorann_bl");
-		Image lorann_br = getSprite("lorann_br");
-		Image lorann_l = getSprite("lorann_l");
-		Image lorann_u = getSprite("lorann_u");
-		Image lorann_ul = getSprite("lorann_ul");
-		Image lorann_ur = getSprite("lorann_ur");
-		Image monster_1 = getSprite("monster_1");
-		Image monster_2 = getSprite("monster_2");
-		Image monster_3 = getSprite("monster_3");
-		Image monster_4 = getSprite("monster_4");
-		Image purse = getSprite("purse");
-		Image vertical_bone = getSprite("vertical_bone");
-
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 20; j++) {
 				char c = txt.charAt(j + (20 * i));
@@ -117,7 +153,7 @@ public final class ModelFacade extends Observable implements IModel {
 				} else if (c == 'M') {
 					level.addElements(new Money(j, i, purse));
 				} else if (c == 'D') {
-					level.addElements(new Door(j, i, gate_closed));
+					level.addElements(new Door(j, i, gate_closed, EDoor.CLOSE, this));
 				} else if (c == '|') {
 					level.addElements(new Wall(j, i, vertical_bone, EWall.VERTICAL));
 				}
@@ -187,4 +223,198 @@ public final class ModelFacade extends Observable implements IModel {
 		return level;
 	}
 
+	public Image getBackground() {
+		return background;
+	}
+
+	public void setBackground(Image background) {
+		this.background = background;
+	}
+
+	public Image getBone() {
+		return bone;
+	}
+
+	public void setBone(Image bone) {
+		this.bone = bone;
+	}
+
+	public Image getCrystal_ball() {
+		return crystal_ball;
+	}
+
+	public void setCrystal_ball(Image crystal_ball) {
+		this.crystal_ball = crystal_ball;
+	}
+
+	public Image getFireball_1() {
+		return fireball_1;
+	}
+
+	public void setFireball_1(Image fireball_1) {
+		this.fireball_1 = fireball_1;
+	}
+
+	public Image getFireball_2() {
+		return fireball_2;
+	}
+
+	public void setFireball_2(Image fireball_2) {
+		this.fireball_2 = fireball_2;
+	}
+
+	public Image getFireball_3() {
+		return fireball_3;
+	}
+
+	public void setFireball_3(Image fireball_3) {
+		this.fireball_3 = fireball_3;
+	}
+
+	public Image getFireball_4() {
+		return fireball_4;
+	}
+
+	public void setFireball_4(Image fireball_4) {
+		this.fireball_4 = fireball_4;
+	}
+
+	public Image getFireball_5() {
+		return fireball_5;
+	}
+
+	public void setFireball_5(Image fireball_5) {
+		this.fireball_5 = fireball_5;
+	}
+
+	public Image getGate_closed() {
+		return gate_closed;
+	}
+
+	public void setGate_closed(Image gate_closed) {
+		this.gate_closed = gate_closed;
+	}
+
+	public Image getGate_open() {
+		return gate_open;
+	}
+
+	public void setGate_open(Image gate_open) {
+		this.gate_open = gate_open;
+	}
+
+	public Image getHorizontal_bone() {
+		return horizontal_bone;
+	}
+
+	public void setHorizontal_bone(Image horizontal_bone) {
+		this.horizontal_bone = horizontal_bone;
+	}
+
+	public Image getLorann_b() {
+		return lorann_b;
+	}
+
+	public void setLorann_b(Image lorann_b) {
+		this.lorann_b = lorann_b;
+	}
+
+	public Image getLorann_bl() {
+		return lorann_bl;
+	}
+
+	public void setLorann_bl(Image lorann_bl) {
+		this.lorann_bl = lorann_bl;
+	}
+
+	public Image getLorann_br() {
+		return lorann_br;
+	}
+
+	public void setLorann_br(Image lorann_br) {
+		this.lorann_br = lorann_br;
+	}
+
+	public Image getLorann_l() {
+		return lorann_l;
+	}
+
+	public void setLorann_l(Image lorann_l) {
+		this.lorann_l = lorann_l;
+	}
+
+	public Image getLorann_u() {
+		return lorann_u;
+	}
+
+	public void setLorann_u(Image lorann_u) {
+		this.lorann_u = lorann_u;
+	}
+
+	public Image getLorann_ul() {
+		return lorann_ul;
+	}
+
+	public void setLorann_ul(Image lorann_ul) {
+		this.lorann_ul = lorann_ul;
+	}
+
+	public Image getLorann_ur() {
+		return lorann_ur;
+	}
+
+	public void setLorann_ur(Image lorann_ur) {
+		this.lorann_ur = lorann_ur;
+	}
+
+	public Image getMonster_1() {
+		return monster_1;
+	}
+
+	public void setMonster_1(Image monster_1) {
+		this.monster_1 = monster_1;
+	}
+
+	public Image getMonster_2() {
+		return monster_2;
+	}
+
+	public void setMonster_2(Image monster_2) {
+		this.monster_2 = monster_2;
+	}
+
+	public Image getMonster_3() {
+		return monster_3;
+	}
+
+	public void setMonster_3(Image monster_3) {
+		this.monster_3 = monster_3;
+	}
+
+	public Image getMonster_4() {
+		return monster_4;
+	}
+
+	public void setMonster_4(Image monster_4) {
+		this.monster_4 = monster_4;
+	}
+
+	public Image getPurse() {
+		return purse;
+	}
+
+	public void setPurse(Image purse) {
+		this.purse = purse;
+	}
+
+	public Image getVertical_bone() {
+		return vertical_bone;
+	}
+
+	public void setVertical_bone(Image vertical_bone) {
+		this.vertical_bone = vertical_bone;
+	}
+
+	
+	
 }

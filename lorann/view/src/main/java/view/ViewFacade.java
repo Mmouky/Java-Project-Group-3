@@ -66,14 +66,15 @@ public class ViewFacade implements IView, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			level.getLorann().moveRight();
-			frame.repaint();
-		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			level.getLorann().moveUp();
 			frame.repaint();
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			level.getLorann().moveDown();
+			frame.repaint();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			level.getLorann().moveRight();
 			frame.repaint();
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			level.getLorann().moveLeft();
