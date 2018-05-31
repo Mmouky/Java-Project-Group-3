@@ -27,7 +27,7 @@ public class Door extends Element {
 		} else if (eDoor == EDoor.OPEN) {
 			this.setImage(model.getGate_open());
 		}
-	}
+	} 
 
 	@Override
 	public String toString() {

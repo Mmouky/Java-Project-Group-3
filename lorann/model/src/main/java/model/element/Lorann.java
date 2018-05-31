@@ -10,7 +10,7 @@ public class Lorann extends Character {
 	}
 
 	public void attack() {
-
+ 
 	}
 
 	@Override

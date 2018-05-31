@@ -65,7 +65,7 @@ public abstract class Character extends Element implements IMobile {
 							((Door) element).seteDoor(EDoor.OPEN);
 						}
 					}
-				}
+				} 
 			}
 		}
 

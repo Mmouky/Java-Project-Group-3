@@ -61,7 +61,7 @@ public final class ModelFacade extends Observable implements IModel {
 
 	public ModelFacade(ILevel level) {
 		this.level = level;
-		try {
+		try { 
 			background = getSprite("background");
 			bone = getSprite("bone");
 			crystal_ball = getSprite("crystal_ball");

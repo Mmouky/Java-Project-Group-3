@@ -14,7 +14,7 @@ public abstract class Element implements IElement {
 		this.y = y;
 		this.x = x;
 		this.sprite = sprite;
-
+ 
 	}
 
 	@Override
