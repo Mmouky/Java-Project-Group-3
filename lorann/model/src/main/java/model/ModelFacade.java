@@ -8,6 +8,8 @@ import java.util.Observable;
 
 import model.dao.ExampleDAO;
 import model.element.*;
+import model.element.characters.ELorann;
+import model.element.characters.Lorann;
 import model.element.door.Door;
 import model.element.door.EDoor;
 import model.element.monsters.Monster1;
@@ -164,7 +166,7 @@ public final class ModelFacade extends Observable implements IModel {
 
 		}
 
-		level.setLorann(new Lorann(6, 3, lorann_b, level));
+		level.setLorann(new Lorann(6, 3, lorann_b, level,ELorann.NONE,this));
 		level.setMonster1(new Monster1(12, 7, monster_1, level));
 		level.setMonster2(new Monster2(2, 5, monster_2, level));
 		level.setMonster3(new Monster3(10, 7, monster_3, level));
