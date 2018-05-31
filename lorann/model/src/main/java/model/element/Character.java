@@ -75,6 +75,7 @@ public abstract class Character extends Element implements IMobile {
 			checkEnergyBall(x, y);
 			checkMoney(x, y);
 			checkEnnemy(x, y);
+			checkEnd(x, y);
 
 		}
 	}
@@ -107,7 +108,19 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
-	public void checkMoney(int x, int y) {
+	public void checkEnd(int x, int y){
+        if ((level.getElements()[x][y] instanceof Door)) {
+            if (((Door) level.getElements()[x][y]).geteDoor() == EDoor.OPEN) {
+                this.win();
+            }
+        }
+    }
+
+    private void win() {
+	    System.out.println("jégagné");
+    }
+
+    public void checkMoney(int x, int y) {
 		if (level.getElements()[x][y] instanceof Money) {
 			Money money = (Money) level.getElements()[x][y];
 			if (money.geteBonus() == EBonus.ENABLE) {
