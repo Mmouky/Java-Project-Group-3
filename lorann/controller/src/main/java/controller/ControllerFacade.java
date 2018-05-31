@@ -44,7 +44,7 @@ public class ControllerFacade implements IController {
 	 * @throws SQLException
 	 *             the SQL exception
 	 */
-	public void start() throws SQLException {
+	public void start() throws SQLException, IOException {
 
 		model.getElement(model.readFile(1));
 

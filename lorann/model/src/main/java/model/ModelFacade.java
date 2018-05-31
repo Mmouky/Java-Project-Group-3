@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,6 +16,7 @@ import model.element.wall.EWall;
 import model.element.wall.Wall;
 
 import javax.swing.*;
+import javax.imageio.ImageIO;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
@@ -28,6 +30,8 @@ public final class ModelFacade extends Observable implements IModel {
 	 */
 
 	private ILevel level;
+
+
 
 	public ModelFacade(ILevel level) {
 		this.level = level;
@@ -53,6 +57,8 @@ public final class ModelFacade extends Observable implements IModel {
 		return ExampleDAO.getEntryById(id).getBinaryStream();
 	}
 
+
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -73,46 +79,70 @@ public final class ModelFacade extends Observable implements IModel {
 		return ExampleDAO.getAllExamples();
 	}
 
-	public void getElement(String txt) {
+	public void getElement(String txt) throws SQLException, IOException {
+
+		Image background = getSprite("background");
+		Image bone = getSprite("bone");
+		Image crystal_ball = getSprite("crystal_ball");
+		Image fireball_1 = getSprite("fireball_1");
+		Image fireball_2 = getSprite("fireball_2");
+		Image fireball_3 = getSprite("fireball_3");
+		Image fireball_4 = getSprite("fireball_4");
+		Image fireball_5 = getSprite("fireball_5");
+		Image gate_closed = getSprite("gate_closed");
+		Image gate_open = getSprite("gate_open");
+		Image horizontal_bone = getSprite("horizontal_bone");
+		Image lorann_b = getSprite("lorann_b");
+		Image lorann_bl = getSprite("lorann_bl");
+		Image lorann_br = getSprite("lorann_br");
+		Image lorann_l = getSprite("lorann_l");
+		Image lorann_u = getSprite("lorann_u");
+		Image lorann_ul = getSprite("lorann_ul");
+		Image lorann_ur = getSprite("lorann_ur");
+		Image monster_1 = getSprite("monster_1");
+		Image monster_2 = getSprite("monster_2");
+		Image monster_3 = getSprite("monster_3");
+		Image monster_4 = getSprite("monster_4");
+		Image purse = getSprite("purse");
+		Image vertical_bone = getSprite("vertical_bone");
+
+
 
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 20; j++) {
 				char c = txt.charAt(j + (20 * i));
 
 				if (c == 'x') {
-					level.addElements(new Empty(j, i, new ImageIcon("lorann\\sprite\\background.png").getImage()));
+					level.addElements(new Empty(j, i, background));
 				} else if (c == '-') {
-					level.addElements(new Wall(j, i,
-							new ImageIcon("lorann\\sprite\\horizontal_bone.png").getImage(), EWall.HORIZONTAL));
+					level.addElements(new Wall(j, i, horizontal_bone, EWall.HORIZONTAL));
 				} else if (c == 'O') {
 					level.addElements(
-							new Wall(j, i, new ImageIcon("lorann\\sprite\\bone.png").getImage(), EWall.CORNER));
+							new Wall(j, i, bone, EWall.CORNER));
 				} else if (c == 'B') {
 					level.addElements(
-							new EnergyBall(j, i, new ImageIcon("lorann\\sprite\\crystal_ball.png").getImage()));
+							new EnergyBall(j, i, crystal_ball));
 				} else if (c == 'M') {
-					level.addElements(new Money(j, i, new ImageIcon("lorann\\sprite\\purse.png").getImage()));
+					level.addElements(new Money(j, i, purse));
 				} else if (c == '2') {
 					level.addElements(
-							new Monster2(j, i, new ImageIcon("lorann\\sprite\\monster_2.png").getImage()));
+							new Monster2(j, i, monster_2));
 				} else if (c == '1') {
 					level.addElements(
-							new Monster1(j, i, new ImageIcon("lorann\\sprite\\monster_1.png").getImage()));
+							new Monster1(j, i, monster_1));
 				} else if (c == '3') {
 					level.addElements(
-							new Monster3(j, i, new ImageIcon("lorann\\sprite\\monster_3.png").getImage()));
+							new Monster3(j, i, monster_3));
 				} else if (c == '4') {
 					level.addElements(
-							new Monster4(j, i, new ImageIcon("lorann\\sprite\\monster_4.png").getImage()));
+							new Monster4(j, i, monster_4));
 				} else if (c == 'D') {
 					level.addElements(
-							new Door(j, i, new ImageIcon("lorann\\sprite\\gate_closed.png").getImage()));
+							new Door(j, i, gate_closed));
 				} else if (c == '|') {
-					level.addElements(new Wall(j, i,
-							new ImageIcon("lorann\\sprite\\vertical_bone.png").getImage(), EWall.VERTICAL));
+					level.addElements(new Wall(j, i, vertical_bone, EWall.VERTICAL));
 				} else if (c == 'L') {
-					level.addElements(
-							new Lorann(j, i, new ImageIcon("lorann\\sprite\\lorann_b.png").getImage()));
+					level.addElements(new Lorann(j, i, lorann_b));
 				}
 				System.out.println(level.getElements()[j][i]);
 			}
@@ -145,6 +175,22 @@ public final class ModelFacade extends Observable implements IModel {
 		}
 		return "ERROR";
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see model.IModel#getSpriteByName(char)
+	 */
+
+	public InputStream getSpriteByName(final String def) throws SQLException {
+		return ExampleDAO.getSpriteByName(def).getBinaryStream();
+	}
+
+	public Image getSprite(String def) throws IOException, SQLException {
+		InputStream is = new BufferedInputStream(getSpriteByName(def));
+		Image image = ImageIO.read(is);
+		return image;
 	}
 
 	@Override
