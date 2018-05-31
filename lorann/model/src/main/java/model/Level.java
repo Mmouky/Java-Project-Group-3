@@ -1,6 +1,10 @@
 package model;
 
+import model.element.Empty;
+
 public class Level implements ILevel {
+
+	private int score;
 
 	private IElement[][] elements = new IElement[20][12];
 
@@ -10,6 +14,19 @@ public class Level implements ILevel {
 	private IMobile monster2;
 	private IMobile monster3;
 	private IMobile monster4;
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public void addScore(int score) {
+		this.score += score;
+		System.out.println(this.score);
+	}
 
 	public IElement[][] getElements() {
 		return elements;

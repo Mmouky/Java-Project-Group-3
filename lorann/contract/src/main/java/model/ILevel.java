@@ -2,6 +2,8 @@ package model;
 
 public interface ILevel {
 
+	void addScore(int score);
+
 	IElement[][] getElements();
 
 	void setElements(IElement[][] elements);

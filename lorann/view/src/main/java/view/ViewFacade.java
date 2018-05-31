@@ -26,6 +26,7 @@ public class ViewFacade implements IView, KeyListener {
 	 */
 	public ViewFacade(final ILevel level) {
 		frame = new BoardFrame("Lorann");
+		frame.setSize(900, 700);
 		frame.setDimension(new Dimension(20, 12));
 		frame.addKeyListener(this);
 		frame.setDisplayFrame(
@@ -63,6 +64,8 @@ public class ViewFacade implements IView, KeyListener {
 		frame.addPawn(level.getMonster4());
 		
 		frame.addPawn(level.getLorann());
+		
+		frame.repaint();
   
 	}
 

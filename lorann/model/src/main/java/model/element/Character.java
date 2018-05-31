@@ -27,45 +27,38 @@ public abstract class Character extends Element implements IMobile {
 		int yEl = this.getY() - 1;
 		int xEl = this.getX();
 
-		if (hasWall(xEl, yEl) == false) {
-			this.setY(yEl);
-			checkEnergyBall(xEl, yEl);
-		}
+		checkCase(xEl, yEl);
 
 	}
 
 	public void moveDown() {
 		int yEl = this.getY() + 1;
 		int xEl = this.getX();
-
-		if (hasWall(xEl, yEl) == false) {
-			this.setY(yEl);
-			checkEnergyBall(xEl, yEl);
-		}
+		checkCase(xEl, yEl);
 	}
 
 	public void moveLeft() {
 		int yEl = this.getY();
 		int xEl = this.getX() - 1;
-
-		if (hasWall(xEl, yEl) == false) {
-			this.setX(xEl);
-			checkEnergyBall(xEl, yEl);
-		}
+		checkCase(xEl, yEl);
 	}
 
 	public void moveRight() {
 		int yEl = this.getY();
 		int xEl = this.getX() + 1;
-
-		if (hasWall(xEl, yEl) == false) {
-			this.setX(xEl);
-			checkEnergyBall(xEl, yEl);
-		}
-
+		checkCase(xEl, yEl);
 	}
-	
-	public void checkEnergyBall(int x, int y){
+
+	public void checkCase(int x, int y) {
+		if (hasWall(x, y) == false) {
+			this.setY(y);
+			this.setX(x);
+			checkEnergyBall(x, y);
+			checkMoney(x, y);
+		}
+	}
+
+	public void checkEnergyBall(int x, int y) {
 		if (level.getElements()[x][y] instanceof EnergyBall) {
 			for (int i = 0; i < level.getElements().length; i++) {
 				for (int j = 0; j < level.getElements()[i].length; j++) {
@@ -74,7 +67,13 @@ public abstract class Character extends Element implements IMobile {
 						((Door) element).seteDoor(EDoor.OPEN);
 					}
 				}
-			} 
+			}
+		}
+	}
+
+	public void checkMoney(int x, int y) {
+		if (level.getElements()[x][y] instanceof Money) {
+			level.addScore(100);
 		}
 	}
 
