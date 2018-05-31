@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 
 import model.IElement;
 import model.ILevel;
+import model.IMobile;
 import showboard.BoardFrame;
 
 /**
@@ -49,6 +50,7 @@ public class ViewFacade implements IView, KeyListener {
 	public void addElement(IElement element) {
 		System.out.println(element);
 		frame.addSquare(element, element.getX(), element.getY());
+
 	}
 
 	@Override

@@ -10,19 +10,19 @@ public class Monster1 extends Monster {
 		super(x, y, sprite);
 	}
 
-	private boolean isDetected(){
+	private boolean isDetected() {
 		return true;
 	};
 
-	private void PathFinding(){
+	private void PathFinding() {
 
 	};
 
-	private void Attack(){
+	private void Attack() {
 
 	};
 
-	private void Sleep(){
+	private void Sleep() {
 
 	};
 
@@ -31,8 +31,4 @@ public class Monster1 extends Monster {
 		return "Monstre 1";
 	}
 
-	@Override
-	public Point getPosition() {
-		return null;
-	}
 }
