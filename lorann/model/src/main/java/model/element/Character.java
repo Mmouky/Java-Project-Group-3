@@ -142,6 +142,7 @@ public abstract class Character extends Element implements IMobile {
 							((Door) element).seteDoor(EDoor.OPEN);
 							ball.seteBonus(EBonus.DISABLE);
 							level.addScore(500);
+							
 						}
 					}
 				}
