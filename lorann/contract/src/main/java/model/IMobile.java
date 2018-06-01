@@ -52,8 +52,6 @@ public interface IMobile extends IPawn, IElement {
 	@Override
 	Point getPosition();
 
-	ILevel getLevel();
-
 	void setLevel(ILevel level);
 
 }
