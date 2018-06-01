@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import model.IElement;
 import model.ILevel;
 import model.IMobile;
 import showboard.BoardFrame;
@@ -72,17 +71,12 @@ public class ViewFacade implements IView, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			level.getLorann().moveUp();
-			frame.repaint();
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			level.getLorann().moveDown();
-			frame.repaint();
-		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			level.getLorann().moveRight();
-			frame.repaint();
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			level.getLorann().moveLeft();
-			frame.repaint();
 		}
 	}
 

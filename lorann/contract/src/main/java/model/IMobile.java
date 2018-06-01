@@ -26,6 +26,7 @@ public interface IMobile extends IPawn, IElement {
 	 */
 	void moveRight();
 
+
 	/**
 	 * Gets the x.
 	 *

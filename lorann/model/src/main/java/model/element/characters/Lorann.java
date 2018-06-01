@@ -37,6 +37,7 @@ public class Lorann extends Character {
 
 	public void seteLorann(ELorann eLorann) {
 		this.eLorann = eLorann;
+		
 		if (eLorann == ELorann.LEFT) {
 			this.setImage(model.lorann_l);
 		} else if (eLorann == ELorann.RIGHT) {
@@ -55,6 +56,14 @@ public class Lorann extends Character {
 			this.setImage(model.lorann_bl);
 		} else if (eLorann == ELorann.NONE) {
 			
+		}
+	}
+
+	public void changeSprite() {
+		if (this.getImage().equals(model.lorann_b)) {
+			this.setImage(model.lorann_u);
+		} else if (this.getImage().equals(model.lorann_u)) {
+			this.setImage(model.lorann_b);
 		}
 	}
 

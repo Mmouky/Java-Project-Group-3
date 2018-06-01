@@ -105,7 +105,6 @@ public final class ModelFacade extends Observable implements IModel {
 
 	}
 
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -141,7 +140,7 @@ public final class ModelFacade extends Observable implements IModel {
 
 		}
 
-		level.setLorann(new Lorann(6, 3, lorann_b, level,ELorann.NONE,this));
+		level.setLorann(new Lorann(6, 3, lorann_b, level, ELorann.NONE, this));
 		level.getMonsters().add(new Monster1(12, 7, monster_1, level));
 		level.getMonsters().add(new Monster2(2, 5, monster_2, level));
 		level.getMonsters().add(new Monster3(10, 7, monster_3, level));
@@ -149,6 +148,22 @@ public final class ModelFacade extends Observable implements IModel {
 
 		System.out.println("ca compile");
 
+		refresh();
+
+	}
+
+	public void refresh() {
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					setChanged();
+					notifyObservers();
+				}
+			}
+		});
+		t.start();
 	}
 
 	public String readFile(int id) {
@@ -175,7 +190,6 @@ public final class ModelFacade extends Observable implements IModel {
 		return "ERROR";
 
 	}
-
 
 	/*
 	 * (non-Javadoc)
