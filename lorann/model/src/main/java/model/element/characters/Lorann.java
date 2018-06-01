@@ -9,8 +9,8 @@ import model.element.Character;
 public class Lorann extends Character {
 
 	private ELorann eLorann;
+	private ELorann lastMove;
 	private ModelFacade model;
-
 
 	public Lorann(int x, int y, Image sprite, ILevel level, ELorann eLorann, ModelFacade model) {
 		super(x, y, sprite, level);
@@ -37,6 +37,7 @@ public class Lorann extends Character {
 	}
 
 	public void seteLorann(ELorann eLorann) {
+		this.lastMove = this.eLorann;
 		this.eLorann = eLorann;
 
 		if (eLorann == ELorann.LEFT) {
@@ -55,19 +56,27 @@ public class Lorann extends Character {
 			this.setImage(model.lorann_br);
 		} else if (eLorann == ELorann.LEFT_DOWN) {
 			this.setImage(model.lorann_bl);
-		} else if (eLorann == ELorann.NONE) {
-
 		}
 	}
 
 	public void changeSprite() {
 		if (this.getImage().equals(model.lorann_b)) {
+			this.setImage(model.lorann_bl);
+		} else if (this.getImage().equals(model.lorann_bl)) {
+			this.setImage(model.lorann_l);
+		} else if (this.getImage().equals(model.lorann_l)) {
+			this.setImage(model.lorann_ul);
+		} else if (this.getImage().equals(model.lorann_ul)) {
 			this.setImage(model.lorann_u);
 		} else if (this.getImage().equals(model.lorann_u)) {
+			this.setImage(model.lorann_ur);
+		} else if (this.getImage().equals(model.lorann_ur)) {
+			this.setImage(model.lorann_r);
+		} else if (this.getImage().equals(model.lorann_r)) {
+			this.setImage(model.lorann_br);
+		} else if (this.getImage().equals(model.lorann_br)) {
 			this.setImage(model.lorann_b);
 		}
 	}
-
-
 
 }

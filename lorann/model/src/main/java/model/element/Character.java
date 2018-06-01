@@ -29,13 +29,14 @@ public abstract class Character extends Element implements IMobile {
 		int yEl = this.getY() - 1;
 		int xEl = this.getX();
 
-		checkCase(xEl, yEl);
+		checkWall(xEl, yEl);
 
 		if (this instanceof Lorann) {
-			checkEnnemy(x, y);
-			checkEnd(x, y);
+			checkLorann(xEl, yEl);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.UP);
+		} else if (this instanceof Monster) {
+			checkMonsters(xEl, yEl);
 		}
 
 	}
@@ -43,45 +44,59 @@ public abstract class Character extends Element implements IMobile {
 	public void moveDown() {
 		int yEl = this.getY() + 1;
 		int xEl = this.getX();
-		checkCase(xEl, yEl);
+		checkWall(xEl, yEl);
 		if (this instanceof Lorann) {
-			checkEnnemy(x, y);
-			checkEnd(x, y);
+			checkLorann(xEl, yEl);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.DOWN);
+		} else if (this instanceof Monster) {
+			checkMonsters(xEl, yEl);
 		}
 	}
 
 	public void moveLeft() {
 		int yEl = this.getY();
 		int xEl = this.getX() - 1;
-		checkCase(xEl, yEl);
+		checkWall(xEl, yEl);
 		if (this instanceof Lorann) {
-			checkEnnemy(x, y);
-			checkEnd(x, y);
+			checkLorann(xEl, yEl);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.LEFT);
+		} else if (this instanceof Monster) {
+			checkMonsters(xEl, yEl);
 		}
 	}
 
 	public void moveRight() {
 		int yEl = this.getY();
 		int xEl = this.getX() + 1;
-		checkCase(xEl, yEl);
+		checkWall(xEl, yEl);
 		if (this instanceof Lorann) {
-			checkEnnemy(x, y);
-			checkEnd(x, y);
+			checkLorann(xEl, yEl);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.RIGHT);
+		} else if (this instanceof Monster) {
+			checkMonsters(xEl, yEl);
 		}
 	}
 
-	public void checkCase(int x, int y) {
+	public void checkMonsters(int x, int y) {
+		if (level.getLorann().getPosition().equals(new Point(x, y))) {
+			this.die();
+		}
+	}
+
+	public void checkLorann(int x, int y) {
+		checkEnnemy(x, y);
+		checkEnd(x, y);
+		checkEnergyBall(x, y);
+		checkMoney(x, y);
+	}
+
+	public void checkWall(int x, int y) {
 		if (hasWall(x, y) == false) {
 			this.setY(y);
 			this.setX(x);
-			checkEnergyBall(x, y);
-			checkMoney(x, y);
 		}
 	}
 
@@ -176,6 +191,16 @@ public abstract class Character extends Element implements IMobile {
 	@Override
 	public String toString() {
 		return "Character";
+	}
+
+	@Override
+	public ILevel getLevel() {
+		return level;
+	}
+
+	@Override
+	public void setLevel(ILevel level) {
+		this.level = level;
 	}
 
 }

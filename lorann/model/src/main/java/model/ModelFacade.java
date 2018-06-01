@@ -18,14 +18,15 @@ import model.element.EBonus;
 import model.element.Empty;
 import model.element.EnergyBall;
 import model.element.Money;
+import model.element.Monster;
 import model.element.characters.ELorann;
 import model.element.characters.Lorann;
+import model.element.characters.monsters.Monster1;
+import model.element.characters.monsters.Monster2;
+import model.element.characters.monsters.Monster3;
+import model.element.characters.monsters.Monster4;
 import model.element.door.Door;
 import model.element.door.EDoor;
-import model.element.monsters.Monster1;
-import model.element.monsters.Monster2;
-import model.element.monsters.Monster3;
-import model.element.monsters.Monster4;
 import model.element.wall.EWall;
 import model.element.wall.Wall;
 
@@ -35,7 +36,7 @@ import model.element.wall.Wall;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public final class ModelFacade extends Observable implements IModel , KeyListener {
+public final class ModelFacade extends Observable implements IModel, KeyListener {
 
 	public Image background;
 	public Image bone;
@@ -165,12 +166,31 @@ public final class ModelFacade extends Observable implements IModel , KeyListene
 			@Override
 			public void run() {
 				while (true) {
+					Lorann lorann = (Lorann) level.getLorann();
+					if (lorann.geteLorann() == ELorann.NONE) {
+						lorann.changeSprite();
+					}
+					if (right == true) {
+						lorann.moveRight();
+					}
+					if (left == true) {
+						lorann.moveLeft();
+					}
+					if (up == true) {
+						lorann.moveUp();
+					}
+					if (down == true) {
+						lorann.moveDown();
+					}
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					level.getMonsters().get(0).moveUp();
+					for (IMobile monster : level.getMonsters()) {
+						((Monster) monster).pattern();
+					}
+
 					setChanged();
 					notifyObservers();
 				}
@@ -224,16 +244,12 @@ public final class ModelFacade extends Observable implements IModel , KeyListene
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			level.getLorann().moveUp();
 			this.up = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			level.getLorann().moveDown();
 			this.down = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			level.getLorann().moveRight();
 			this.right = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			level.getLorann().moveLeft();
 			this.left = true;
 		}
 	}
@@ -250,8 +266,8 @@ public final class ModelFacade extends Observable implements IModel , KeyListene
 		} else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.left = false;
 		}
-		if(this.up == false && this.down == false && this.right == false && this.left == false){
-			((Lorann)level.getLorann()).seteLorann(ELorann.NONE);
+		if (this.up == false && this.down == false && this.right == false && this.left == false) {
+			((Lorann) level.getLorann()).seteLorann(ELorann.NONE);
 		}
 	}
 
