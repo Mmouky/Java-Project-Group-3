@@ -171,22 +171,12 @@ public final class ModelFacade extends Observable implements IModel , KeyListene
 						e.printStackTrace();
 					}
 					level.getMonsters().get(0).moveUp();
-				}
-			}
-		});
-
-		Thread t2 = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				while (true) {
 					setChanged();
 					notifyObservers();
 				}
 			}
 		});
-		
-		t2.start();
+
 		t.start();
 
 	}
@@ -235,19 +225,34 @@ public final class ModelFacade extends Observable implements IModel , KeyListene
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			level.getLorann().moveUp();
+			this.up = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			level.getLorann().moveDown();
+			this.down = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			level.getLorann().moveRight();
+			this.right = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			level.getLorann().moveLeft();
+			this.left = true;
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-
+		if (arg0.getKeyCode() == KeyEvent.VK_UP) {
+			this.up = false;
+		} else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.down = false;
+		} else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.right = false;
+		} else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.left = false;
+		}
+		if(this.up == false && this.down == false && this.right == false && this.left == false){
+			((Lorann)level.getLorann()).seteLorann(ELorann.NONE);
+		}
 	}
 
 	@Override
