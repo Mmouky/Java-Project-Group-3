@@ -16,6 +16,10 @@ public interface ILevel {
 
 	void setLorann(IMobile lorann);
 
+	IMobile getSpell();
+
+	void setSpell(IMobile spell);
+
 	ArrayList<IMobile> getMonsters();
 
 	void setMonsters(ArrayList<IMobile> monsters);

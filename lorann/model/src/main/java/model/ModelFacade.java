@@ -166,6 +166,30 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 			@Override
 			public void run() {
 				while (true) {
+					try {
+						Thread.sleep(400);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					for (IMobile monster : level.getMonsters()) {
+						((Monster) monster).pattern();
+					}
+
+				}
+			}
+		});
+
+		Thread t2 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+
 					Lorann lorann = (Lorann) level.getLorann();
 					if (lorann.geteLorann() == ELorann.NONE) {
 						lorann.changeSprite();
@@ -182,15 +206,6 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 					if (down == true) {
 						lorann.moveDown();
 					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					for (IMobile monster : level.getMonsters()) {
-						((Monster) monster).pattern();
-					}
-
 					setChanged();
 					notifyObservers();
 				}
@@ -198,6 +213,7 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 		});
 
 		t.start();
+		t2.start();
 
 	}
 

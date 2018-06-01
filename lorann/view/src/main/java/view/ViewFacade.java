@@ -3,6 +3,7 @@ package view;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.ILevel;
@@ -29,6 +30,7 @@ public class ViewFacade implements IView {
 		frame.setDimension(new Dimension(20, 12));
 		frame.setDisplayFrame(
 				new Rectangle(0, 0, (int) frame.getDimension().getWidth(), (int) frame.getDimension().getHeight()));
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.level = level;
 	}
 

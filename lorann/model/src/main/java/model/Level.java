@@ -10,6 +10,8 @@ public class Level implements ILevel {
 
 	private IMobile lorann;
 
+	private IMobile spell;
+
 	private ArrayList<IMobile> monsters = new ArrayList<IMobile>();
 
 	public int getScore() {
@@ -57,6 +59,16 @@ public class Level implements ILevel {
 
 	public void setMonsters(ArrayList<IMobile> monsters) {
 		this.monsters = monsters;
+	}
+
+	@Override
+	public IMobile getSpell() {
+		return spell;
+	}
+
+	@Override
+	public void setSpell(IMobile spell) {
+		this.spell = spell;
 	}
 
 }

@@ -171,8 +171,8 @@ public abstract class Character extends Element implements IMobile {
 	protected void die() {
 		this.isAlive = false;
 		System.out.println("juimor");
-		// JOptionPane.showMessageDialog(null, "GAME OVER !");
-		// System.exit(0);
+		JOptionPane.showMessageDialog(null, "GAME OVER !");
+		System.exit(0);
 	}
 
 	@Override
