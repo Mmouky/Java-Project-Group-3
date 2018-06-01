@@ -148,7 +148,7 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 
 		}
 
-		level.setLorann(new Lorann(6, 3, lorann_b, level, ELorann.NONE, this));
+		level.setLorann(new Lorann(2, 3, lorann_b, level, ELorann.NONE, this));
 		level.getMonsters().add(new Monster1(12, 7, monster_1, level));
 		level.getMonsters().add(new Monster2(2, 5, monster_2, level));
 		level.getMonsters().add(new Monster3(10, 7, monster_3, level));

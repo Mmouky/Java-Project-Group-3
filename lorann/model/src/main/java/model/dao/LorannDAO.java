@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.awt.*;
 import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -31,6 +32,10 @@ public abstract class LorannDAO extends AbstractDAO {
     /** The sql entry by id. */
     private static String sqlSpriteByName   = "{call findSpriteByName(?)}";
 
+    /** The sql entry by id. */
+    private static String findLorannPosition   = "{call findLorannPosition(?)}";
+
+
     /** The id column index. */
     private static int    idColumnIndex    = 0;
 
@@ -58,6 +63,30 @@ public abstract class LorannDAO extends AbstractDAO {
             result.close();
         }
         return file;
+    }
+
+    /**
+     * Gets the lorann's position
+     *
+     * @param level
+     *            the level
+     * @return the lorann's position by level
+     * @throws SQLException
+     *             the SQL exception
+     */
+    public static Point getLorannPosition(final int level) throws SQLException {
+        final CallableStatement callStatement = prepareCall(sqlEntryById);
+        Point position = new Point();
+        callStatement.setInt(1, level);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            if (result.first()) {
+                position.x = result.getInt(1);
+                position.y = result.getInt(2);
+            }
+            result.close();
+        }
+        return position;
     }
 
     /**
