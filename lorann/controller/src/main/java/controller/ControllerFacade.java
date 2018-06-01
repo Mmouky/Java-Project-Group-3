@@ -36,6 +36,7 @@ public class ControllerFacade implements IController {
 	public ControllerFacade(final IView view, final IModel model) {
 		this.view = view;
 		this.model = model;
+		view.getFrame().addKeyListener(model);
 	}
 
 	/**

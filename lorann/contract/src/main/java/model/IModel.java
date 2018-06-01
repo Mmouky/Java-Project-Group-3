@@ -1,6 +1,9 @@
 package model;
 
+import com.sun.xml.internal.ws.api.Component;
+
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -13,7 +16,7 @@ import java.util.logging.Level;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public interface IModel {
+public interface IModel extends KeyListener {
 
 	/**
 	 * Gets the entry by id.

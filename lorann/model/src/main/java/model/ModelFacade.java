@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +35,7 @@ import model.element.wall.Wall;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public final class ModelFacade extends Observable implements IModel {
+public final class ModelFacade extends Observable implements IModel , KeyListener {
 
 	public Image background;
 	public Image bone;
@@ -60,6 +62,11 @@ public final class ModelFacade extends Observable implements IModel {
 	public Image monster_4;
 	public Image purse;
 	public Image vertical_bone;
+
+	private Boolean up = false;
+	private Boolean left = false;
+	private Boolean right = false;
+	private Boolean down = false;
 
 	/**
 	 * Instantiates a new model facade.
@@ -204,6 +211,31 @@ public final class ModelFacade extends Observable implements IModel {
 		InputStream is = new BufferedInputStream(getSpriteByName(def));
 		Image image = ImageIO.read(is);
 		return image;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			level.getLorann().moveUp();
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			level.getLorann().moveDown();
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			level.getLorann().moveRight();
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			level.getLorann().moveLeft();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override

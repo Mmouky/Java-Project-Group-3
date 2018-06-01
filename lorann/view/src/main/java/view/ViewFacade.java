@@ -15,7 +15,7 @@ import showboard.BoardFrame;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ViewFacade implements IView, KeyListener {
+public class ViewFacade implements IView{
 
 	private BoardFrame frame;
 	private ILevel level;
@@ -27,7 +27,6 @@ public class ViewFacade implements IView, KeyListener {
 		frame = new BoardFrame("Lorann");
 		frame.setSize(1000, 700);
 		frame.setDimension(new Dimension(20, 12));
-		frame.addKeyListener(this);
 		frame.setDisplayFrame(
 				new Rectangle(0, 0, (int) frame.getDimension().getWidth(), (int) frame.getDimension().getHeight()));
 		this.level = level;
@@ -67,29 +66,6 @@ public class ViewFacade implements IView, KeyListener {
 
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			level.getLorann().moveUp();
-		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			level.getLorann().moveDown();
-		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			level.getLorann().moveRight();
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			level.getLorann().moveLeft();
-		}
-	}
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

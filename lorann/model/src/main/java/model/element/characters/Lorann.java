@@ -11,6 +11,7 @@ public class Lorann extends Character {
 	private ELorann eLorann;
 	private ModelFacade model;
 
+
 	public Lorann(int x, int y, Image sprite, ILevel level, ELorann eLorann, ModelFacade model) {
 		super(x, y, sprite, level);
 		this.model = model;
@@ -37,7 +38,7 @@ public class Lorann extends Character {
 
 	public void seteLorann(ELorann eLorann) {
 		this.eLorann = eLorann;
-		
+
 		if (eLorann == ELorann.LEFT) {
 			this.setImage(model.lorann_l);
 		} else if (eLorann == ELorann.RIGHT) {
@@ -55,7 +56,7 @@ public class Lorann extends Character {
 		} else if (eLorann == ELorann.LEFT_DOWN) {
 			this.setImage(model.lorann_bl);
 		} else if (eLorann == ELorann.NONE) {
-			
+
 		}
 	}
 
@@ -66,5 +67,7 @@ public class Lorann extends Character {
 			this.setImage(model.lorann_b);
 		}
 	}
+
+
 
 }
