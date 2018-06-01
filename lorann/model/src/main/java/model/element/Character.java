@@ -104,11 +104,13 @@ public abstract class Character extends Element implements IMobile {
 	}
 
 	public void spellCheckMonster(int x, int y) {
-		for (IMobile iMobile : level.getMonsters()) {
-			if (iMobile.getPosition().equals(new Point(x, y))) {
-				if ((((Monster) iMobile).isAlive())) {
-					((Monster) iMobile).setAlive(false);
-					((Spell) this).seteSpell(ESpell.INACTIVE);
+		if (((Spell) this).geteSpell() == ESpell.ACTIVE) {
+			for (IMobile iMobile : level.getMonsters()) {
+				if (iMobile.getPosition().equals(new Point(x, y))) {
+					if ((((Monster) iMobile).isAlive())) {
+						((Monster) iMobile).setAlive(false);
+						((Spell) this).seteSpell(ESpell.INACTIVE);
+					}
 				}
 			}
 		}
