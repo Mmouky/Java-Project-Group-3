@@ -3,6 +3,8 @@ package model.element;
 import java.awt.Image;
 import java.awt.Point;
 
+import javax.swing.JOptionPane;
+
 import model.Element;
 import model.IElement;
 import model.ILevel;
@@ -137,7 +139,8 @@ public abstract class Character extends Element implements IMobile {
 	}
 
 	private void win() {
-		System.out.println("jégagné");
+		JOptionPane.showMessageDialog(null, "VICTORY !");
+		System.exit(0);
 	}
 
 	public void checkMoney(int x, int y) {
@@ -168,6 +171,8 @@ public abstract class Character extends Element implements IMobile {
 	protected void die() {
 		this.isAlive = false;
 		System.out.println("juimor");
+		// JOptionPane.showMessageDialog(null, "GAME OVER !");
+		// System.exit(0);
 	}
 
 	@Override
