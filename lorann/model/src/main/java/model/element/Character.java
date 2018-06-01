@@ -110,6 +110,7 @@ public abstract class Character extends Element implements IMobile {
 					if ((((Monster) iMobile).isAlive())) {
 						((Monster) iMobile).setAlive(false);
 						((Spell) this).seteSpell(ESpell.INACTIVE);
+						level.addScore(100);
 					}
 				}
 			}
@@ -169,7 +170,7 @@ public abstract class Character extends Element implements IMobile {
 	}
 
 	private void win() {
-		JOptionPane.showMessageDialog(null, "VICTORY !");
+		JOptionPane.showMessageDialog(null, "VICTORY ! SCORE : " + level.getScore());
 		System.exit(0);
 	}
 
@@ -177,7 +178,7 @@ public abstract class Character extends Element implements IMobile {
 		if (level.getElements()[x][y] instanceof Money) {
 			Money money = (Money) level.getElements()[x][y];
 			if (money.geteBonus() == EBonus.ENABLE) {
-				level.addScore(100);
+				level.addScore(650);
 				money.seteBonus(EBonus.DISABLE);
 			}
 		}
@@ -204,7 +205,7 @@ public abstract class Character extends Element implements IMobile {
 	protected void die() {
 		this.isAlive = false;
 		System.out.println("juimor");
-		JOptionPane.showMessageDialog(null, "GAME OVER !");
+		JOptionPane.showMessageDialog(null, "GAME OVER ! SCORE : " + level.getScore());
 		System.exit(0);
 	}
 
