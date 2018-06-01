@@ -158,12 +158,30 @@ public final class ModelFacade extends Observable implements IModel {
 			@Override
 			public void run() {
 				while (true) {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					level.getMonsters().get(0).moveUp();
+				}
+			}
+		});
+
+		Thread t2 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
 					setChanged();
 					notifyObservers();
 				}
 			}
 		});
+		
+		t2.start();
 		t.start();
+
 	}
 
 	public String readFile(int id) {
