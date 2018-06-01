@@ -133,12 +133,16 @@ public abstract class Character extends Element implements IMobile {
 
 	public void checkEnergyBall(int x, int y) {
 		if (level.getElements()[x][y] instanceof EnergyBall) {
-			for (int i = 0; i < level.getElements().length; i++) {
-				for (int j = 0; j < level.getElements()[i].length; j++) {
-					IElement element = level.getElements()[i][j];
-					if (element instanceof Door) {
-						((Door) element).seteDoor(EDoor.OPEN);
-						((EnergyBall) level.getElements()[x][y]).seteBonus(EBonus.DISABLE);
+			EnergyBall ball = ((EnergyBall) level.getElements()[x][y]);
+			if (ball.geteBonus() == EBonus.ENABLE) {
+				for (int i = 0; i < level.getElements().length; i++) {
+					for (int j = 0; j < level.getElements()[i].length; j++) {
+						IElement element = level.getElements()[i][j];
+						if (element instanceof Door) {
+							((Door) element).seteDoor(EDoor.OPEN);
+							ball.seteBonus(EBonus.DISABLE);
+							level.addScore(500);
+						}
 					}
 				}
 			}
