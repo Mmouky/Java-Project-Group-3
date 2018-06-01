@@ -179,9 +179,11 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					for (IMobile monster : level.getMonsters()) {
-						((Monster) monster).pattern();
-					}
+
+					((Monster) level.getMonsters().get(0)).pattern();
+					((Monster) level.getMonsters().get(1)).pattern1();
+					((Monster) level.getMonsters().get(2)).pattern2();
+					((Monster) level.getMonsters().get(3)).pattern3();
 
 					Spell spell = ((Spell) level.getSpell());
 					if (spell.geteSpell() == ESpell.ACTIVE) {
