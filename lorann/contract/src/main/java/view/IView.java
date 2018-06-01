@@ -1,9 +1,6 @@
 package view;
 
-import model.IElement;
 import showboard.BoardFrame;
-
-import java.awt.*;
 
 /**
  * <h1>The Interface IView.</h1>
@@ -13,13 +10,15 @@ import java.awt.*;
  */
 public interface IView {
 
-    /**
-     * Display message.
-     *
-     * @param message
-     *            the message
-     */
-    void addElement();
+	/**
+	 * Display message.
+	 *
+	 * @param message
+	 *            the message
+	 */
+	void displayMessage(String message);
 
-    BoardFrame getFrame();
+	void addElement();
+
+	BoardFrame getFrame();
 }

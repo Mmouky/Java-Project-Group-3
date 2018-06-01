@@ -1,0 +1,12 @@
+O-----------------Ox
+|xxxx|Mx|xxxxxxxxM|x
+|xO-xO-x|x-O---x--Ox
+|x|Mxxxxxxxxxx|xxx|x
+|xO-Ox-O-O-O-O--Ox|x
+|x|x|xx|x|x|x|Mxxx|x
+|-Ox|xOOx|x|x|x|xO|x
+|xxxxxxxx|xxx|x|xx|x
+|xO----Ox|xOxxxxxx|x
+|x|xxxx|x|xO------OO
+|O|BO-xxxOxxxxxxxxD|
+O-O----------------O

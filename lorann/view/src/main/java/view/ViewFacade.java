@@ -2,8 +2,8 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
+import javax.swing.JOptionPane;
 
 import model.ILevel;
 import model.IMobile;
@@ -15,7 +15,7 @@ import showboard.BoardFrame;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ViewFacade implements IView{
+public class ViewFacade implements IView {
 
 	private BoardFrame frame;
 	private ILevel level;
@@ -66,6 +66,9 @@ public class ViewFacade implements IView{
 
 	}
 
-
+	@Override
+	public void displayMessage(String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
 
 }

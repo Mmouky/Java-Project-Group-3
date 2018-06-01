@@ -11,17 +11,17 @@ public abstract class Monster extends Character {
 		super(x, y, sprite, level);
 	}
 
-	public void pattern1(){
-		Lorann lorann = (Lorann)getLevel().getLorann();
-
-		if(lorann.getX() < getX()){
+	public void pattern() {
+		Lorann lorann = ((Lorann) getLevel().getLorann());
+		if (lorann.getX() < getX()) {
 			moveLeft();
-		}else if(lorann.getX() > getX()){
+		} else if (lorann.getX() > getX()) {
 			moveRight();
 		}
-		if(lorann.getY() < getY()){
+
+		if (lorann.getY() < getY()) {
 			moveUp();
-		}else if(lorann.getY() > getY()){
+		} else if (lorann.getY() > getY()) {
 			moveDown();
 		}
 	}

@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,15 +14,19 @@ import java.util.Observable;
 import javax.imageio.ImageIO;
 
 import model.dao.LorannDAO;
-import model.element.*;
+import model.element.EBonus;
+import model.element.Empty;
+import model.element.EnergyBall;
+import model.element.Money;
+import model.element.Monster;
 import model.element.characters.ELorann;
 import model.element.characters.Lorann;
+import model.element.characters.monsters.Monster1;
+import model.element.characters.monsters.Monster2;
+import model.element.characters.monsters.Monster3;
+import model.element.characters.monsters.Monster4;
 import model.element.door.Door;
 import model.element.door.EDoor;
-import model.element.monsters.Monster1;
-import model.element.monsters.Monster2;
-import model.element.monsters.Monster3;
-import model.element.monsters.Monster4;
 import model.element.wall.EWall;
 import model.element.wall.Wall;
 
@@ -30,7 +36,7 @@ import model.element.wall.Wall;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public final class ModelFacade extends Observable implements IModel {
+public final class ModelFacade extends Observable implements IModel, KeyListener {
 
 	public Image background;
 	public Image bone;
@@ -57,6 +63,11 @@ public final class ModelFacade extends Observable implements IModel {
 	public Image monster_4;
 	public Image purse;
 	public Image vertical_bone;
+
+	private Boolean up = false;
+	private Boolean left = false;
+	private Boolean right = false;
+	private Boolean down = false;
 
 	/**
 	 * Instantiates a new model facade.
@@ -155,28 +166,37 @@ public final class ModelFacade extends Observable implements IModel {
 			@Override
 			public void run() {
 				while (true) {
+					Lorann lorann = (Lorann) level.getLorann();
+					if (lorann.geteLorann() == ELorann.NONE) {
+						lorann.changeSprite();
+					}
+					if (right == true) {
+						lorann.moveRight();
+					}
+					if (left == true) {
+						lorann.moveLeft();
+					}
+					if (up == true) {
+						lorann.moveUp();
+					}
+					if (down == true) {
+						lorann.moveDown();
+					}
 					try {
-						Thread.sleep(500);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					((Monster)level.getMonsters().get(0)).pattern1();
-				}
-			}
-		});
+					for (IMobile monster : level.getMonsters()) {
+						((Monster) monster).pattern();
+					}
 
-		Thread t2 = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				while (true) {
 					setChanged();
 					notifyObservers();
 				}
 			}
 		});
-		
-		t2.start();
+
 		t.start();
 
 	}
@@ -219,6 +239,42 @@ public final class ModelFacade extends Observable implements IModel {
 		InputStream is = new BufferedInputStream(getSpriteByName(def));
 		Image image = ImageIO.read(is);
 		return image;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			this.up = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.down = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.right = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.left = true;
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		if (arg0.getKeyCode() == KeyEvent.VK_UP) {
+			this.up = false;
+		} else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.down = false;
+		} else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.right = false;
+		} else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.left = false;
+		}
+		if (this.up == false && this.down == false && this.right == false && this.left == false) {
+			((Lorann) level.getLorann()).seteLorann(ELorann.NONE);
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
