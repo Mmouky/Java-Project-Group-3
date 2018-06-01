@@ -10,10 +10,12 @@ public class Spell extends Character {
 
 	private ModelFacade model;
 	private ESpell eSpell;
+	private ELorann eLorann;
 
-	public Spell(int x, int y, Image sprite, ILevel level, ESpell eSpell, ModelFacade model) {
-		super(x, y, sprite, level);
+	public Spell(int x, int y, Image sprite, ILevel level, ESpell eSpell, ELorann eLorann, ModelFacade model) {
+		super(x, y, sprite, level, model);
 		this.model = model;
+		this.seteLorann(eLorann);
 		this.seteSpell(eSpell);
 	}
 
@@ -23,6 +25,11 @@ public class Spell extends Character {
 
 	public void seteSpell(ESpell eSpell) {
 		this.eSpell = eSpell;
+		if (eSpell == ESpell.INACTIVE) {
+			setImage(model.background);
+		} else {
+			setImage(model.fireball_1);
+		}
 	}
 
 	public void changeSprite() {
@@ -37,6 +44,28 @@ public class Spell extends Character {
 		} else if (this.getImage().equals(model.fireball_5)) {
 			this.setImage(model.fireball_1);
 		}
+		move();
+	}
+
+	public void move() {
+		if (eLorann == ELorann.DOWN) {
+			moveUp();
+		} else if (eLorann == ELorann.UP) {
+			moveDown();
+		} else if (eLorann == ELorann.LEFT) {
+			moveRight();
+		} else if (eLorann == ELorann.RIGHT) {
+			moveLeft();
+		}
+		System.out.println(eLorann);
+	}
+
+	public ELorann geteLorann() {
+		return eLorann;
+	}
+
+	public void seteLorann(ELorann eLorann) {
+		this.eLorann = eLorann;
 	}
 
 }
