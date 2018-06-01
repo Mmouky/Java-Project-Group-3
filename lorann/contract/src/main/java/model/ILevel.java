@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public interface ILevel {
 
+	int getScore();
+
+	void setScore(int score);
+
 	void addScore(int score);
 
 	IElement[][] getElements();
