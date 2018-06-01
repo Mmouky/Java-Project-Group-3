@@ -43,6 +43,8 @@ public interface IMobile extends IPawn, IElement {
 	@Override
 	int getY();
 
+
+	ILevel getLevel();
 	/*
 	 * (non-Javadoc)
 	 * 

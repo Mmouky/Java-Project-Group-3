@@ -156,6 +156,11 @@ public abstract class Character extends Element implements IMobile {
 	}
 
 	@Override
+	public ILevel getLevel() {
+		return level;
+	}
+
+	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
 		return super.getX();
