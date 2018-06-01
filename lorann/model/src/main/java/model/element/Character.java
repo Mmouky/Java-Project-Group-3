@@ -9,8 +9,11 @@ import model.Element;
 import model.IElement;
 import model.ILevel;
 import model.IMobile;
+import model.ModelFacade;
 import model.element.characters.ELorann;
+import model.element.characters.ESpell;
 import model.element.characters.Lorann;
+import model.element.characters.Spell;
 import model.element.door.Door;
 import model.element.door.EDoor;
 import model.element.wall.Wall;
@@ -18,10 +21,12 @@ import model.element.wall.Wall;
 public abstract class Character extends Element implements IMobile {
 
 	private boolean isAlive;
+	private ModelFacade model;
 	private ILevel level;
 
-	public Character(int x, int y, Image sprite, ILevel level) {
+	public Character(int x, int y, Image sprite, ILevel level, ModelFacade model) {
 		super(x, y, sprite);
+		this.setModel(model);
 		this.level = level;
 		this.isAlive = true;
 	}
@@ -38,7 +43,9 @@ public abstract class Character extends Element implements IMobile {
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.UP);
 		} else if (this instanceof Monster) {
-			checkMonsters(xEl, yEl);
+			monsterCheckLorann(xEl, yEl);
+		} else if (this instanceof Spell) {
+			spellCheckMonster(xEl, yEl);
 		}
 
 	}
@@ -52,7 +59,9 @@ public abstract class Character extends Element implements IMobile {
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.DOWN);
 		} else if (this instanceof Monster) {
-			checkMonsters(xEl, yEl);
+			monsterCheckLorann(xEl, yEl);
+		} else if (this instanceof Spell) {
+			spellCheckMonster(xEl, yEl);
 		}
 	}
 
@@ -65,7 +74,9 @@ public abstract class Character extends Element implements IMobile {
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.LEFT);
 		} else if (this instanceof Monster) {
-			checkMonsters(xEl, yEl);
+			monsterCheckLorann(xEl, yEl);
+		} else if (this instanceof Spell) {
+			spellCheckMonster(xEl, yEl);
 		}
 	}
 
@@ -78,18 +89,35 @@ public abstract class Character extends Element implements IMobile {
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.RIGHT);
 		} else if (this instanceof Monster) {
-			checkMonsters(xEl, yEl);
+			monsterCheckLorann(xEl, yEl);
+		} else if (this instanceof Spell) {
+			spellCheckMonster(xEl, yEl);
 		}
 	}
 
-	public void checkMonsters(int x, int y) {
-		if (level.getLorann().getPosition().equals(new Point(x, y))) {
-			this.die();
+	public void monsterCheckLorann(int x, int y) {
+		if ((((Monster) this).isAlive())) {
+			if (level.getLorann().getPosition().equals(new Point(x, y))) {
+				this.die();
+			}
+		}
+	}
+
+	public void spellCheckMonster(int x, int y) {
+		if (((Spell) this).geteSpell() == ESpell.ACTIVE) {
+			for (IMobile iMobile : level.getMonsters()) {
+				if (iMobile.getPosition().equals(new Point(x, y))) {
+					if ((((Monster) iMobile).isAlive())) {
+						((Monster) iMobile).setAlive(false);
+						((Spell) this).seteSpell(ESpell.INACTIVE);
+					}
+				}
+			}
 		}
 	}
 
 	public void checkLorann(int x, int y) {
-		checkEnnemy(x, y);
+		lorannCheckEnnemy(x, y);
 		checkEnd(x, y);
 		checkEnergyBall(x, y);
 		checkMoney(x, y);
@@ -116,10 +144,12 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
-	public void checkEnnemy(int x, int y) {
+	public void lorannCheckEnnemy(int x, int y) {
 		for (IMobile iMobile : level.getMonsters()) {
-			if (iMobile.getPosition().equals(new Point(x, y))) {
-				this.die();
+			if ((((Monster) iMobile).isAlive())) {
+				if (iMobile.getPosition().equals(new Point(x, y))) {
+					this.die();
+				}
 			}
 		}
 
@@ -166,6 +196,9 @@ public abstract class Character extends Element implements IMobile {
 
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
+		if (isAlive == false) {
+			this.setImage(model.background);
+		}
 	}
 
 	protected void die() {
@@ -211,6 +244,14 @@ public abstract class Character extends Element implements IMobile {
 	@Override
 	public void setLevel(ILevel level) {
 		this.level = level;
+	}
+
+	public ModelFacade getModel() {
+		return model;
+	}
+
+	public void setModel(ModelFacade model) {
+		this.model = model;
 	}
 
 }

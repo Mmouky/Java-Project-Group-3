@@ -62,6 +62,8 @@ public class ViewFacade implements IView {
 			frame.addPawn(monster);
 		}
 
+		frame.addPawn(level.getSpell());
+
 		frame.addPawn(level.getLorann());
 
 		frame.repaint();

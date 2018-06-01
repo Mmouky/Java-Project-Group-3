@@ -20,11 +20,9 @@ import model.element.EnergyBall;
 import model.element.Money;
 import model.element.Monster;
 import model.element.characters.ELorann;
+import model.element.characters.ESpell;
 import model.element.characters.Lorann;
-import model.element.characters.monsters.Monster1;
-import model.element.characters.monsters.Monster2;
-import model.element.characters.monsters.Monster3;
-import model.element.characters.monsters.Monster4;
+import model.element.characters.Spell;
 import model.element.door.Door;
 import model.element.door.EDoor;
 import model.element.wall.EWall;
@@ -64,6 +62,7 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 	public Image purse;
 	public Image vertical_bone;
 
+	private int idLevel = 1;
 	private Boolean up = false;
 	private Boolean left = false;
 	private Boolean right = false;
@@ -148,11 +147,20 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 
 		}
 
-		level.setLorann(new Lorann(6, 3, lorann_b, level, ELorann.NONE, this));
-		level.getMonsters().add(new Monster1(12, 7, monster_1, level));
-		level.getMonsters().add(new Monster2(2, 5, monster_2, level));
-		level.getMonsters().add(new Monster3(10, 7, monster_3, level));
-		level.getMonsters().add(new Monster4(4, 10, monster_4, level));
+		level.setLorann(new Lorann((int) LorannDAO.getLorannPosition(idLevel).getX(),
+				(int) LorannDAO.getLorannPosition(idLevel).getY(), lorann_b, level, ELorann.NONE, this));
+		level.getMonsters().add(new Monster((int) LorannDAO.getMonster1Position(idLevel).getX(),
+				(int) LorannDAO.getMonster1Position(idLevel).getY(), monster_1, level, this));
+		level.getMonsters().add(new Monster((int) LorannDAO.getMonster2Position(idLevel).getX(),
+				(int) LorannDAO.getMonster2Position(idLevel).getY(), monster_2, level, this));
+		level.getMonsters().add(new Monster((int) LorannDAO.getMonster3Position(idLevel).getX(),
+				(int) LorannDAO.getMonster3Position(idLevel).getY(), monster_3, level, this));
+		level.getMonsters().add(new Monster((int) LorannDAO.getMonster4Position(idLevel).getX(),
+				(int) LorannDAO.getMonster4Position(idLevel).getY(), monster_4, level, this));
+
+		level.setSpell(new Spell((int) LorannDAO.getLorannPosition(idLevel).getX(),
+				(int) LorannDAO.getLorannPosition(idLevel).getY(), fireball_1, level, ESpell.INACTIVE,
+				((Lorann) level.getLorann()).getLastMove(), this));
 
 		System.out.println("ca compile");
 
@@ -175,6 +183,10 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 						((Monster) monster).pattern();
 					}
 
+					Spell spell = ((Spell) level.getSpell());
+					if (spell.geteSpell() == ESpell.ACTIVE) {
+						spell.changeSprite();
+					}
 				}
 			}
 		});
@@ -218,7 +230,7 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 	}
 
 	public String readFile(int id) {
-
+		idLevel = id;
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(getEntryById(id)));
 			try {
@@ -268,22 +280,37 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.left = true;
 		}
+
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			Spell spell = ((Spell) level.getSpell());
+			if (spell.geteSpell() == ESpell.INACTIVE) {
+				spell.seteSpell(ESpell.ACTIVE);
+			}
+			spell.setX(level.getLorann().getX());
+			spell.setY(level.getLorann().getY());
+			spell.seteLorann(((Lorann) level.getLorann()).getLastMove());
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+		Lorann lorann = ((Lorann) level.getLorann());
 		if (arg0.getKeyCode() == KeyEvent.VK_UP) {
 			this.up = false;
+			lorann.setLastMove(ELorann.UP);
 		} else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
 			this.down = false;
+			lorann.setLastMove(ELorann.DOWN);
 		} else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
 			this.right = false;
+			lorann.setLastMove(ELorann.RIGHT);
 		} else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.left = false;
+			lorann.setLastMove(ELorann.LEFT);
 		}
 		if (this.up == false && this.down == false && this.right == false && this.left == false) {
-			((Lorann) level.getLorann()).seteLorann(ELorann.NONE);
+			lorann.seteLorann(ELorann.NONE);
 		}
 	}
 

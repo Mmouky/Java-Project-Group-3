@@ -3,12 +3,13 @@ package model.element;
 import java.awt.Image;
 
 import model.ILevel;
+import model.ModelFacade;
 import model.element.characters.Lorann;
 
-public abstract class Monster extends Character {
+public class Monster extends Character {
 
-	public Monster(int x, int y, Image sprite, ILevel level) {
-		super(x, y, sprite, level);
+	public Monster(int x, int y, Image sprite, ILevel level, ModelFacade model) {
+		super(x, y, sprite, level, model);
 	}
 
 	public void pattern() {
