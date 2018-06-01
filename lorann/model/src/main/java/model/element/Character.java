@@ -32,6 +32,8 @@ public abstract class Character extends Element implements IMobile {
 		checkCase(xEl, yEl);
 
 		if (this instanceof Lorann) {
+			checkEnnemy(x, y);
+			checkEnd(x, y);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.UP);
 		}
@@ -43,6 +45,8 @@ public abstract class Character extends Element implements IMobile {
 		int xEl = this.getX();
 		checkCase(xEl, yEl);
 		if (this instanceof Lorann) {
+			checkEnnemy(x, y);
+			checkEnd(x, y);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.DOWN);
 		}
@@ -53,6 +57,8 @@ public abstract class Character extends Element implements IMobile {
 		int xEl = this.getX() - 1;
 		checkCase(xEl, yEl);
 		if (this instanceof Lorann) {
+			checkEnnemy(x, y);
+			checkEnd(x, y);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.LEFT);
 		}
@@ -63,6 +69,8 @@ public abstract class Character extends Element implements IMobile {
 		int xEl = this.getX() + 1;
 		checkCase(xEl, yEl);
 		if (this instanceof Lorann) {
+			checkEnnemy(x, y);
+			checkEnd(x, y);
 			Lorann lorann = (Lorann) this;
 			lorann.seteLorann(ELorann.RIGHT);
 		}
@@ -74,9 +82,6 @@ public abstract class Character extends Element implements IMobile {
 			this.setX(x);
 			checkEnergyBall(x, y);
 			checkMoney(x, y);
-			checkEnnemy(x, y);
-			checkEnd(x, y);
-
 		}
 	}
 
@@ -108,19 +113,19 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
-	public void checkEnd(int x, int y){
-        if ((level.getElements()[x][y] instanceof Door)) {
-            if (((Door) level.getElements()[x][y]).geteDoor() == EDoor.OPEN) {
-                this.win();
-            }
-        }
-    }
+	public void checkEnd(int x, int y) {
+		if ((level.getElements()[x][y] instanceof Door)) {
+			if (((Door) level.getElements()[x][y]).geteDoor() == EDoor.OPEN) {
+				this.win();
+			}
+		}
+	}
 
-    private void win() {
-	    System.out.println("jégagné");
-    }
+	private void win() {
+		System.out.println("jégagné");
+	}
 
-    public void checkMoney(int x, int y) {
+	public void checkMoney(int x, int y) {
 		if (level.getElements()[x][y] instanceof Money) {
 			Money money = (Money) level.getElements()[x][y];
 			if (money.geteBonus() == EBonus.ENABLE) {
