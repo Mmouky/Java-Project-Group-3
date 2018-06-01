@@ -64,6 +64,7 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 	public Image purse;
 	public Image vertical_bone;
 
+	private int idLevel = 1;
 	private Boolean up = false;
 	private Boolean left = false;
 	private Boolean right = false;
@@ -148,11 +149,11 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 
 		}
 
-		level.setLorann(new Lorann(2, 3, lorann_b, level, ELorann.NONE, this));
-		level.getMonsters().add(new Monster1(12, 7, monster_1, level));
-		level.getMonsters().add(new Monster2(2, 5, monster_2, level));
-		level.getMonsters().add(new Monster3(10, 7, monster_3, level));
-		level.getMonsters().add(new Monster4(4, 10, monster_4, level));
+		level.setLorann(new Lorann((int) LorannDAO.getLorannPosition(idLevel).getX(), (int) LorannDAO.getLorannPosition(idLevel).getY(), lorann_b, level, ELorann.NONE, this));
+		level.getMonsters().add(new Monster1((int) LorannDAO.getMonster1Position(idLevel).getX(),(int) LorannDAO.getMonster1Position(idLevel).getY(), monster_1, level));
+		level.getMonsters().add(new Monster2((int) LorannDAO.getMonster2Position(idLevel).getX(),(int) LorannDAO.getMonster2Position(idLevel).getY(), monster_2, level));
+		level.getMonsters().add(new Monster3((int) LorannDAO.getMonster3Position(idLevel).getX(),(int) LorannDAO.getMonster3Position(idLevel).getY(), monster_3, level));
+		level.getMonsters().add(new Monster4((int) LorannDAO.getMonster4Position(idLevel).getX(),(int) LorannDAO.getMonster4Position(idLevel).getY(), monster_4, level));
 
 		System.out.println("ca compile");
 
@@ -218,7 +219,7 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 	}
 
 	public String readFile(int id) {
-
+		idLevel = id;
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(getEntryById(id)));
 			try {

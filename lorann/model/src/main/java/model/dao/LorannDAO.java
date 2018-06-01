@@ -35,6 +35,18 @@ public abstract class LorannDAO extends AbstractDAO {
     /** The sql entry by id. */
     private static String findLorannPosition   = "{call findLorannPosition(?)}";
 
+    /** The sql entry by id. */
+    private static String findMonster1Position   = "{call findMonster1Position(?)}";
+
+    /** The sql entry by id. */
+    private static String findMonster2Position   = "{call findMonster2Position(?)}";
+
+    /** The sql entry by id. */
+    private static String findMonster3Position   = "{call findMonster3Position(?)}";
+
+    /** The sql entry by id. */
+    private static String findMonster4Position   = "{call findMonster4Position(?)}";
+
 
     /** The id column index. */
     private static int    idColumnIndex    = 0;
@@ -74,9 +86,105 @@ public abstract class LorannDAO extends AbstractDAO {
      * @throws SQLException
      *             the SQL exception
      */
+    public static Point getMonster1Position(final int level) throws SQLException {
+        final CallableStatement callStatement = prepareCall(findMonster1Position);
+        Point position = new Point(0,0);
+        callStatement.setInt(1, level);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            if (result.first()) {
+                position.x = result.getInt(1);
+                position.y = result.getInt(2);
+            }
+            result.close();
+        }
+        return position;
+    }
+
+    /**
+     * Gets the lorann's position
+     *
+     * @param level
+     *            the level
+     * @return the lorann's position by level
+     * @throws SQLException
+     *             the SQL exception
+     */
+    public static Point getMonster2Position(final int level) throws SQLException {
+        final CallableStatement callStatement = prepareCall(findMonster2Position);
+        Point position = new Point(0,0);
+        callStatement.setInt(1, level);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            if (result.first()) {
+                position.x = result.getInt(1);
+                position.y = result.getInt(2);
+            }
+            result.close();
+        }
+        return position;
+    }
+
+    /**
+     * Gets the lorann's position
+     *
+     * @param level
+     *            the level
+     * @return the lorann's position by level
+     * @throws SQLException
+     *             the SQL exception
+     */
+    public static Point getMonster3Position(final int level) throws SQLException {
+        final CallableStatement callStatement = prepareCall(findMonster3Position);
+        Point position = new Point(0,0);
+        callStatement.setInt(1, level);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            if (result.first()) {
+                position.x = result.getInt(1);
+                position.y = result.getInt(2);
+            }
+            result.close();
+        }
+        return position;
+    }
+
+    /**
+     * Gets the lorann's position
+     *
+     * @param level
+     *            the level
+     * @return the lorann's position by level
+     * @throws SQLException
+     *             the SQL exception
+     */
+    public static Point getMonster4Position(final int level) throws SQLException {
+        final CallableStatement callStatement = prepareCall(findMonster4Position);
+        Point position = new Point(0,0);
+        callStatement.setInt(1, level);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            if (result.first()) {
+                position.x = result.getInt(1);
+                position.y = result.getInt(2);
+            }
+            result.close();
+        }
+        return position;
+    }
+
+    /**
+     * Gets the lorann's position
+     *
+     * @param level
+     *            the level
+     * @return the lorann's position by level
+     * @throws SQLException
+     *             the SQL exception
+     */
     public static Point getLorannPosition(final int level) throws SQLException {
-        final CallableStatement callStatement = prepareCall(sqlEntryById);
-        Point position = new Point();
+        final CallableStatement callStatement = prepareCall(findLorannPosition);
+        Point position = new Point(0,0);
         callStatement.setInt(1, level);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
