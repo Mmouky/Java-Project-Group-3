@@ -18,7 +18,14 @@ public interface IView {
 	 */
 	void displayMessage(String message);
 
+	/**
+	 * Add an element to the frame
+	 */
 	void addElement();
 
+	/**
+	 * Get the frame
+	 * @return BoardFrame
+	 */
 	BoardFrame getFrame();
 }

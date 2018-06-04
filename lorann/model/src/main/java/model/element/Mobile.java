@@ -18,19 +18,49 @@ import model.element.door.Door;
 import model.element.door.EDoor;
 import model.element.wall.Wall;
 
-public abstract class Character extends Element implements IMobile {
+/**
+ * <h1>The Class Main.</h1>
+ *
+ * @author Group 3
+ * @version 1.0
+ */
 
+public abstract class Mobile extends Element implements IMobile {
+
+	/**
+	 * Is alive
+	 */
 	private boolean isAlive;
+
+	/**
+	 * The model
+	 */
 	private ModelFacade model;
+
+	/**
+	 * The model
+	 */
 	private ILevel level;
 
-	public Character(int x, int y, Image sprite, ILevel level, ModelFacade model) {
+	/**
+	 * Instantiates a mobile
+	 * 
+	 * @param x
+	 * @param y
+	 * @param sprite
+	 * @param level
+	 * @param model
+	 */
+	public Mobile(int x, int y, Image sprite, ILevel level, ModelFacade model) {
 		super(x, y, sprite);
 		this.setModel(model);
 		this.level = level;
 		this.isAlive = true;
 	}
 
+	/**
+	 * Move up
+	 */
 	public void moveUp() {
 
 		int yEl = this.getY() - 1;
@@ -50,6 +80,9 @@ public abstract class Character extends Element implements IMobile {
 
 	}
 
+	/**
+	 * Move Down
+	 */
 	public void moveDown() {
 		int yEl = this.getY() + 1;
 		int xEl = this.getX();
@@ -65,6 +98,9 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Move Left
+	 */
 	public void moveLeft() {
 		int yEl = this.getY();
 		int xEl = this.getX() - 1;
@@ -80,6 +116,9 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Move Right
+	 */
 	public void moveRight() {
 		int yEl = this.getY();
 		int xEl = this.getX() + 1;
@@ -95,6 +134,12 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Monsters check lorann
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void monsterCheckLorann(int x, int y) {
 		if ((((Monster) this).isAlive())) {
 			if (level.getLorann().getPosition().equals(new Point(x, y))) {
@@ -103,6 +148,12 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * The spell check monsters
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void spellCheckMonster(int x, int y) {
 		if (((Spell) this).geteSpell() == ESpell.ACTIVE) {
 			for (IMobile iMobile : level.getMonsters()) {
@@ -117,6 +168,12 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Lorann's check
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void checkLorann(int x, int y) {
 		lorannCheckEnnemy(x, y);
 		checkEnd(x, y);
@@ -124,6 +181,12 @@ public abstract class Character extends Element implements IMobile {
 		checkMoney(x, y);
 	}
 
+	/**
+	 * Check walls
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void checkWall(int x, int y) {
 		if (hasWall(x, y) == false) {
 			this.setY(y);
@@ -131,6 +194,12 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Check energyBall
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void checkEnergyBall(int x, int y) {
 		if (level.getElements()[x][y] instanceof EnergyBall) {
 			EnergyBall ball = ((EnergyBall) level.getElements()[x][y]);
@@ -142,7 +211,7 @@ public abstract class Character extends Element implements IMobile {
 							((Door) element).seteDoor(EDoor.OPEN);
 							ball.seteBonus(EBonus.DISABLE);
 							level.addScore(500);
-							
+
 						}
 					}
 				}
@@ -150,6 +219,12 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Lorann check Ennemy
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void lorannCheckEnnemy(int x, int y) {
 		for (IMobile iMobile : level.getMonsters()) {
 			if ((((Monster) iMobile).isAlive())) {
@@ -166,6 +241,12 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Check end
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void checkEnd(int x, int y) {
 		if ((level.getElements()[x][y] instanceof Door)) {
 			if (((Door) level.getElements()[x][y]).geteDoor() == EDoor.OPEN) {
@@ -174,11 +255,20 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Check win
+	 */
 	private void win() {
 		JOptionPane.showMessageDialog(null, "VICTORY ! SCORE : " + level.getScore());
 		System.exit(0);
 	}
 
+	/**
+	 * Check money
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void checkMoney(int x, int y) {
 		if (level.getElements()[x][y] instanceof Money) {
 			Money money = (Money) level.getElements()[x][y];
@@ -189,6 +279,13 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Has wall
+	 * 
+	 * @param x
+	 * @param y
+	 * @return boolean
+	 */
 	public boolean hasWall(int x, int y) {
 		if (level.getElements()[x][y] instanceof Wall) {
 			return true;
@@ -196,10 +293,20 @@ public abstract class Character extends Element implements IMobile {
 		return false;
 	}
 
+	/**
+	 * Is alive
+	 * 
+	 * @return boolean
+	 */
 	public boolean isAlive() {
 		return isAlive;
 	}
 
+	/**
+	 * Set is alive
+	 * 
+	 * @param isAlive
+	 */
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 		if (isAlive == false) {
@@ -207,6 +314,9 @@ public abstract class Character extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Die
+	 */
 	protected void die() {
 		this.isAlive = false;
 		System.out.println("juimor");
@@ -247,10 +357,20 @@ public abstract class Character extends Element implements IMobile {
 		this.level = level;
 	}
 
+	/**
+	 * Get model
+	 * 
+	 * @return ModelFacade
+	 */
 	public ModelFacade getModel() {
 		return model;
 	}
 
+	/**
+	 * Set model
+	 * 
+	 * @param model
+	 */
 	public void setModel(ModelFacade model) {
 		this.model = model;
 	}

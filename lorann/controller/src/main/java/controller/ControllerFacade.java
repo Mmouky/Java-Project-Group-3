@@ -1,20 +1,15 @@
 package controller;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.*;
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
 
 import model.IModel;
 import view.IView;
-import model.*;
 
 /**
- * <h1>The Class ControllerFacade provides a facade of the Controller
- * component.</h1>
+ * <h1>The Class Main.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Group 3
  * @version 1.0
  */
 public class ControllerFacade implements IController {
@@ -47,7 +42,7 @@ public class ControllerFacade implements IController {
 	 */
 	public void start() throws SQLException, IOException {
 
-		model.getElement(model.readFile(6));
+		model.addElementToLevel(model.readFile(6));
 		view.addElement();
 
 	}
@@ -69,6 +64,5 @@ public class ControllerFacade implements IController {
 	public IModel getModel() {
 		return this.model;
 	}
-
 
 }
