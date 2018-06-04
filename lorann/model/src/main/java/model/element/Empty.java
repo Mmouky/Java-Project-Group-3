@@ -16,8 +16,11 @@ public class Empty extends Element {
 	 * Instantiates a new empty
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			sprite
 	 */
 	public Empty(int x, int y, Image sprite) {
 		super(x, y, sprite);

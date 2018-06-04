@@ -132,6 +132,7 @@ public class Lorann extends Mobile {
 	 * Set the last move of Lorann
 	 * 
 	 * @param lastMove
+	 * 				the last move of Lorann
 	 */
 	public void setLastMove(ELorann lastMove) {
 		this.lastMove = lastMove;

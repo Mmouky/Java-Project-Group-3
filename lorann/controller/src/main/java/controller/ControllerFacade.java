@@ -39,6 +39,8 @@ public class ControllerFacade implements IController {
 	 *
 	 * @throws SQLException
 	 *             the SQL exception
+	 * @throws IOException
+	 *             the IO exception
 	 */
 	public void start() throws SQLException, IOException {
 

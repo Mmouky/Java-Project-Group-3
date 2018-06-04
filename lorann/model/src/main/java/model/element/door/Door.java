@@ -27,10 +27,15 @@ public class Door extends Element {
 	 * Instantiates the door.
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			sprite of the door
 	 * @param eDoor
+	 * 			EDoor of the door
 	 * @param model
+	 * 			The model
 	 */
 	public Door(int x, int y, Image sprite, EDoor eDoor, ModelFacade model) {
 		super(x, y, sprite);
@@ -51,6 +56,7 @@ public class Door extends Element {
 	 * Set the EDoor
 	 * 
 	 * @param eDoor
+	 * 			EDoor of the door
 	 */
 	public void seteDoor(EDoor eDoor) {
 		this.eDoor = eDoor;

@@ -46,10 +46,15 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Instantiates a mobile
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			sprite of a mobile
 	 * @param level
+	 * 			level of the game
 	 * @param model
+	 * 			the model
 	 */
 	public Mobile(int x, int y, Image sprite, ILevel level, ModelFacade model) {
 		super(x, y, sprite);
@@ -138,7 +143,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Monsters check lorann
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 */
 	public void monsterCheckLorann(int x, int y) {
 		if ((((Monster) this).isAlive())) {
@@ -152,7 +159,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * The spell check monsters
 	 * 
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 */
 	public void spellCheckMonster(int x, int y) {
 		if (((Spell) this).geteSpell() == ESpell.ACTIVE) {
@@ -170,9 +179,11 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/**
 	 * Lorann's check
-	 * 
+	 *
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 */
 	public void checkLorann(int x, int y) {
 		lorannCheckEnnemy(x, y);
@@ -183,9 +194,11 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/**
 	 * Check walls
-	 * 
+	 *
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 */
 	public void checkWall(int x, int y) {
 		if (hasWall(x, y) == false) {
@@ -196,9 +209,11 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/**
 	 * Check energyBall
-	 * 
+	 *
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 */
 	public void checkEnergyBall(int x, int y) {
 		if (level.getElements()[x][y] instanceof EnergyBall) {
@@ -221,9 +236,11 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/**
 	 * Lorann check Ennemy
-	 * 
+	 *
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 */
 	public void lorannCheckEnnemy(int x, int y) {
 		for (IMobile iMobile : level.getMonsters()) {
@@ -243,9 +260,11 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/**
 	 * Check end
-	 * 
+	 *
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 */
 	public void checkEnd(int x, int y) {
 		if ((level.getElements()[x][y] instanceof Door)) {
@@ -265,9 +284,11 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/**
 	 * Check money
-	 * 
+	 *
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 */
 	public void checkMoney(int x, int y) {
 		if (level.getElements()[x][y] instanceof Money) {
@@ -281,9 +302,11 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/**
 	 * Has wall
-	 * 
+	 *
 	 * @param x
+	 * 	 		position x
 	 * @param y
+	 * 	 		position y
 	 * @return boolean
 	 */
 	public boolean hasWall(int x, int y) {
@@ -306,6 +329,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Set is alive
 	 * 
 	 * @param isAlive
+	 * 				check if the mobile is alive
 	 */
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
@@ -370,6 +394,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Set model
 	 * 
 	 * @param model
+	 * 				the model
 	 */
 	public void setModel(ModelFacade model) {
 		this.model = model;

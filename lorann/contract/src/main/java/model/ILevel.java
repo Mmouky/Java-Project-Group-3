@@ -14,6 +14,7 @@ public interface ILevel {
 	 * Get the score
 	 * 
 	 * @return int
+	 * 			  the score
 	 */
 	int getScore();
 
@@ -21,6 +22,7 @@ public interface ILevel {
 	 * Set the score
 	 * 
 	 * @param score
+	 * 				the score
 	 */
 	void setScore(int score);
 
@@ -28,6 +30,7 @@ public interface ILevel {
 	 * Add a score
 	 * 
 	 * @param score
+	 * 				the score
 	 */
 	void addScore(int score);
 
@@ -35,6 +38,7 @@ public interface ILevel {
 	 * Get elements of the level
 	 * 
 	 * @return
+	 * 		  the array of the element of the level
 	 */
 	IElement[][] getElements();
 
@@ -42,6 +46,7 @@ public interface ILevel {
 	 * Set elements of the level
 	 * 
 	 * @param elements
+	 * 					set the element of the level
 	 */
 	void setElements(IElement[][] elements);
 
@@ -49,6 +54,7 @@ public interface ILevel {
 	 * Add elements on the level
 	 * 
 	 * @param element
+	 *                add the element to the level
 	 */
 	void addElements(IElement element);
 
@@ -56,6 +62,7 @@ public interface ILevel {
 	 * Get Lorann
 	 * 
 	 * @return IMobile
+	 * 				   get Lorann
 	 */
 	IMobile getLorann();
 
@@ -63,6 +70,7 @@ public interface ILevel {
 	 * Set Lorann
 	 * 
 	 * @param lorann
+	 * 				 set Lorann
 	 */
 	void setLorann(IMobile lorann);
 
@@ -70,6 +78,7 @@ public interface ILevel {
 	 * Get Spell
 	 * 
 	 * @return IMobile
+	 * 					get spells
 	 */
 	IMobile getSpell();
 
@@ -77,19 +86,17 @@ public interface ILevel {
 	 * Set spell
 	 * 
 	 * @param spell
+	 * 				set spells
 	 */
 	void setSpell(IMobile spell);
 
-	/**
-	 * Get monsters
-	 * 
-	 * @return ArrayList<IMobile>
-	 */
+
 	ArrayList<IMobile> getMonsters();
 
 	/**
 	 * Set monsters
 	 * @param monsters
+	 * 				   set Mosnters
 	 */
 	void setMonsters(ArrayList<IMobile> monsters);
 }

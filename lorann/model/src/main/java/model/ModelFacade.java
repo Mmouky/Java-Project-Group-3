@@ -166,6 +166,9 @@ public final class ModelFacade extends Observable implements IModel {
 
 	/**
 	 * Instantiates a new model facade.
+	 *
+	 * @param level
+	 * 				the level of the game
 	 */
 	public ModelFacade(ILevel level) {
 		this.level = level;
@@ -218,6 +221,7 @@ public final class ModelFacade extends Observable implements IModel {
 	 * Add elements to the level
 	 * 
 	 * @param txt
+	 * 			level file
 	 */
 	public void addElementToLevel(String txt) throws SQLException, IOException {
 
@@ -337,6 +341,7 @@ public final class ModelFacade extends Observable implements IModel {
 	 * Read the file of the level on the database
 	 * 
 	 * @param id
+	 * 			id of the level
 	 */
 	public String readFile(int id) {
 		idLevel = id;
@@ -376,9 +381,12 @@ public final class ModelFacade extends Observable implements IModel {
 	 * Get sprite
 	 * 
 	 * @param def
+	 * 			name of the sprite
 	 * @return image
 	 * @throws IOException
+	 * 				the IO exception
 	 * @throws SQLException
+	 * 				the SQL exception
 	 */
 	public Image getSprite(String def) throws IOException, SQLException {
 		InputStream is = new BufferedInputStream(getSpriteByName(def));

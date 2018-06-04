@@ -35,6 +35,7 @@ public interface IModel extends KeyListener {
 	 * Read the file of the level on the database
 	 * 
 	 * @param i
+	 * 			param i
 	 * @return String
 	 */
 	String readFile(int i);
@@ -43,8 +44,11 @@ public interface IModel extends KeyListener {
 	 * Add elements to the level
 	 * 
 	 * @param o
+	 * 			param o
 	 * @throws SQLException
+     *          exception
 	 * @throws IOException
+     *          exception
 	 */
 	void addElementToLevel(String o) throws SQLException, IOException;
 
@@ -52,6 +56,7 @@ public interface IModel extends KeyListener {
 	 * Get Level
 	 * 
 	 * @return ILevel
+	 * 				  get the level
 	 */
 	ILevel getLevel();
 
@@ -59,6 +64,7 @@ public interface IModel extends KeyListener {
 	 * Set the level
 	 * 
 	 * @param level
+	 * 				set the level
 	 */
 	void setLevel(ILevel level);
 
@@ -66,27 +72,30 @@ public interface IModel extends KeyListener {
 	 * Get the background sprite
 	 * 
 	 * @return Image
-	 */
+	 * 				get the Image	 */
 	public Image getBackground();
 
 	/**
 	 * Set the background sprite
 	 * 
 	 * @param background
-	 */
+	 * 				set the Image
+	 * */
 	public void setBackground(Image background);
 
 	/**
 	 * Get the corner wall sprite
 	 * 
 	 * @return Image
+	 * 				get the corner
 	 */
 	public Image getBone();
 
 	/**
 	 * Set the corner wall sprite
 	 * 
-	 * @param background
+	 * @param bone
+	 * 					set the corner
 	 */
 	public void setBone(Image bone);
 
@@ -94,13 +103,15 @@ public interface IModel extends KeyListener {
 	 * Get the crystal ball sprite
 	 * 
 	 * @return Image
+	 * 				get the crystal
 	 */
 	public Image getCrystal_ball();
 
 	/**
 	 * Set the crystal ball sprite
 	 * 
-	 * @param background
+	 * @param crystal_ball
+	 *               set the crystal
 	 */
 	public void setCrystal_ball(Image crystal_ball);
 
@@ -108,13 +119,15 @@ public interface IModel extends KeyListener {
 	 * Get the fireball sprite 1
 	 * 
 	 * @return Image
+	 * 				get the fireball 1
 	 */
 	public Image getFireball_1();
 
 	/**
 	 * Set the fireball sprite 1
 	 * 
-	 * @param background
+	 * @param fireball_1
+	 *             set the fireball 1
 	 */
 	public void setFireball_1(Image fireball_1);
 
@@ -122,13 +135,15 @@ public interface IModel extends KeyListener {
 	 * Get the fireball sprite 2
 	 * 
 	 * @return Image
+	 * 				get the fireball 2
 	 */
 	public Image getFireball_2();
 
 	/**
 	 * Set the fireball sprite 2
 	 * 
-	 * @param background
+	 * @param fireball_2
+	 * 				set the fireball 2
 	 */
 	public void setFireball_2(Image fireball_2);
 
@@ -136,13 +151,15 @@ public interface IModel extends KeyListener {
 	 * Get the fireball sprite 3
 	 * 
 	 * @return Image
+	 * 				get the fireball 3
 	 */
 	public Image getFireball_3();
 
 	/**
 	 * Set the fireball sprite 3
 	 * 
-	 * @param background
+	 * @param fireball_3
+	 * 				set the fireball 3
 	 */
 	public void setFireball_3(Image fireball_3);
 
@@ -150,13 +167,15 @@ public interface IModel extends KeyListener {
 	 * Get the fireball sprite 4
 	 * 
 	 * @return Image
+	 * 				get the fireball 4
 	 */
 	public Image getFireball_4();
 
 	/**
 	 * Set the fireball sprite 4
 	 * 
-	 * @param background
+	 * @param fireball_4
+	 * 				set the fireball 4
 	 */
 	public void setFireball_4(Image fireball_4);
 
@@ -164,13 +183,15 @@ public interface IModel extends KeyListener {
 	 * Get the fireball sprite 5
 	 * 
 	 * @return Image
+	 * 				 return the fireball 5
 	 */
 	public Image getFireball_5();
 
 	/**
 	 * Set the fireball sprite 5
 	 * 
-	 * @param background
+	 * @param fireball_5
+	 * 				set the fireball 5
 	 */
 	public void setFireball_5(Image fireball_5);
 
@@ -178,13 +199,15 @@ public interface IModel extends KeyListener {
 	 * Get the closed gate sprite
 	 * 
 	 * @return Image
+	 * 				Get the closed gate sprite
 	 */
 	public Image getGate_closed();
 
 	/**
 	 * Set the closed gate sprite
 	 * 
-	 * @param background
+	 * @param gate_closed
+	 * 				Set the closed gate sprite
 	 */
 	public void setGate_closed(Image gate_closed);
 
@@ -192,13 +215,15 @@ public interface IModel extends KeyListener {
 	 * Get the opened gate sprite
 	 * 
 	 * @return Image
+	 * 				Get the opened gate sprite
 	 */
 	public Image getGate_open();
 
 	/**
 	 * Set the opened gate sprite
 	 * 
-	 * @param background
+	 * @param gate_open
+	 * 				Set the opened gate sprite
 	 */
 	public void setGate_open(Image gate_open);
 
@@ -206,13 +231,15 @@ public interface IModel extends KeyListener {
 	 * Get the horizontal wall sprite
 	 * 
 	 * @return Image
+	 * 				 Get the horizontal sprite
 	 */
 	public Image getHorizontal_bone();
 
 	/**
 	 * Set the horizontal wall sprite
 	 * 
-	 * @param background
+	 * @param horizontal_bone
+	 * 				Set the horizontal wall sprite
 	 */
 	public void setHorizontal_bone(Image horizontal_bone);
 
@@ -220,13 +247,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann down sprite
 	 * 
 	 * @return Image
+	 *     			 Get the Lorann down sprite
 	 */
 	public Image getLorann_b();
 
 	/**
 	 * Set the Lorann down sprite
 	 * 
-	 * @param background
+	 * @param lorann_b
+	 * 				Set the Lorann down sprite
 	 */
 	public void setLorann_b(Image lorann_b);
 
@@ -234,13 +263,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann down-left sprite
 	 * 
 	 * @return Image
+	 * 				Get the Lorann down-left sprite
 	 */
 	public Image getLorann_bl();
 
 	/**
 	 * Set the Lorann down-left sprite
 	 * 
-	 * @param background
+	 * @param lorann_bl
+	 * 				Set the Lorann down-left sprite
 	 */
 	public void setLorann_bl(Image lorann_bl);
 
@@ -248,13 +279,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann down-right sprite
 	 * 
 	 * @return Image
+	 *				Get the Lorann down-right sprite
 	 */
 	public Image getLorann_br();
 
 	/**
 	 * Set the Lorann down-right sprite
 	 * 
-	 * @param background
+	 * @param lorann_br
+	 * 				Set the Lorann down-right sprite
 	 */
 	public void setLorann_br(Image lorann_br);
 
@@ -262,13 +295,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann left sprite
 	 * 
 	 * @return Image
+	 * 				Get the Lorann left sprite
 	 */
 	public Image getLorann_l();
 
 	/**
 	 * Set the Lorann left sprite
 	 * 
-	 * @param background
+	 * @param lorann_l
+	 * 				Set the Lorann left sprite
 	 */
 	public void setLorann_l(Image lorann_l);
 
@@ -276,13 +311,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann right sprite
 	 * 
 	 * @return Image
+	 * 				 Get the Lorann right sprite
 	 */
 	public Image getLorann_r();
 
 	/**
 	 * Set the Lorann right sprite
 	 * 
-	 * @param background
+	 * @param lorann_r
+	 * 				Set the Lorann right sprite
 	 */
 	public void setLorann_r(Image lorann_r);
 
@@ -290,13 +327,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann up sprite
 	 * 
 	 * @return Image
+	 * 				Get the Lorann up sprite
 	 */
 	public Image getLorann_u();
 
 	/**
 	 * Set the Lorann up sprite
 	 * 
-	 * @param background
+	 * @param lorann_u
+	 * 				Set the Lorann up sprite
 	 */
 	public void setLorann_u(Image lorann_u);
 
@@ -304,13 +343,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann up-left sprite
 	 * 
 	 * @return Image
+	 * 				Get the Lorann up-left sprite
 	 */
 	public Image getLorann_ul();
 
 	/**
 	 * Set the Lorann up-left sprite
 	 * 
-	 * @param background
+	 * @param lorann_ul
+	 * 				Set the Lorann up-left sprite
 	 */
 	public void setLorann_ul(Image lorann_ul);
 
@@ -318,13 +359,15 @@ public interface IModel extends KeyListener {
 	 * Get the Lorann up-right sprite
 	 * 
 	 * @return Image
+	 * 				Get the Lorann up-right sprite
 	 */
 	public Image getLorann_ur();
 
 	/**
 	 * Set the Lorann up-right sprite
 	 * 
-	 * @param background
+	 * @param lorann_ur
+	 * 				Set the Lorann up-right sprite
 	 */
 	public void setLorann_ur(Image lorann_ur);
 
@@ -332,13 +375,15 @@ public interface IModel extends KeyListener {
 	 * Get the Monster sprite 1
 	 * 
 	 * @return Image
+	 * 				Get the Monster sprite 1
 	 */
 	public Image getMonster_1();
 
 	/**
 	 * Set the Monster sprite 1
 	 * 
-	 * @param background
+	 * @param monster_1
+	 * 				Set the Monster sprite 1
 	 */
 	public void setMonster_1(Image monster_1);
 
@@ -346,13 +391,15 @@ public interface IModel extends KeyListener {
 	 * Get the Monster sprite 2
 	 * 
 	 * @return Image
+	 * 				Get the Monster sprite 2
 	 */
 	public Image getMonster_2();
 
 	/**
 	 * Set the Monster sprite 2
 	 * 
-	 * @param background
+	 * @param monster_2
+	 * 				Set the Monster sprite 2
 	 */
 	public void setMonster_2(Image monster_2);
 
@@ -360,13 +407,15 @@ public interface IModel extends KeyListener {
 	 * Get the Monster sprite 3
 	 * 
 	 * @return Image
+	 * 				 Get the Monster sprite 3
 	 */
 	public Image getMonster_3();
 
 	/**
 	 * Set the Monster sprite 3
 	 * 
-	 * @param background
+	 * @param monster_3
+	 * 				Set the Monster sprite 3
 	 */
 	public void setMonster_3(Image monster_3);
 
@@ -374,13 +423,15 @@ public interface IModel extends KeyListener {
 	 * Get the Monster sprite 4
 	 * 
 	 * @return Image
+	 * 				Get the Monster sprite 4
 	 */
 	public Image getMonster_4();
 
 	/**
 	 * Set the Monster sprite 4
-	 * 
-	 * @param background
+	 *
+	 * @param monster_4
+	 *  			Set the Monster sprite 4
 	 */
 	public void setMonster_4(Image monster_4);
 
@@ -388,13 +439,15 @@ public interface IModel extends KeyListener {
 	 * Get the money sprite
 	 * 
 	 * @return Image
+	 * 				Get the money sprite
 	 */
 	public Image getPurse();
 
 	/**
 	 * Set the money sprite
 	 * 
-	 * @param background
+	 * @param purse
+	 *				Set the money sprite
 	 */
 	public void setPurse(Image purse);
 
@@ -402,13 +455,15 @@ public interface IModel extends KeyListener {
 	 * Get the vertical wall sprite
 	 * 
 	 * @return Image
+	 * 				Get the vertical wall sprite
 	 */
 	public Image getVertical_bone();
 
 	/**
 	 * Set the vertical wall sprite
 	 * 
-	 * @param background
+	 * @param vertical_bone
+	 * 				Set the vertical wall sprite
 	 */
 	public void setVertical_bone(Image vertical_bone);
 

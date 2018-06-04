@@ -21,9 +21,13 @@ public class Wall extends Element {
 	 * Instantiates a wall
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			sprite of a wall
 	 * @param eWall
+	 * 			EWall of the wall
 	 */
 	public Wall(int x, int y, Image sprite, EWall eWall) {
 		super(x, y, sprite);
