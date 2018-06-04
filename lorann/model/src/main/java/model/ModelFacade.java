@@ -29,51 +29,144 @@ import model.element.wall.EWall;
 import model.element.wall.Wall;
 
 /**
- * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
+ * <h1>The Class Main.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Group 3
  * @version 1.0
  */
-public final class ModelFacade extends Observable implements IModel, KeyListener {
+public final class ModelFacade extends Observable implements IModel {
 
+	/**
+	 * The background sprite
+	 */
 	public Image background;
+	/**
+	 * The corner wall sprite
+	 */
 	public Image bone;
+	/**
+	 * The crystal ball sprite
+	 */
 	public Image crystal_ball;
+	/**
+	 * The fireball sprite 1
+	 */
 	public Image fireball_1;
+	/**
+	 * The fireball sprite 2
+	 */
 	public Image fireball_2;
+	/**
+	 * The fireball sprite 3
+	 */
 	public Image fireball_3;
+	/**
+	 * The fireball sprite 4
+	 */
 	public Image fireball_4;
+	/**
+	 * The fireball sprite 5
+	 */
 	public Image fireball_5;
+	/**
+	 * The gate closed sprite
+	 */
 	public Image gate_closed;
+	/**
+	 * The gate opened sprite
+	 */
 	public Image gate_open;
+	/**
+	 * The horizontal wall sprite
+	 */
 	public Image horizontal_bone;
+	/**
+	 * The Lorann down sprite
+	 */
 	public Image lorann_b;
+	/**
+	 * The Lorann right sprite
+	 */
 	public Image lorann_r;
+	/**
+	 * The Lorann down-left sprite
+	 */
 	public Image lorann_bl;
+	/**
+	 * The Lorann down-right sprite
+	 */
 	public Image lorann_br;
+	/**
+	 * The Lorann left sprite
+	 */
 	public Image lorann_l;
+	/**
+	 * The Lorann up sprite
+	 */
 	public Image lorann_u;
+	/**
+	 * The Lorann up-left sprite
+	 */
 	public Image lorann_ul;
+	/**
+	 * The Lorann up-right sprite
+	 */
 	public Image lorann_ur;
+	/**
+	 * The monster 1 sprite
+	 */
 	public Image monster_1;
+	/**
+	 * The monster 2 sprite
+	 */
 	public Image monster_2;
+	/**
+	 * The monster 3 sprite
+	 */
 	public Image monster_3;
+	/**
+	 * The monster 4 sprite
+	 */
 	public Image monster_4;
+	/**
+	 * The money sprite
+	 */
 	public Image purse;
+	/**
+	 * The vertical wall sprite
+	 */
 	public Image vertical_bone;
 
+	/**
+	 * The level id
+	 */
 	private int idLevel = 1;
+
+	/**
+	 * Move up boolean
+	 */
 	private Boolean up = false;
+	/**
+	 * Move left boolean
+	 */
 	private Boolean left = false;
+	/**
+	 * Move right boolean
+	 */
 	private Boolean right = false;
+	/**
+	 * Move down boolean
+	 */
 	private Boolean down = false;
+
+	/**
+	 * The level
+	 */
+	private ILevel level;
 
 	/**
 	 * Instantiates a new model facade.
 	 */
-
-	private ILevel level;
-
 	public ModelFacade(ILevel level) {
 		this.level = level;
 		try {
@@ -121,7 +214,12 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 		return LorannDAO.getEntryById(id).getBinaryStream();
 	}
 
-	public void getElement(String txt) throws SQLException, IOException {
+	/**
+	 * Add elements to the level
+	 * 
+	 * @param txt
+	 */
+	public void addElementToLevel(String txt) throws SQLException, IOException {
 
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 20; j++) {
@@ -168,6 +266,9 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 
 	}
 
+	/**
+	 * Refresh panel
+	 */
 	public void refresh() {
 		Thread t = new Thread(new Runnable() {
 
@@ -231,6 +332,12 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 
 	}
 
+	/**
+	 * 
+	 * Read the file of the level on the database
+	 * 
+	 * @param id
+	 */
 	public String readFile(int id) {
 		idLevel = id;
 		try {
@@ -265,6 +372,14 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 		return LorannDAO.getSpriteByName(def).getBinaryStream();
 	}
 
+	/**
+	 * Get sprite
+	 * 
+	 * @param def
+	 * @return image
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public Image getSprite(String def) throws IOException, SQLException {
 		InputStream is = new BufferedInputStream(getSpriteByName(def));
 		Image image = ImageIO.read(is);
@@ -332,202 +447,252 @@ public final class ModelFacade extends Observable implements IModel, KeyListener
 		return level;
 	}
 
+	@Override
 	public Image getBackground() {
 		return background;
 	}
 
+	@Override
 	public void setBackground(Image background) {
 		this.background = background;
 	}
 
+	@Override
 	public Image getBone() {
 		return bone;
 	}
 
+	@Override
 	public void setBone(Image bone) {
 		this.bone = bone;
 	}
 
+	@Override
 	public Image getCrystal_ball() {
 		return crystal_ball;
 	}
 
+	@Override
 	public void setCrystal_ball(Image crystal_ball) {
 		this.crystal_ball = crystal_ball;
 	}
 
+	@Override
 	public Image getFireball_1() {
 		return fireball_1;
 	}
 
+	@Override
 	public void setFireball_1(Image fireball_1) {
 		this.fireball_1 = fireball_1;
 	}
 
+	@Override
 	public Image getFireball_2() {
 		return fireball_2;
 	}
 
+	@Override
 	public void setFireball_2(Image fireball_2) {
 		this.fireball_2 = fireball_2;
 	}
 
+	@Override
 	public Image getFireball_3() {
 		return fireball_3;
 	}
 
+	@Override
 	public void setFireball_3(Image fireball_3) {
 		this.fireball_3 = fireball_3;
 	}
 
+	@Override
 	public Image getFireball_4() {
 		return fireball_4;
 	}
 
+	@Override
 	public void setFireball_4(Image fireball_4) {
 		this.fireball_4 = fireball_4;
 	}
 
+	@Override
 	public Image getFireball_5() {
 		return fireball_5;
 	}
 
+	@Override
 	public void setFireball_5(Image fireball_5) {
 		this.fireball_5 = fireball_5;
 	}
 
+	@Override
 	public Image getGate_closed() {
 		return gate_closed;
 	}
 
+	@Override
 	public void setGate_closed(Image gate_closed) {
 		this.gate_closed = gate_closed;
 	}
 
+	@Override
 	public Image getGate_open() {
 		return gate_open;
 	}
 
+	@Override
 	public void setGate_open(Image gate_open) {
 		this.gate_open = gate_open;
 	}
 
+	@Override
 	public Image getHorizontal_bone() {
 		return horizontal_bone;
 	}
 
+	@Override
 	public void setHorizontal_bone(Image horizontal_bone) {
 		this.horizontal_bone = horizontal_bone;
 	}
 
+	@Override
 	public Image getLorann_b() {
 		return lorann_b;
 	}
 
+	@Override
 	public void setLorann_b(Image lorann_b) {
 		this.lorann_b = lorann_b;
 	}
 
+	@Override
 	public Image getLorann_r() {
 		return lorann_r;
 	}
 
+	@Override
 	public void setLorann_r(Image lorann_r) {
 		this.lorann_r = lorann_r;
 	}
 
+	@Override
 	public Image getLorann_bl() {
 		return lorann_bl;
 	}
 
+	@Override
 	public void setLorann_bl(Image lorann_bl) {
 		this.lorann_bl = lorann_bl;
 	}
 
+	@Override
 	public Image getLorann_br() {
 		return lorann_br;
 	}
 
+	@Override
 	public void setLorann_br(Image lorann_br) {
 		this.lorann_br = lorann_br;
 	}
 
+	@Override
 	public Image getLorann_l() {
 		return lorann_l;
 	}
 
+	@Override
 	public void setLorann_l(Image lorann_l) {
 		this.lorann_l = lorann_l;
 	}
 
+	@Override
 	public Image getLorann_u() {
 		return lorann_u;
 	}
 
+	@Override
 	public void setLorann_u(Image lorann_u) {
 		this.lorann_u = lorann_u;
 	}
 
+	@Override
 	public Image getLorann_ul() {
 		return lorann_ul;
 	}
 
+	@Override
 	public void setLorann_ul(Image lorann_ul) {
 		this.lorann_ul = lorann_ul;
 	}
 
+	@Override
 	public Image getLorann_ur() {
 		return lorann_ur;
 	}
 
+	@Override
 	public void setLorann_ur(Image lorann_ur) {
 		this.lorann_ur = lorann_ur;
 	}
 
+	@Override
 	public Image getMonster_1() {
 		return monster_1;
 	}
 
+	@Override
 	public void setMonster_1(Image monster_1) {
 		this.monster_1 = monster_1;
 	}
 
+	@Override
 	public Image getMonster_2() {
 		return monster_2;
 	}
 
+	@Override
 	public void setMonster_2(Image monster_2) {
 		this.monster_2 = monster_2;
 	}
 
+	@Override
 	public Image getMonster_3() {
 		return monster_3;
 	}
 
+	@Override
 	public void setMonster_3(Image monster_3) {
 		this.monster_3 = monster_3;
 	}
 
+	@Override
 	public Image getMonster_4() {
 		return monster_4;
 	}
 
+	@Override
 	public void setMonster_4(Image monster_4) {
 		this.monster_4 = monster_4;
 	}
 
+	@Override
 	public Image getPurse() {
 		return purse;
 	}
 
+	@Override
 	public void setPurse(Image purse) {
 		this.purse = purse;
 	}
 
+	@Override
 	public Image getVertical_bone() {
 		return vertical_bone;
 	}
 
+	@Override
 	public void setVertical_bone(Image vertical_bone) {
 		this.vertical_bone = vertical_bone;
 	}

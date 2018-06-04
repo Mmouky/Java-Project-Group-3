@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * <h1>The Class BoulderDashBDDConnector.</h1>
+ * <h1>The Class Main.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Group 3
  * @version 1.0
  */
 final class LorannBDDConnector {

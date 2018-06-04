@@ -4,6 +4,12 @@ import java.awt.Point;
 
 import showboard.IPawn;
 
+/**
+ * <h1>The Class Main.</h1>
+ *
+ * @author Group 3
+ * @version 1.0
+ */
 public interface IMobile extends IPawn, IElement {
 
 	/**
@@ -42,8 +48,8 @@ public interface IMobile extends IPawn, IElement {
 	@Override
 	int getY();
 
-
 	ILevel getLevel();
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -52,6 +58,11 @@ public interface IMobile extends IPawn, IElement {
 	@Override
 	Point getPosition();
 
+	/**
+	 * Set the level
+	 * 
+	 * @param level
+	 */
 	void setLevel(ILevel level);
 
 }

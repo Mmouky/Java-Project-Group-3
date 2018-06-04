@@ -1,7 +1,14 @@
 package model.element;
 
 public enum EBonus {
-	
-	ENABLE , DISABLE
+	/**
+	 * Set the bonus enabled
+	 */
+	ENABLE,
+
+	/**
+	 * Set the bonus disabled
+	 */
+	DISABLE
 
 }
