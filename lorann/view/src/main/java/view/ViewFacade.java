@@ -11,18 +11,28 @@ import model.IMobile;
 import showboard.BoardFrame;
 
 /**
- * <h1>The Class ViewFacade provides a facade of the View component.</h1>
+ * <h1>The Class Main.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Group 3
  * @version 1.0
  */
 public class ViewFacade implements IView {
 
+	/**
+	 * The frame
+	 */
 	private BoardFrame frame;
+
+	/**
+	 * The level
+	 */
 	private ILevel level;
 
 	/**
 	 * Instantiates a new view facade.
+	 * 
+	 * @param level
+	 *            the level
 	 */
 	public ViewFacade(final ILevel level) {
 		frame = new BoardFrame("Lorann");
@@ -44,6 +54,11 @@ public class ViewFacade implements IView {
 		return frame;
 	}
 
+	/**
+	 * Set the frame
+	 * 
+	 * @param frame
+	 */
 	public void setFrame(BoardFrame frame) {
 		this.frame = frame;
 	}

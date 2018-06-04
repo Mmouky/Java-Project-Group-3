@@ -4,27 +4,52 @@ import java.awt.Image;
 
 import model.ILevel;
 import model.ModelFacade;
-import model.element.Character;
+import model.element.Mobile;
 
-public class Lorann extends Character {
+/**
+ * <h1>The Class Main.</h1>
+ *
+ * @author Group 3
+ * @version 1.0
+ */
 
+public class Lorann extends Mobile {
+
+	/**
+	 * The movement of Lorann
+	 */
 	private ELorann eLorann;
+
+	/**
+	 * The last movement of Lorann
+	 */
 	private ELorann lastMove;
+
+	/**
+	 * The model
+	 */
 	private ModelFacade model;
 
+	/**
+	 * Instantiates a new Lorann.
+	 * 
+	 * @param x
+	 *            the position x
+	 * @param y
+	 *            the position y
+	 * @param sprite
+	 *            the sprite
+	 * @param level
+	 *            the level
+	 * @param eLorann
+	 *            the ELorann
+	 * @param model
+	 *            the model
+	 */
 	public Lorann(int x, int y, Image sprite, ILevel level, ELorann eLorann, ModelFacade model) {
 		super(x, y, sprite, level, model);
 		this.model = model;
 		this.seteLorann(eLorann);
-	}
-
-	public void attack() {
-
-	}
-
-	@Override
-	protected void die() {
-		super.die();
 	}
 
 	@Override
@@ -32,10 +57,22 @@ public class Lorann extends Character {
 		return "Lorann";
 	}
 
+	/**
+	 * Get the ELorann
+	 * 
+	 * @return ELorann
+	 */
 	public ELorann geteLorann() {
 		return eLorann;
 	}
 
+	/**
+	 * Set the ELorann
+	 * 
+	 * @param eLorann
+	 *            the ELorann
+	 * 
+	 */
 	public void seteLorann(ELorann eLorann) {
 		this.eLorann = eLorann;
 
@@ -58,6 +95,9 @@ public class Lorann extends Character {
 		}
 	}
 
+	/**
+	 * Change the sprite for the Lorann rotation
+	 */
 	public void changeSprite() {
 		if (this.getImage().equals(model.lorann_b)) {
 			this.setImage(model.lorann_bl);
@@ -78,10 +118,21 @@ public class Lorann extends Character {
 		}
 	}
 
+	/**
+	 * 
+	 * Get the last move of Lorann
+	 * 
+	 * @return ELorann
+	 */
 	public ELorann getLastMove() {
 		return lastMove;
 	}
 
+	/**
+	 * Set the last move of Lorann
+	 * 
+	 * @param lastMove
+	 */
 	public void setLastMove(ELorann lastMove) {
 		this.lastMove = lastMove;
 	}

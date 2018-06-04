@@ -5,11 +5,32 @@ import java.awt.Image;
 import model.Element;
 import model.ModelFacade;
 
+/**
+ * <h1>The Class Main.</h1>
+ *
+ * @author Group 3
+ * @version 1.0
+ */
 public class EnergyBall extends Element {
 
+	/**
+	 * The EBonus
+	 */
 	private EBonus eBonus;
+	/**
+	 * The model
+	 */
 	private ModelFacade model;
 
+	/**
+	 * Instantiates the energy ball
+	 * 
+	 * @param x
+	 * @param y
+	 * @param sprite
+	 * @param eBonus
+	 * @param model
+	 */
 	public EnergyBall(int x, int y, Image sprite, EBonus eBonus, ModelFacade model) {
 		super(x, y, sprite);
 		this.model = model;
@@ -21,10 +42,20 @@ public class EnergyBall extends Element {
 		return "EnergyBall";
 	}
 
+	/**
+	 * Get the EBonus
+	 * 
+	 * @return EBonus
+	 */
 	public EBonus geteBonus() {
 		return eBonus;
 	}
 
+	/**
+	 * Set the EBonus
+	 * 
+	 * @param eBonus
+	 */
 	public void seteBonus(EBonus eBonus) {
 		this.eBonus = eBonus;
 		if (eBonus == EBonus.ENABLE) {
