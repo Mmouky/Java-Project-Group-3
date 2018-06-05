@@ -168,8 +168,6 @@ public final class ModelFacade extends Observable implements IModel {
 	/**
 	 * Instantiates a new model facade.
 	 *
-	 * @param level
-	 *            the level of the game
 	 */
 	public ModelFacade() {
 		this.level = new Level();
@@ -418,7 +416,7 @@ public final class ModelFacade extends Observable implements IModel {
 
 					@Override
 					public void run() {
-						Sound shoot = new Sound("..\\..\\lorann\\sounds\\3535.wav");
+						Sound shoot = new Sound("lorann//sounds//spell.wav");
 						InputStream is = new ByteArrayInputStream(shoot.getSamples());
 						shoot.play(is);
 					}
