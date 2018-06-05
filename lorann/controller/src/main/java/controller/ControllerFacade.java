@@ -42,9 +42,9 @@ public class ControllerFacade implements IController {
 	 * @throws IOException
 	 *             the IO exception
 	 */
-	public void start() throws SQLException, IOException {
+	public void start(int level) throws SQLException, IOException {
 
-		model.addElementToLevel(model.readFile(6));
+		model.addElementToLevel(model.readFile(level));
 		view.addElement();
 
 	}

@@ -49,7 +49,6 @@ public class Level implements ILevel {
 	@Override
 	public void addScore(int score) {
 		this.score += score;
-		System.out.println(this.score);
 	}
 
 	@Override

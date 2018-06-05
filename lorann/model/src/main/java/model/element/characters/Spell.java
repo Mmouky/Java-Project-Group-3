@@ -111,7 +111,6 @@ public class Spell extends Mobile {
 		} else if (eLorann == ELorann.RIGHT) {
 			moveLeft();
 		}
-		System.out.println(eLorann);
 	}
 
 	/**
