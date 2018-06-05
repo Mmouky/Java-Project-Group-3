@@ -46,15 +46,15 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Instantiates a mobile
 	 * 
 	 * @param x
-	 * 			position x
+	 *            position x
 	 * @param y
-	 * 			position y
+	 *            position y
 	 * @param sprite
-	 * 			sprite of a mobile
+	 *            sprite of a mobile
 	 * @param level
-	 * 			level of the game
+	 *            level of the game
 	 * @param model
-	 * 			the model
+	 *            the model
 	 */
 	public Mobile(int x, int y, Image sprite, ILevel level, ModelFacade model) {
 		super(x, y, sprite);
@@ -79,8 +79,13 @@ public abstract class Mobile extends Element implements IMobile {
 			lorann.seteLorann(ELorann.UP);
 		} else if (this instanceof Monster) {
 			monsterCheckLorann(xEl, yEl);
+			monsterCheckSpell(xEl, yEl);
 		} else if (this instanceof Spell) {
 			spellCheckMonster(xEl, yEl);
+			spellCheckLorann(xEl, yEl);
+			if (this.getY() != yEl) {
+				((Spell) level.getSpell()).seteLorann(ELorann.UP);
+			}
 		}
 
 	}
@@ -98,8 +103,13 @@ public abstract class Mobile extends Element implements IMobile {
 			lorann.seteLorann(ELorann.DOWN);
 		} else if (this instanceof Monster) {
 			monsterCheckLorann(xEl, yEl);
+			monsterCheckSpell(xEl, yEl);
 		} else if (this instanceof Spell) {
 			spellCheckMonster(xEl, yEl);
+			spellCheckLorann(xEl, yEl);
+			if (this.getY() != yEl) {
+				((Spell) level.getSpell()).seteLorann(ELorann.DOWN);
+			}
 		}
 	}
 
@@ -116,8 +126,13 @@ public abstract class Mobile extends Element implements IMobile {
 			lorann.seteLorann(ELorann.LEFT);
 		} else if (this instanceof Monster) {
 			monsterCheckLorann(xEl, yEl);
+			monsterCheckSpell(xEl, yEl);
 		} else if (this instanceof Spell) {
 			spellCheckMonster(xEl, yEl);
+			spellCheckLorann(xEl, yEl);
+			if (this.getX() != xEl) {
+				((Spell) level.getSpell()).seteLorann(ELorann.LEFT);
+			}
 		}
 	}
 
@@ -134,8 +149,13 @@ public abstract class Mobile extends Element implements IMobile {
 			lorann.seteLorann(ELorann.RIGHT);
 		} else if (this instanceof Monster) {
 			monsterCheckLorann(xEl, yEl);
+			monsterCheckSpell(xEl, yEl);
 		} else if (this instanceof Spell) {
 			spellCheckMonster(xEl, yEl);
+			spellCheckLorann(xEl, yEl);
+			if (this.getX() != xEl) {
+				((Spell) level.getSpell()).seteLorann(ELorann.RIGHT);
+			}
 		}
 	}
 
@@ -143,9 +163,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Monsters check lorann
 	 * 
 	 * @param x
-	 * 			position x
+	 *            position x
 	 * @param y
-	 * 			position y
+	 *            position y
 	 */
 	public void monsterCheckLorann(int x, int y) {
 		if ((((Monster) this).isAlive())) {
@@ -156,12 +176,31 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
+	 * Monsters check spell
+	 * 
+	 * @param x
+	 *            position x
+	 * @param y
+	 *            position y
+	 */
+	public void monsterCheckSpell(int x, int y) {
+		if ((((Monster) this).isAlive())) {
+			if (level.getSpell().getPosition().equals(new Point(x, y))
+					&& ((Spell) level.getSpell()).geteSpell() == ESpell.ACTIVE) {
+				((Monster) this).setAlive(false);
+				((Spell) level.getSpell()).seteSpell(ESpell.INACTIVE);
+				level.addScore(100);
+			}
+		}
+	}
+
+	/**
 	 * The spell check monsters
 	 * 
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 */
 	public void spellCheckMonster(int x, int y) {
 		if (((Spell) this).geteSpell() == ESpell.ACTIVE) {
@@ -178,17 +217,48 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
+	 * The spell check Lorann
+	 * 
+	 * @param x
+	 *            position x
+	 * @param y
+	 *            position y
+	 */
+	public void lorannCheckSpell(int x, int y) {
+		if (level.getSpell().getPosition().equals(new Point(x, y))) {
+			((Spell) level.getSpell()).seteSpell(ESpell.INACTIVE);
+		}
+	}
+
+	/**
+	 * The spell check Lorann
+	 * 
+	 * @param x
+	 *            position x
+	 * @param y
+	 *            position y
+	 */
+	public void spellCheckLorann(int x, int y) {
+		if (((Spell) this).geteSpell() == ESpell.ACTIVE) {
+			if (level.getLorann().getPosition().equals(new Point(x, y))) {
+				((Spell) this).seteSpell(ESpell.INACTIVE);
+			}
+		}
+	}
+
+	/**
 	 * Lorann's check
 	 *
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 */
 	public void checkLorann(int x, int y) {
 		lorannCheckEnnemy(x, y);
+		lorannCheckSpell(x, y);
 		checkEnd(x, y);
-		checkEnergyBall(x, y);
+		loranncheckEnergyBall(x, y);
 		checkMoney(x, y);
 	}
 
@@ -196,9 +266,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Check walls
 	 *
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 */
 	public void checkWall(int x, int y) {
 		if (hasWall(x, y) == false) {
@@ -211,11 +281,11 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Check energyBall
 	 *
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 */
-	public void checkEnergyBall(int x, int y) {
+	public void loranncheckEnergyBall(int x, int y) {
 		if (level.getElements()[x][y] instanceof EnergyBall) {
 			EnergyBall ball = ((EnergyBall) level.getElements()[x][y]);
 			if (ball.geteBonus() == EBonus.ENABLE) {
@@ -238,9 +308,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Lorann check Ennemy
 	 *
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 */
 	public void lorannCheckEnnemy(int x, int y) {
 		for (IMobile iMobile : level.getMonsters()) {
@@ -262,9 +332,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Check end
 	 *
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 */
 	public void checkEnd(int x, int y) {
 		if ((level.getElements()[x][y] instanceof Door)) {
@@ -286,9 +356,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Check money
 	 *
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 */
 	public void checkMoney(int x, int y) {
 		if (level.getElements()[x][y] instanceof Money) {
@@ -304,9 +374,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Has wall
 	 *
 	 * @param x
-	 * 	 		position x
+	 *            position x
 	 * @param y
-	 * 	 		position y
+	 *            position y
 	 * @return boolean
 	 */
 	public boolean hasWall(int x, int y) {
@@ -329,7 +399,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Set is alive
 	 * 
 	 * @param isAlive
-	 * 				check if the mobile is alive
+	 *            check if the mobile is alive
 	 */
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
@@ -394,7 +464,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Set model
 	 * 
 	 * @param model
-	 * 				the model
+	 *            the model
 	 */
 	public void setModel(ModelFacade model) {
 		this.model = model;

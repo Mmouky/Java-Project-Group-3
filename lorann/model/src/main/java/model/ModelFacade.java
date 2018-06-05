@@ -168,7 +168,7 @@ public final class ModelFacade extends Observable implements IModel {
 	 * Instantiates a new model facade.
 	 *
 	 * @param level
-	 * 				the level of the game
+	 *            the level of the game
 	 */
 	public ModelFacade(ILevel level) {
 		this.level = level;
@@ -221,7 +221,7 @@ public final class ModelFacade extends Observable implements IModel {
 	 * Add elements to the level
 	 * 
 	 * @param txt
-	 * 			level file
+	 *            level file
 	 */
 	public void addElementToLevel(String txt) throws SQLException, IOException {
 
@@ -290,10 +290,6 @@ public final class ModelFacade extends Observable implements IModel {
 					((Monster) level.getMonsters().get(2)).pattern2();
 					((Monster) level.getMonsters().get(3)).pattern3();
 
-					Spell spell = ((Spell) level.getSpell());
-					if (spell.geteSpell() == ESpell.ACTIVE) {
-						spell.changeSprite();
-					}
 				}
 			}
 		});
@@ -312,6 +308,8 @@ public final class ModelFacade extends Observable implements IModel {
 					Lorann lorann = (Lorann) level.getLorann();
 					if (lorann.geteLorann() == ELorann.NONE) {
 						lorann.changeSprite();
+					} else {
+						lorann.setLastMove(lorann.geteLorann());
 					}
 					if (right == true) {
 						lorann.moveRight();
@@ -324,6 +322,11 @@ public final class ModelFacade extends Observable implements IModel {
 					}
 					if (down == true) {
 						lorann.moveDown();
+					}
+
+					Spell spell = ((Spell) level.getSpell());
+					if (spell.geteSpell() == ESpell.ACTIVE) {
+						spell.changeSprite();
 					}
 					setChanged();
 					notifyObservers();
@@ -341,7 +344,7 @@ public final class ModelFacade extends Observable implements IModel {
 	 * Read the file of the level on the database
 	 * 
 	 * @param id
-	 * 			id of the level
+	 *            id of the level
 	 */
 	public String readFile(int id) {
 		idLevel = id;
@@ -381,12 +384,12 @@ public final class ModelFacade extends Observable implements IModel {
 	 * Get sprite
 	 * 
 	 * @param def
-	 * 			name of the sprite
+	 *            name of the sprite
 	 * @return image
 	 * @throws IOException
-	 * 				the IO exception
+	 *             the IO exception
 	 * @throws SQLException
-	 * 				the SQL exception
+	 *             the SQL exception
 	 */
 	public Image getSprite(String def) throws IOException, SQLException {
 		InputStream is = new BufferedInputStream(getSpriteByName(def));
@@ -409,28 +412,38 @@ public final class ModelFacade extends Observable implements IModel {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			Spell spell = ((Spell) level.getSpell());
 			if (spell.geteSpell() == ESpell.INACTIVE) {
+				spell.seteLorann(((Lorann) level.getLorann()).getLastMove());
+				if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.LEFT) {
+					spell.setX(level.getLorann().getX());
+					spell.setY(level.getLorann().getY());
+				} else if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.RIGHT) {
+					spell.setX(level.getLorann().getX());
+					spell.setY(level.getLorann().getY());
+				} else if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.UP) {
+					spell.setX(level.getLorann().getX());
+					spell.setY(level.getLorann().getY());
+				} else if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.DOWN) {
+					spell.setX(level.getLorann().getX());
+					spell.setY(level.getLorann().getY());
+				}
 				spell.seteSpell(ESpell.ACTIVE);
 			}
-			spell.setX(level.getLorann().getX());
-			spell.setY(level.getLorann().getY());
-			spell.seteLorann(((Lorann) level.getLorann()).getLastMove());
 		}
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyReleased(KeyEvent e) {
 		Lorann lorann = ((Lorann) level.getLorann());
-		if (arg0.getKeyCode() == KeyEvent.VK_UP) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			this.up = false;
 			lorann.setLastMove(ELorann.UP);
-		} else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			this.down = false;
 			lorann.setLastMove(ELorann.DOWN);
-		} else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			this.right = false;
 			lorann.setLastMove(ELorann.RIGHT);
-		} else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.left = false;
 			lorann.setLastMove(ELorann.LEFT);
 		}
