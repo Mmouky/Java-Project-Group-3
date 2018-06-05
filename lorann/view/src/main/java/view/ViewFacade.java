@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import model.ILevel;
 import model.IMobile;
@@ -35,13 +36,13 @@ public class ViewFacade implements IView {
 	 *            the level
 	 */
 	public ViewFacade(final ILevel level) {
+		this.level = level;
 		frame = new BoardFrame("Lorann");
 		frame.setSize(1000, 700);
 		frame.setDimension(new Dimension(20, 12));
 		frame.setDisplayFrame(
 				new Rectangle(0, 0, (int) frame.getDimension().getWidth(), (int) frame.getDimension().getHeight()));
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.level = level;
 	}
 
 	/*
@@ -58,7 +59,7 @@ public class ViewFacade implements IView {
 	 * Set the frame
 	 * 
 	 * @param frame
-	 * 				the frame
+	 *            the frame
 	 */
 	public void setFrame(BoardFrame frame) {
 		this.frame = frame;
@@ -68,7 +69,6 @@ public class ViewFacade implements IView {
 	public void addElement() {
 		for (int i = 0; i < level.getElements().length; i++) {
 			for (int j = 0; j < level.getElements()[i].length; j++) {
-				System.out.println(level.getElements()[i][j]);
 				frame.addSquare(level.getElements()[i][j], level.getElements()[i][j].getX(),
 						level.getElements()[i][j].getY());
 			}

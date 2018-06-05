@@ -2,6 +2,8 @@ package model.element;
 
 import java.awt.Image;
 import java.awt.Point;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import javax.swing.JOptionPane;
 
@@ -10,6 +12,7 @@ import model.IElement;
 import model.ILevel;
 import model.IMobile;
 import model.ModelFacade;
+import model.Sound;
 import model.element.characters.ELorann;
 import model.element.characters.ESpell;
 import model.element.characters.Lorann;
@@ -190,6 +193,7 @@ public abstract class Mobile extends Element implements IMobile {
 				((Monster) this).setAlive(false);
 				((Spell) level.getSpell()).seteSpell(ESpell.INACTIVE);
 				level.addScore(100);
+				soundDeathMonster();
 			}
 		}
 	}
@@ -210,10 +214,27 @@ public abstract class Mobile extends Element implements IMobile {
 						((Monster) iMobile).setAlive(false);
 						((Spell) this).seteSpell(ESpell.INACTIVE);
 						level.addScore(100);
+						soundDeathMonster();
 					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Play sound when a monster die
+	 */
+	public void soundDeathMonster() {
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				Sound kill = new Sound("lorann//sounds//kill.wav");
+				InputStream is = new ByteArrayInputStream(kill.getSamples());
+				kill.play(is);
+			}
+		});
+		t.start();
 	}
 
 	/**
@@ -296,7 +317,16 @@ public abstract class Mobile extends Element implements IMobile {
 							((Door) element).seteDoor(EDoor.OPEN);
 							ball.seteBonus(EBonus.DISABLE);
 							level.addScore(500);
+							Thread t = new Thread(new Runnable() {
 
+								@Override
+								public void run() {
+									Sound energy_ball = new Sound("lorann//sounds//energy_ball.wav");
+									InputStream is = new ByteArrayInputStream(energy_ball.getSamples());
+									energy_ball.play(is);
+								}
+							});
+							t.start();
 						}
 					}
 				}
@@ -348,6 +378,16 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Check win
 	 */
 	private void win() {
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				Sound win = new Sound("lorann//sounds//win.wav");
+				InputStream is = new ByteArrayInputStream(win.getSamples());
+				win.play(is);
+			}
+		});
+		t.start();
 		JOptionPane.showMessageDialog(null, "VICTORY ! SCORE : " + level.getScore());
 		System.exit(0);
 	}
@@ -366,6 +406,16 @@ public abstract class Mobile extends Element implements IMobile {
 			if (money.geteBonus() == EBonus.ENABLE) {
 				level.addScore(650);
 				money.seteBonus(EBonus.DISABLE);
+				Thread t = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						Sound money = new Sound("lorann//sounds//money.wav");
+						InputStream is = new ByteArrayInputStream(money.getSamples());
+						money.play(is);
+					}
+				});
+				t.start();
 			}
 		}
 	}
@@ -412,8 +462,17 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Die
 	 */
 	protected void die() {
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				Sound die = new Sound("lorann//sounds//lose.wav");
+				InputStream is = new ByteArrayInputStream(die.getSamples());
+				die.play(is);
+			}
+		});
+		t.start();
 		this.isAlive = false;
-		System.out.println("juimor");
 		JOptionPane.showMessageDialog(null, "GAME OVER ! SCORE : " + level.getScore());
 		System.exit(0);
 	}

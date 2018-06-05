@@ -1,11 +1,14 @@
 package main;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 import controller.ControllerFacade;
-import model.Level;
 import model.ModelFacade;
+import model.Sound;
 import view.ViewFacade;
 
 /**
@@ -20,24 +23,27 @@ public abstract class Main {
 	 * The main method.
 	 *
 	 * @throws IOException
-	 * 				the IO Exception
+	 *             the IO Exception
 	 *
 	 * @param args
 	 *            the arguments
 	 */
 	public static void main(final String[] args) throws IOException {
 
-		Level level = new Level();
-		ModelFacade model = new ModelFacade(level);
-		ViewFacade view = new ViewFacade(level);
-		model.addObserver(view.getFrame().getObserver());
-		final ControllerFacade controller = new ControllerFacade(view, model);
+		ModelFacade model = new ModelFacade();
 
+		System.out.println("Choose a level :");
+		int sc = new Scanner(System.in).nextInt();
+		System.out.println("Game starting !");
+
+		ViewFacade view = new ViewFacade(model.getLevel());
+		final ControllerFacade controller = new ControllerFacade(view, model);
 		try {
-			controller.start();
+			controller.start(sc);
 		} catch (final SQLException exception) {
 			exception.printStackTrace();
 		}
+		model.addObserver(view.getFrame().getObserver());
 	}
 
 }

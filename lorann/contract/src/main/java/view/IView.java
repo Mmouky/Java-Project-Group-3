@@ -28,4 +28,5 @@ public interface IView {
 	 * @return BoardFrame
 	 */
 	BoardFrame getFrame();
+	
 }

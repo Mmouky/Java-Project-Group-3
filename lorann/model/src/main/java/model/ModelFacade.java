@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -167,11 +168,9 @@ public final class ModelFacade extends Observable implements IModel {
 	/**
 	 * Instantiates a new model facade.
 	 *
-	 * @param level
-	 *            the level of the game
 	 */
-	public ModelFacade(ILevel level) {
-		this.level = level;
+	public ModelFacade() {
+		this.level = new Level();
 		try {
 			background = getSprite("background");
 			bone = getSprite("bone");
@@ -244,7 +243,6 @@ public final class ModelFacade extends Observable implements IModel {
 				} else if (c == '|') {
 					level.addElements(new Wall(j, i, vertical_bone, EWall.VERTICAL));
 				}
-				System.out.println(level.getElements()[j][i]);
 			}
 
 		}
@@ -263,8 +261,6 @@ public final class ModelFacade extends Observable implements IModel {
 		level.setSpell(new Spell((int) LorannDAO.getLorannPosition(idLevel).getX(),
 				(int) LorannDAO.getLorannPosition(idLevel).getY(), fireball_1, level, ESpell.INACTIVE,
 				((Lorann) level.getLorann()).getLastMove(), this));
-
-		System.out.println("ca compile");
 
 		refresh();
 
@@ -413,20 +409,19 @@ public final class ModelFacade extends Observable implements IModel {
 			Spell spell = ((Spell) level.getSpell());
 			if (spell.geteSpell() == ESpell.INACTIVE) {
 				spell.seteLorann(((Lorann) level.getLorann()).getLastMove());
-				if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.LEFT) {
-					spell.setX(level.getLorann().getX());
-					spell.setY(level.getLorann().getY());
-				} else if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.RIGHT) {
-					spell.setX(level.getLorann().getX());
-					spell.setY(level.getLorann().getY());
-				} else if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.UP) {
-					spell.setX(level.getLorann().getX());
-					spell.setY(level.getLorann().getY());
-				} else if (((ELorann) ((Lorann) level.getLorann()).getLastMove()) == ELorann.DOWN) {
-					spell.setX(level.getLorann().getX());
-					spell.setY(level.getLorann().getY());
-				}
+				spell.setX(level.getLorann().getX());
+				spell.setY(level.getLorann().getY());
 				spell.seteSpell(ESpell.ACTIVE);
+				Thread t = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						Sound shoot = new Sound("lorann//sounds//spell.wav");
+						InputStream is = new ByteArrayInputStream(shoot.getSamples());
+						shoot.play(is);
+					}
+				});
+				t.start();
 			}
 		}
 	}
