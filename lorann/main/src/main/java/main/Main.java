@@ -19,6 +19,9 @@ public abstract class Main {
 	/**
 	 * The main method.
 	 *
+	 * @throws IOException
+	 * 				the IO Exception
+	 *
 	 * @param args
 	 *            the arguments
 	 */

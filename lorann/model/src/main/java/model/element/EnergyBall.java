@@ -26,10 +26,15 @@ public class EnergyBall extends Element {
 	 * Instantiates the energy ball
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			sprite of the energy ball
 	 * @param eBonus
+	 * 			EBonus of the energyBall
 	 * @param model
+	 * 			The model
 	 */
 	public EnergyBall(int x, int y, Image sprite, EBonus eBonus, ModelFacade model) {
 		super(x, y, sprite);
@@ -55,6 +60,7 @@ public class EnergyBall extends Element {
 	 * Set the EBonus
 	 * 
 	 * @param eBonus
+	 * 			EBonus of the energy ball
 	 */
 	public void seteBonus(EBonus eBonus) {
 		this.eBonus = eBonus;

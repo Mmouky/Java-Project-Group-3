@@ -27,10 +27,15 @@ public class Money extends Element {
 	 * Instantiates a money
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			sprite of a money
 	 * @param eBonus
+	 * 			EBonus of the money
 	 * @param model
+	 * 			the model
 	 */
 	public Money(int x, int y, Image sprite, EBonus eBonus, ModelFacade model) {
 		super(x, y, sprite);
@@ -56,6 +61,7 @@ public class Money extends Element {
 	 * Set eBonus
 	 * 
 	 * @param eBonus
+	 * 				EBonus of the money
 	 */
 	public void seteBonus(EBonus eBonus) {
 		this.eBonus = eBonus;

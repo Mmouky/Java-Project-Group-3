@@ -58,6 +58,7 @@ public class ViewFacade implements IView {
 	 * Set the frame
 	 * 
 	 * @param frame
+	 * 				the frame
 	 */
 	public void setFrame(BoardFrame frame) {
 		this.frame = frame;

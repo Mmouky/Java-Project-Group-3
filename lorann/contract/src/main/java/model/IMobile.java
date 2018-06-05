@@ -62,6 +62,7 @@ public interface IMobile extends IPawn, IElement {
 	 * Set the level
 	 * 
 	 * @param level
+	 * 				the level
 	 */
 	void setLevel(ILevel level);
 

@@ -28,8 +28,11 @@ public abstract class Element implements IElement {
 	/**
 	 * Instantiates an element
 	 * @param x
+	 * 			postion x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 				the sprite
 	 */
 	public Element(int x, int y, Image sprite) {
 		this.y = y;

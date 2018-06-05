@@ -16,6 +16,7 @@ public interface IElement extends ISquare {
 	 * Get position x
 	 * 
 	 * @return x
+	 * 			position x
 	 */
 	int getX();
 
@@ -23,6 +24,7 @@ public interface IElement extends ISquare {
 	 * Get position y
 	 * 
 	 * @return y
+	 * 			postion y
 	 */
 	int getY();
 
@@ -30,13 +32,16 @@ public interface IElement extends ISquare {
 	 * Set the position x
 	 * 
 	 * @param x
+	 * 			position x
 	 */
+
 	void setX(int x);
 
 	/**
 	 * Set the position y
 	 * 
 	 * @param y
+	 *			position y
 	 */
 	void setY(int y);
 
@@ -44,6 +49,7 @@ public interface IElement extends ISquare {
 	 * set the image
 	 * 
 	 * @param image
+	 *				Set Image
 	 */
 	void setImage(Image image);
 

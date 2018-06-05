@@ -30,10 +30,15 @@ public class Monster extends Mobile {
 	 * Instantiates a monster
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			Sprite of a monster
 	 * @param level
+	 * 			level of the game
 	 * @param model
+	 * 			the model
 	 */
 	public Monster(int x, int y, Image sprite, ILevel level, ModelFacade model) {
 		super(x, y, sprite, level, model);

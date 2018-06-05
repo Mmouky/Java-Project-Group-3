@@ -34,12 +34,19 @@ public class Spell extends Mobile {
 	 * Instantiates the spell
 	 * 
 	 * @param x
+	 * 			position x
 	 * @param y
+	 * 			position y
 	 * @param sprite
+	 * 			sprite of the spell
 	 * @param level
+	 * 			level of the game
 	 * @param eSpell
+	 * 			ESpell of the spell
 	 * @param eLorann
+	 * 			ELorann of Lorann of the game
 	 * @param model
+	 * 			The model
 	 */
 	public Spell(int x, int y, Image sprite, ILevel level, ESpell eSpell, ELorann eLorann, ModelFacade model) {
 		super(x, y, sprite, level, model);
@@ -62,6 +69,7 @@ public class Spell extends Mobile {
 	 * Set the ESPell
 	 * 
 	 * @param eSpell
+	 * 			ESpell of the spell
 	 */
 	public void seteSpell(ESpell eSpell) {
 		this.eSpell = eSpell;
@@ -119,6 +127,7 @@ public class Spell extends Mobile {
 	 * Set the ELorann
 	 * 
 	 * @param eLorann
+	 * 			ELorann of the Lorann of the game
 	 */
 	public void seteLorann(ELorann eLorann) {
 		this.eLorann = eLorann;
