@@ -229,9 +229,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 			@Override
 			public void run() {
-				Sound shoot = new Sound("..\\..\\lorann\\sounds\\9681.wav");
-				InputStream is = new ByteArrayInputStream(shoot.getSamples());
-				shoot.play(is);
+				Sound kill = new Sound("lorann//sounds//kill.wav");
+				InputStream is = new ByteArrayInputStream(kill.getSamples());
+				kill.play(is);
 			}
 		});
 		t.start();
@@ -321,9 +321,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 								@Override
 								public void run() {
-									Sound shoot = new Sound("..\\..\\lorann\\sounds\\842.wav");
-									InputStream is = new ByteArrayInputStream(shoot.getSamples());
-									shoot.play(is);
+									Sound energy_ball = new Sound("lorann//sounds//energy_ball.wav");
+									InputStream is = new ByteArrayInputStream(energy_ball.getSamples());
+									energy_ball.play(is);
 								}
 							});
 							t.start();
@@ -382,9 +382,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 			@Override
 			public void run() {
-				Sound shoot = new Sound("..\\..\\lorann\\sounds\\win.wav");
-				InputStream is = new ByteArrayInputStream(shoot.getSamples());
-				shoot.play(is);
+				Sound win = new Sound("lorann//sounds//win.wav");
+				InputStream is = new ByteArrayInputStream(win.getSamples());
+				win.play(is);
 			}
 		});
 		t.start();
@@ -410,9 +410,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 					@Override
 					public void run() {
-						Sound shoot = new Sound("..\\..\\lorann\\sounds\\2706.wav");
-						InputStream is = new ByteArrayInputStream(shoot.getSamples());
-						shoot.play(is);
+						Sound money = new Sound("lorann//sounds//money.wav");
+						InputStream is = new ByteArrayInputStream(money.getSamples());
+						money.play(is);
 					}
 				});
 				t.start();
@@ -466,9 +466,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 			@Override
 			public void run() {
-				Sound shoot = new Sound("..\\..\\lorann\\sounds\\18533.wav");
-				InputStream is = new ByteArrayInputStream(shoot.getSamples());
-				shoot.play(is);
+				Sound die = new Sound("lorann//sounds//lose.wav");
+				InputStream is = new ByteArrayInputStream(die.getSamples());
+				die.play(is);
 			}
 		});
 		t.start();
