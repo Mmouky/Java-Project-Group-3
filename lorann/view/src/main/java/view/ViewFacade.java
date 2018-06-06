@@ -83,8 +83,6 @@ public class ViewFacade implements IView {
 
 		frame.addPawn(level.getLorann());
 
-		frame.repaint();
-
 	}
 
 	@Override
