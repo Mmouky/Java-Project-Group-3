@@ -70,12 +70,9 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Move up
 	 */
 	public void moveUp() {
-
 		int yEl = this.getY() - 1;
 		int xEl = this.getX();
-
 		checkWall(xEl, yEl);
-
 		if (this instanceof Lorann) {
 			checkLorann(xEl, yEl);
 			Lorann lorann = (Lorann) this;
