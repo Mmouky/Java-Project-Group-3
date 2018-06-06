@@ -39,6 +39,7 @@ public class ViewFacade implements IView {
 		this.level = level;
 		frame = new BoardFrame("Lorann");
 		frame.setSize(1000, 700);
+		frame.setResizable(true);
 		frame.setDimension(new Dimension(20, 12));
 		frame.setDisplayFrame(
 				new Rectangle(0, 0, (int) frame.getDimension().getWidth(), (int) frame.getDimension().getHeight()));

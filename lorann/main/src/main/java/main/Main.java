@@ -1,14 +1,11 @@
 package main;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import controller.ControllerFacade;
 import model.ModelFacade;
-import model.Sound;
 import view.ViewFacade;
 
 /**
